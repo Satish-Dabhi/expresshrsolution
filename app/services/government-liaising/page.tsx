@@ -21,7 +21,7 @@ export default function BulkCargoPage() {
           <div className="flex flex-col lg:flex-row lg:space-x-12 mb-10">
             <div className="lg:w-1/2">
               <p className="mb-6">
-                One of Express HR's strengths is liaison services with the government for import and export in India. The weary standards of international standards. The terms like unique and imposing appear to be most suitable if one starts looking for the words to describe the quality of our services.              </p>
+                One of Express HR&apos;s strengths is liaison services with the government for import and export in India. The weary standards of international standards. The terms like unique and imposing appear to be most suitable if one starts looking for the words to describe the quality of our services.              </p>
               <p>
                 In addition to the optimum level of service, we offer them at a reasonable price. Express HR Solutions has been engaged with some sections to provide legal services to our clients. We are one of the providers of Liaison services for logistics in India that strengthen us to help clients in their A to Z logistics and supply chain barriers. With our legal liaison services, you can get hassle-free services at an affordable price. In India, listed companies provide legal liaison services all under one roof.
               </p>

@@ -52,23 +52,6 @@ function CounterTS({
     );
 }
 
-function motionHeading() {
-    // keep normal import-free simple heading with motion like you already used elsewhere
-    // Putting a plain element here keeps the example self-contained; you can replace with motion.* if needed
-    return (
-        <>
-            <h2 className="font-[Instrument Sans] font-semibold text-[32px] md:text-[48px] leading-[1.1] text-black max-w-3xl">
-                Make data driven decisions with real time insights and ensure every reward aligns with your business objectives.
-            </h2>
-
-            <p className="font-[Instrument Sans] text-[16px] md:text-[20px] text-gray-500 leading-6 mt-6 max-w-2xl">
-                Gone are the days of complex spreadsheets and manual processes. Simplify compensation planning with a single platform that puts you in control of every decision.
-            </p>
-        </>
-    );
-}
-
-
 export default function StatsSection() {
     return (
         <section className="w-full px-6 md:px-20 py-24">
