@@ -11,6 +11,7 @@ import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
+import AnimatedImageSection from "@/components/AnimatedImageSection";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
@@ -22,7 +23,6 @@ export default function Home() {
     <>
       {/* FULL WIDTH SECTIONS (stay untouched) */}
       <HeroRevealSection />
-      <CurvedDivider />
 
       {/* CONTAINER SECTIONS */}
       <div className="mx-auto w-full max-w-[1400px]">
@@ -97,7 +97,14 @@ export default function Home() {
       />
 
       {/* FULL WIDTH */}
-      <TestimonialRevealSection />
+      {/* <TestimonialRevealSection /> */}
+
+      <AnimatedImageSection
+        image="/images/box.jpg"
+        title="Express HR Solutions turned finance from a bottleneck into a partner"
+        subtitle="Ankit Ahuja, XYZ Co."
+        height="900px"
+      />
 
       {/* CONTAINER */}
       <div className="mx-auto w-full max-w-[1400px]">

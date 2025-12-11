@@ -7,37 +7,44 @@ export default function CurvedDivider() {
                 xmlns="http://www.w3.org/2000/svg"
             >
                 {/* LEFT STRAIGHT LINE */}
-                <path
-                    d="M0 50 H850"
-                    stroke="#E5E5E5"
-                    strokeWidth="2"
-                />
-
-                {/* CURVE DOWN + STRAIGHT */}
-                <path
-                    d="M850 50
+                <path id="dividerPath" d="
+                    M0 50 
+                    H850
                     C950 50, 1000 150, 1100 150
-                    L1400 150"
-                    stroke="#E5E5E5"
-                    strokeWidth="2"
-                    fill="none"
+                    L1400 150
+                "
+                stroke="#E5E5E5"
+                strokeWidth="2"
+                fill="none"
                 />
 
-                {/* ORANGE GLOW DOT EXACTLY AT CURVE START */}
+                {/* ORIGINAL GRADIENT (unchanged, only stronger color) */}
                 <defs>
                     <radialGradient id="orangeGlow">
-                        <stop offset="0%" stopColor="#F97316" />
+                        <stop offset="0%" stopColor="#F97316" stopOpacity="1" />
+                        <stop offset="60%" stopColor="#F97316" stopOpacity="0.6" />
                         <stop offset="100%" stopColor="#F97316" stopOpacity="0" />
                     </radialGradient>
                 </defs>
 
+                {/* GLOW ELEMENT */}
                 <ellipse
-                    cx="800"
-                    cy="50"
-                    rx="30"   // width radius
-                    ry="10"   // height radius
+                    rx="40"
+                    ry="14"
                     fill="url(#orangeGlow)"
-                />
+                >
+                    {/* FOLLOW THE PATH EXACTLY */}
+                    <animateMotion
+                        dur="6s"
+                        repeatCount="indefinite"
+                        rotate="auto"
+                        keyTimes="0;1"
+                        calcMode="spline"
+                        keySplines="0.25 0.1 0.25 1"
+                    >
+                        <mpath href="#dividerPath" />
+                    </animateMotion>
+                </ellipse>
 
             </svg>
         </div>

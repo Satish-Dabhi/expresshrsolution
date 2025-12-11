@@ -229,7 +229,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 0px 4px rgba(0,0,0,0.07);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.07);
 }
 
 .center-card img {
@@ -242,23 +242,40 @@
   .logo-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .card {
     height: 140px;
   }
+
   .center-card img {
     max-width: 90px;
   }
 }
 
 @keyframes expandOwide {
-  0% { transform: scaleX(1); }
-  40% { transform: scaleX(2.8); }
-  100% { transform: scaleX(1); }
+  0% {
+    transform: scaleX(1);
+  }
+
+  40% {
+    transform: scaleX(2.8);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 @keyframes horizontalBounce {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(6px); }
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
 }
 
 .animate-O {
@@ -268,4 +285,33 @@
 
 .animate-text-horizontal {
   animation: horizontalBounce 1.8s ease-in-out infinite;
+}
+
+.custom-top-gradient {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+.custom-bottom-gradient {
+  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+}
+
+/* LEFT */
+.custom-left-gradient {
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0));
+}
+
+/* RIGHT */
+.custom-right-gradient {
+  background: linear-gradient(to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0));
+}
+
+/* Allow custom clip-path for animation */
+.reveal-mask {
+  clip-path: inset(40% 0 36% 0);
 }
