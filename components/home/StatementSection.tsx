@@ -24,11 +24,11 @@ export default function StatementSection({
             maxWidth: '560px',
           }}
         >
-          "{title.split('\n').map((line, index) => (
+          {title.split('\n').map((line, index) => (
             <span key={index} className="block">
               {line}
             </span>
-          ))}"
+          ))}
         </h2>
 
         {/* RIGHT — TEXT */}
