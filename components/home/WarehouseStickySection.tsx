@@ -15,19 +15,19 @@ const items = [
   {
     label: "WORKFORCE",
     title: ["Skilled deployment", "across 3PL/4PL", "environments"],
-    gif: "/videos/warehouse.gif",
+    gif: "/videos/WORKFORCE.gif",
     color: "orange"
   },
   {
     label: "FACILITY",
     title: ["Safe, clean, efficient", "industrial spaces"],
-    gif: "/videos/warehouse.gif",
+    gif: "/videos/FACILITY.gif",
     color: "orange"
   },
   {
     label: "GOVERNANCE",
     title: ["Compliance, audits,", "transparency & MIS"],
-    gif: "/videos/warehouse.gif",
+    gif: "/videos/GOVERNANCE.gif",
     color: "orange"
   }
 ]

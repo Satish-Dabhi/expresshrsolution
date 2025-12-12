@@ -1,7 +1,33 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { motion, useInView } from "framer-motion";
+
 export default function TrustedHeading() {
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.4 });
+
+    const fullTitle = `Trusted by industry leaders looking for real resource innovation`;
+    const [typedText, setTypedText] = useState("");
+
+    useEffect(() => {
+        if (!isInView) return;
+
+        let i = 0;
+        const speed = 40; // typing speed
+
+        const interval = setInterval(() => {
+            setTypedText(fullTitle.slice(0, i));
+            i++;
+            if (i > fullTitle.length) clearInterval(interval);
+        }, speed);
+
+        return () => clearInterval(interval);
+    }, [isInView]);
+
     return (
-        <section className="w-full text-center py-12 md:py-16">
-            <p
+        <section ref={ref} className="w-full text-center py-12 md:py-16">
+            <motion.p
                 className="text-gray-400"
                 style={{
                     fontFamily: "Instrument Sans",
@@ -9,9 +35,12 @@ export default function TrustedHeading() {
                     fontWeight: 500,
                     marginBottom: "24px",
                 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6 }}
             >
                 Trusted by Operators
-            </p>
+            </motion.p>
 
             <h2
                 className="text-black"
@@ -24,8 +53,8 @@ export default function TrustedHeading() {
                     margin: "0 auto",
                 }}
             >
-                Trusted by industry leaders <br />
-                looking for real resource innovation
+                {typedText}
+                <span className="animate-pulse">|</span>
             </h2>
         </section>
     );

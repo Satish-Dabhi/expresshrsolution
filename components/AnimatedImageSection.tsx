@@ -1,14 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 
 interface AnimatedImageSectionProps {
-    image: string;           // background image
-    title: string;           // main heading (typewriter)
-    subtitle?: string;       // optional subtitle
-    titleSpeed?: number;     // typewriter speed
-    height?: string;         // custom height (e.g., "800px")
+    image: string;
+    title: string;
+    subtitle?: string;
+    titleSpeed?: number;
+    height?: string;
 }
 
 export default function AnimatedImageSection({
@@ -18,10 +18,37 @@ export default function AnimatedImageSection({
     titleSpeed = 145,
     height = "850px",
 }: AnimatedImageSectionProps) {
-    const [typedTitle, setTypedTitle] = useState("");
 
-    // Typewriter logic
+    const ref = useRef<HTMLDivElement>(null);
+    const controls = useAnimation();
+
+    const [typedTitle, setTypedTitle] = useState("");
+    const [shouldAnimate, setShouldAnimate] = useState(false);
+
+    /* ------------------------------------------------------------------
+        1) Start animation ONLY when section enters viewport
+    ------------------------------------------------------------------ */
     useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setShouldAnimate(true);
+                    observer.disconnect(); // run only once
+                }
+            },
+            { threshold: 0.4 } // fire when 40% visible
+        );
+
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+    }, []);
+
+    /* ------------------------------------------------------------------
+        2) TYPEWRITER EFFECT (only after shouldAnimate = true)
+    ------------------------------------------------------------------ */
+    useEffect(() => {
+        if (!shouldAnimate) return;
+
         let i = 0;
         const interval = setInterval(() => {
             setTypedTitle(title.slice(0, i));
@@ -30,10 +57,22 @@ export default function AnimatedImageSection({
         }, titleSpeed);
 
         return () => clearInterval(interval);
-    }, [title, titleSpeed]);
+    }, [shouldAnimate, title, titleSpeed]);
+
+    /* ------------------------------------------------------------------
+        3) Trigger Framer Motion animation when visible
+    ------------------------------------------------------------------ */
+    useEffect(() => {
+        if (shouldAnimate) {
+            controls.start("animate");
+        }
+    }, [shouldAnimate, controls]);
 
     return (
-        <section className="w-full max-w-[1440px] mx-auto px-4 py-10 md:px-6 relative">
+        <section
+            ref={ref}
+            className="w-full max-w-[1440px] mx-auto px-4 py-10 md:px-6 relative"
+        >
             <div
                 className="relative rounded-2xl overflow-hidden"
                 style={{ height }}
@@ -41,9 +80,16 @@ export default function AnimatedImageSection({
 
                 {/* === TOP MASK === */}
                 <motion.div
-                    initial={{ y: "40%", width: "70%" }}
-                    animate={{ y: "0%", width: "44%" }}
-                    transition={{ duration: 1.6, ease: [0.77, 0, 0.175, 1] }}
+                    variants={{
+                        initial: { y: "40%", width: "70%" },
+                        animate: { y: "0%", width: "44%" },
+                    }}
+                    initial="initial"
+                    animate={controls}
+                    transition={{
+                        duration: 1.6,
+                        ease: [0.77, 0, 0.175, 1],
+                    }}
                     className="absolute top-0 left-0 z-20"
                 >
                     <svg width="605" height="153" viewBox="0 0 605 153" fill="none">
@@ -56,9 +102,16 @@ export default function AnimatedImageSection({
 
                 {/* === BOTTOM MASK === */}
                 <motion.div
-                    initial={{ y: "-40%", width: "72%" }}
-                    animate={{ y: "0%", width: "64%" }}
-                    transition={{ duration: 1.6, ease: [0.77, 0, 0.175, 1] }}
+                    variants={{
+                        initial: { y: "-40%", width: "72%" },
+                        animate: { y: "0%", width: "64%" },
+                    }}
+                    initial="initial"
+                    animate={controls}
+                    transition={{
+                        duration: 1.6,
+                        ease: [0.77, 0, 0.175, 1],
+                    }}
                     className="absolute bottom-0 right-0 z-20"
                 >
                     <svg width="893" height="183" viewBox="0 0 893 183" fill="none">
@@ -69,23 +122,31 @@ export default function AnimatedImageSection({
                     </svg>
                 </motion.div>
 
-                {/* === IMAGE + REVEAL === */}
+                {/* === IMAGE REVEAL === */}
                 <motion.div
-                    initial={{ clipPath: "inset(40% 0 36% 0)" }}
-                    animate={{ clipPath: "inset(0 0 0 0)" }}
-                    transition={{ duration: 1.6, ease: [0.77, 0, 0.175, 1] }}
+                    variants={{
+                        initial: { clipPath: "inset(40% 0 36% 0)" },
+                        animate: { clipPath: "inset(0 0 0 0)" },
+                    }}
+                    initial="initial"
+                    animate={controls}
+                    transition={{
+                        duration: 1.6,
+                        ease: [0.77, 0, 0.175, 1],
+                    }}
                     className="w-full h-full bg-cover bg-center flex flex-col items-center p-10 md:p-20 text-center text-white"
-                    style={{ backgroundImage: `url(${image})`, justifyContent: 'center' }}
+                    style={{ backgroundImage: `url(${image})`, justifyContent: "center" }}
                 >
                     {/* Title */}
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-4">
                         {typedTitle}
-                        <span className="animate-pulse">|</span>
+                        {shouldAnimate && <span className="animate-pulse">|</span>}
                     </h2>
 
-                    {/* Optional Subtitle */}
                     {subtitle && (
-                        <p className="text-lg md:text-xl text-gray-200">{subtitle}</p>
+                        <p className="text-lg md:text-xl text-gray-200">
+                            {subtitle}
+                        </p>
                     )}
                 </motion.div>
             </div>

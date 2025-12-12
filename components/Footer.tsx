@@ -31,7 +31,7 @@ export default function Footer() {
                         Contact
                     </h4>
 
-                    <ul className="space-y-4 text-black font-[Instrument_Sans] text-[24px] leading-[100%] font-normal">
+                    <ul className="space-y-4 text-gray-500 font-[Instrument_Sans] text-[24px] leading-[100%] font-normal">
                         <li>+0000 0000</li>
 
                         <li>
@@ -54,7 +54,7 @@ export default function Footer() {
                         Services
                     </h4>
 
-                    <ul className="space-y-4 text-black font-[Instrument_Sans] text-[24px] leading-[100%] font-normal">
+                    <ul className="space-y-4 text-gray-500 font-[Instrument_Sans] text-[24px] leading-[100%] font-normal">
                         <li>
                             <Link href="/services/warehouse" className="hover:text-gray-700">
                                 Warehouse

@@ -82,18 +82,14 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
   ---------------------------------- */
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  /* ----------------------------------
-      RENDER
-  ---------------------------------- */
   return (
     <section ref={sectionRef} className="relative w-full">
 
       {/* Sticky Wrapper */}
-      {/* Sticky Wrapper */}
       <div
         className="
     max-w-[1400px] mx-auto w-full
-    md:sticky md:top-0 md:h-screen
+    md:sticky md:top-[80px] md:h-screen
     flex flex-col md:flex-row
     gap-6 md:gap-10
     px-4 md:px-0
@@ -132,7 +128,8 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
               {items.map((item, i) => (
                 <div
                   key={i}
-                  className="bg-white border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8"
+                  className="bg-white border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8 
+                    flex flex-col justify-end"
                   style={{
                     width: "clamp(240px, 80vw, 480px)",
                     height: "clamp(260px, 60vw, 520px)",
@@ -149,7 +146,32 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                     {item.title}
                   </h3>
 
-                  <ul className="space-y-3">
+                  <div className="flex flex-col gap-1">
+                    {item.points.map((line, i) => (
+                      <motion.p
+                        key={i}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{
+                          duration: 2.5,
+                          delay: i * 0.25,
+                          ease: "easeOut",
+                        }}
+                        className="text-black/70 
+        flex items-start gap-2"
+                        style={{
+                          fontFamily: "Instrument Sans",
+                          fontSize: "clamp(14px, 3vw, 18px)",
+                        }}
+                      >
+                        <span className="text-neutral-400 text-xl leading-none">•</span>
+                        <span>{line}</span>
+                      </motion.p>
+                    ))}
+                  </div>
+
+
+                  {/* <ul className="space-y-3">
                     {item.points.map((p, j) => (
                       <li
                         key={j}
@@ -163,7 +185,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                         <span>{p}</span>
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </div>
               ))}
             </motion.div>
