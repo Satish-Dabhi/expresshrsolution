@@ -77,7 +77,6 @@ export default function HeroRevealSection() {
                             <div className="text-white max-w-6xl mx-auto text-center pb-[7rem]">
                                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight">
                                     {text}
-                                    <span className="animate-pulse">|</span>
                                 </h1>
                             </div>
                         </motion.div>

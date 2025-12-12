@@ -140,7 +140,6 @@ export default function AnimatedImageSection({
                     {/* Title */}
                     <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight mb-4">
                         {typedTitle}
-                        {shouldAnimate && <span className="animate-pulse">|</span>}
                     </h2>
 
                     {subtitle && (

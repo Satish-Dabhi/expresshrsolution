@@ -54,7 +54,6 @@ export default function TrustedHeading() {
                 }}
             >
                 {typedText}
-                <span className="animate-pulse">|</span>
             </h2>
         </section>
     );

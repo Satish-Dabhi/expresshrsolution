@@ -27,9 +27,9 @@ const Navbar = () => {
         { name: "Transportation", href: "/services/transportation" },
       ],
     },
-    { name: "Our Clients", href: "/our-clients" },
+    { name: "Industries", href: "/our-clients" },
     { name: "Contact Us", href: "/contact-us" },
-    { name: "Blog", href: "/blog" },
+    { name: "Impact", href: "/blog" },
   ];
 
   // Toggle mobile submenu open/close by name

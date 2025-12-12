@@ -61,14 +61,22 @@ export default function WarehouseStickySection() {
     if (isMobile) return
 
     const handler = () => {
-      const targetY = window.innerHeight * 0.45
+      const targetY = window.innerHeight * 0.65; // LOWER so card never jumps up
+
       const distances = stepsRef.current.map((el) => {
-        const rect = el.getBoundingClientRect()
-        return Math.abs(rect.top - targetY)
-      })
-      const closest = distances.indexOf(Math.min(...distances))
-      setActive(closest)
-    }
+        const rect = el.getBoundingClientRect();
+
+        // prevent negative snap on last card
+        if (rect.top < 0 && stepsRef.current.indexOf(el) === items.length - 1) {
+          return 999999; // keep last card at its position
+        }
+
+        return Math.abs(rect.top - targetY);
+      });
+
+      const closest = distances.indexOf(Math.min(...distances));
+      setActive(closest);
+    };
 
     window.addEventListener("scroll", handler)
     return () => window.removeEventListener("scroll", handler)
@@ -223,19 +231,40 @@ export default function WarehouseStickySection() {
               <div className="w-1/2 bg-white rounded-xl p-10 flex items-center">
                 <motion.div
                   key={active}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.45 }}
+                  initial="hidden"
+                  animate="show"
+                  variants={{
+                    hidden: {},
+                    show: { transition: { staggerChildren: 0.12 } }
+                  }}
                 >
                   <span className="text-xs text-black/50 tracking-widest">
                     {items[active].label}
                   </span>
-                  <h3 className="mt-3 text-[40px] font-semibold leading-tight">
+
+                  <div className="mt-3">
                     {items[active].title.map((t, j) => (
-                      <span key={j}>{t}<br /></span>
+                      <motion.p
+                        key={j}
+                        variants={{
+                          hidden: { opacity: 0, y: 28 },
+                          show: {
+                            opacity: 1,
+                            y: 0,
+                            transition: {
+                              duration: 1.55,
+                              ease: [0.22, 1, 0.36, 1] // smooth cubic-bezier
+                            }
+                          }
+                        }}
+                        className="text-[40px] font-semibold leading-tight text-black"
+                      >
+                        {t}
+                      </motion.p>
                     ))}
-                  </h3>
+                  </div>
                 </motion.div>
+
               </div>
 
               <div className="w-1/2 relative rounded-xl overflow-hidden bg-white">
