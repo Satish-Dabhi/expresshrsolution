@@ -4,70 +4,117 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
-export default function LogoReveal({ onFinish }: { onFinish: () => void }) {
-    const [text, setText] = useState("");
-    const [zoom, setZoom] = useState(false);
-    const fullText = "EXPRESS HR SOLUTION";
+export default function LogoReveal({ children }: { children: React.ReactNode }) {
+    const [text, setText] = useState("")
+    const [hideLogo, setHideLogo] = useState(false)
+    const [showSquare, setShowSquare] = useState(false)
+    const [expandSquare, setExpandSquare] = useState(false)
+    const [hideSplash, setHideSplash] = useState(false)
+
+    // NEW → Enable scroll after clipPath animation ends
+    const [scrollEnabled, setScrollEnabled] = useState(false)
+
+    const fullText = "EXPRESS HR SOLUTION"
 
     useEffect(() => {
-        let i = 0;
+        let i = 0
 
-        // Typing animation
         const typer = setInterval(() => {
-            setText(fullText.slice(0, i + 1));
-            i++;
-            if (i === fullText.length) {
-                clearInterval(typer);
+            setText(fullText.slice(0, i + 1))
+            i++
+            if (i === fullText.length) clearInterval(typer)
+        }, 55)
 
-                // Trigger smooth zoom AFTER text finishes
-                setTimeout(() => setZoom(true), 250);
-            }
-        }, 70);
+        setTimeout(() => setHideLogo(true), 1200)
+        setTimeout(() => setShowSquare(true), 1300)
+        setTimeout(() => setExpandSquare(true), 1400)
 
-        // End splash
-        const finishTimer = setTimeout(() => {
-            onFinish();
-        }, 2600);
+        // square expand duration → 5.4s
+        setTimeout(() => {
+            setHideSplash(true)
+            setScrollEnabled(true) 
+        }, 4400)
 
-        return () => {
-            clearInterval(typer);
-            clearTimeout(finishTimer);
-        };
-    }, []);
+        return () => clearInterval(typer)
+    }, [])
 
     return (
-        <div className="fixed inset-0 z-[999] bg-white flex items-center justify-center overflow-hidden">
+        <div className="relative w-full min-h-screen">
 
-            {/* LOGO + TEXT */}
-            <div className="absolute flex flex-col items-center z-20">
-                <Image
-                    src="/images/logos/footer-logo.png"
-                    alt="Logo"
-                    width={180}
-                    height={60}
-                />
-                <p className="mt-4 text-black text-lg font-medium tracking-wide">
-                    {text}
-                </p>
-            </div>
-
-            {/* SMOOTH CENTER EXPANDING SQUARE */}
+            {/* =======================================
+                MAIN CONTENT (clipPath reveal)
+            ======================================== */}
             <motion.div
-                initial={{
-                    scale: 0,        // we animate this
-                    opacity: 1,
-                }}
-                animate={
-                    zoom
-                        ? { scale: 120, opacity: 1 }  // BIG smooth zoom
-                        : { scale: 0 }
-                }
+                initial={{ clipPath: "inset(50% 50% 50% 50% round 20px)" }}
+                animate={expandSquare ? { clipPath: "inset(0% 0% 0% 0% round 0px)" } : {}}
                 transition={{
-                    duration: 1.3,
-                    ease: [0.16, 1, 0.3, 1], // smooth cubic
+                    duration: 2.4,
+                    ease: [0.76, 0, 0.24, 1],
                 }}
-                className="absolute w-32 h-32 bg-white rounded-2xl"
-            />
+                className={`
+                    absolute inset-0 z-10
+                    ${scrollEnabled ? "overflow-auto" : "overflow-hidden"}
+                `}
+            >
+                <div className="relative w-full min-h-[250vh]">
+                    {children}
+                </div>
+            </motion.div>
+
+            {/* =======================================
+                SPLASH SCREEN
+            ======================================== */}
+            {!hideSplash && (
+                <motion.div
+                    initial={{ opacity: 1 }}
+                    animate={expandSquare ? { opacity: 0 } : { opacity: 1 }}
+                    transition={{
+                        duration: 0.8,
+                        ease: [0.4, 0, 0.2, 1],
+                    }}
+                    className="
+                        fixed inset-0 z-40 
+                        bg-white
+                        flex items-center justify-center
+                        pointer-events-none
+                    "
+                >
+
+                    {/* LOGO + TEXT */}
+                    {!hideLogo && (
+                        <div className="absolute z-50 flex flex-col items-center">
+                            <Image
+                                src="/images/logos/footer-logo.png"
+                                alt="Logo"
+                                width={150}
+                                height={60}
+                            />
+                            <p className="mt-4 text-black text-lg tracking-wide font-medium">
+                                {text}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* EXPANDING SQUARE */}
+                    {showSquare && (
+                        <motion.div
+                            initial={{ scale: 0.3 }}
+                            animate={expandSquare ? { scale: 40 } : { scale: 0.3 }}
+                            transition={{
+                                duration: 5.4,
+                                ease: [0.76, 0, 0.24, 1],
+                            }}
+                            className="
+                                absolute
+                                w-64 h-64
+                                bg-white
+                                rounded-2xl
+                                z-30
+                            "
+                        />
+                    )}
+                </motion.div>
+            )}
         </div>
-    );
+    )
 }

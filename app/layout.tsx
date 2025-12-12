@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Instrument_Sans } from 'next/font/google';
 import "./globals.css";
+import LogoReveal from "@/components/home/LogoReveal";
 
 const instrument = Instrument_Sans({
   subsets: ['latin'],
@@ -24,9 +25,12 @@ export default function RootLayout({
       <body
         className={`${instrument.className} antialiased`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <LogoReveal>
+          <Navbar />
+          {children}
+          <Footer />
+        </LogoReveal>
+
       </body>
     </html>
   );
