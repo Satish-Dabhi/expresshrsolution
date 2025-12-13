@@ -1,17 +1,16 @@
 import HeroRevealSection from "@/components/home/HeroRevealSection";
-import StatementSection from '@/components/home/StatementSection';
-import WarehouseStickySection from '@/components/home/WarehouseStickySection';
+import StatementSection from "@/components/home/StatementSection";
+import WarehouseStickySection from "@/components/home/WarehouseStickySection";
 
+import AnimatedImageSection from "@/components/AnimatedImageSection";
 import CurvedDivider from "@/components/home/CurvedDivider";
 import IndustriesSticky from "@/components/home/IndustriesSticky";
 import ReadyToMove from "@/components/home/ReadyToMove";
 import StatsSection from "@/components/home/StatsSection";
-import TestimonialRevealSection from "@/components/home/TestimonialRevealSection";
 import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
-import AnimatedImageSection from "@/components/AnimatedImageSection";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
@@ -51,17 +50,9 @@ export default function Home() {
             image: "/images/industries.png",
             title: "Retail & E-commerce",
             points: [
-              "Distribution & warehousing solutions tailored for modern retail and e-commerce operations, with emphasis on speed and accuracy.",
-            ],
-          },
-          {
-            image: "/images/transportation.jpg",
-
-            title: "FMCG & Food",
-            points: [
-              "Safe, traceable logistics for healthcare essentials.",
-              "Tamper-evident packaging",
-              "Real-time tracking",
+              "Fast, scalable delivery for retail and online sales.",
+              "Nationwide warehousing & distribution.",
+              "Integrated returns management",
             ],
           },
           {
@@ -74,31 +65,43 @@ export default function Home() {
             ],
           },
           {
+            image: "/images/transportation.jpg",
+
+            title: "FMCG & Food",
+            points: [
+              "Safe, traceable logistics for healthcare essentials.",
+              "Tamper-evident packaging",
+              "Real-time tracking",
+            ],
+          },
+
+          {
             image: "/images/industries.png",
             title: "Construction & Infrastructure",
             points: [
-              "Workforce and logistics solutions for construction projects, handling heavy materials and equipment with safety as priority.",
+              "Workforce and logistics solutions for construction projects.",
+              "handling heavy materials and equipment with safety as priority.",
             ],
           },
           {
             image: "/images/transportation.jpg",
             title: "Oil & Gas",
             points: [
-              "Compliance-focused operations for the highly regulated oil and gas sector, with specialized training for handling sensitive materials.",
+              "Compliance-focused operations for the highly regulated oil and gas sector.",
+              "Specialized training for handling sensitive materials.",
             ],
           },
           {
             image: "/images/warehouse-management.jpg",
             title: "Corporate Facilities",
             points: [
-              "End-to-end management of logistics and workforce requirements for corporate facilities across India."],
+              "End-to-end management of logistics and workforce requirements for corporate facilities across India.",
+            ],
           },
         ]}
       />
 
       {/* FULL WIDTH */}
-      {/* <TestimonialRevealSection /> */}
-
       <AnimatedImageSection
         image="/images/box.jpg"
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
@@ -144,4 +147,3 @@ export default function Home() {
     </>
   );
 }
-

@@ -1,13 +1,14 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
-import { Instrument_Sans } from 'next/font/google';
+import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import LogoReveal from "@/components/home/LogoReveal";
+import ClientLayout from "@/components/ClientLayout";
 
 const instrument = Instrument_Sans({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -22,15 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${instrument.className} antialiased`}
-      >
-        <LogoReveal>
+      <body className={`${instrument.className} antialiased`}>
+        <ClientLayout>
           <Navbar />
           {children}
           <Footer />
-        </LogoReveal>
-
+        </ClientLayout>
       </body>
     </html>
   );
