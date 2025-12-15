@@ -33,7 +33,7 @@ export default function CurvedDividerScrollFixed() {
   }, [distance]);
 
   return (
-    <div ref={containerRef} className="relative w-full py-32">
+    <div ref={containerRef} className="relative w-full pt-32">
       {/* === SVG Wrapper === */}
       <div className="relative w-full">
         <svg
