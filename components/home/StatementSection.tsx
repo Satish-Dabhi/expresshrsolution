@@ -10,7 +10,7 @@ export default function StatementSection({
   description,
 }: StatementSectionProps) {
   return (
-    <section className="w-full bg-white py-8 md:py-16 lg:py-20">
+    <section className="w-full bg-white py-8">
       <div className="mx-auto w-full max-w-[1400px] px-6 md:px-0 flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">
 
         {/* LEFT — HEADING */}
@@ -33,7 +33,7 @@ export default function StatementSection({
 
         {/* RIGHT — TEXT */}
         <p
-          className="text-black/70 pt-4 md:pt-2"
+          className="text-black pt-4 md:pt-2"
           style={{
             fontFamily: 'Instrument Sans',
             fontSize: 'clamp(14px, 1.6vw, 18px)', // responsive text size

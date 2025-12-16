@@ -20,11 +20,16 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      {/* FULL WIDTH SECTIONS (stay untouched) */}
-      <HeroRevealSection />
+      <AnimatedImageSection
+        image="/images/home-hero.jpg"
+        title="Building India’s Most Reliable Workforce-Driven Logistics Ecosystem"
+        subtitle=""
+        height="900px"
+        titleMarginTop="10rem"
+      />
 
       {/* CONTAINER SECTIONS */}
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[1400px] my-16">
         <StatementSection
           title={`From warehouses\nto workforces`}
           description="Express HR Solutions delivers execution excellence backed by compliant governance and on-ground productivity."
@@ -35,19 +40,12 @@ export default function Home() {
       <WarehouseStickySection />
       <CurvedDivider />
 
-      {/* CONTAINER */}
-      <div className="mx-auto w-full max-w-[1400px]">
-        <StatementSection
-          title={`Built for Critical\nIndustries`}
-          description="We support companies in Food, Pharma, Retail, and Manufacturing with Tailored Logistics."
-        />
-      </div>
-
       {/* FULL WIDTH */}
       <IndustriesSticky
         items={[
           {
             image: "/images/industries.png",
+            icon: "/images/logos/retail-e-commerce.svg",
             title: "Retail & E-commerce",
             points: [
               "Fast, scalable delivery for retail and online sales.",
@@ -56,7 +54,8 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/warehouse-management.jpg",
+            image: "/images/industries.png",
+            icon: "/images/logos/electronics-technology.svg",
             title: "Electronics & Technology",
             points: [
               "ESD-safe handling & packaging",
@@ -65,8 +64,8 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/transportation.jpg",
-
+            image: "/images/industries.png",
+            icon: "/images/logos/fmcg-food.svg",
             title: "FMCG & Food",
             points: [
               "Safe, traceable logistics for healthcare essentials.",
@@ -77,6 +76,7 @@ export default function Home() {
 
           {
             image: "/images/industries.png",
+            icon: "/images/logos/construction.svg",
             title: "Construction & Infrastructure",
             points: [
               "Workforce and logistics solutions for construction projects.",
@@ -84,7 +84,8 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/transportation.jpg",
+            image: "/images/industries.png",
+            icon: "/images/logos/oil-gas.svg",
             title: "Oil & Gas",
             points: [
               "Compliance-focused operations for the highly regulated oil and gas sector.",
@@ -92,7 +93,8 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/warehouse-management.jpg",
+            image: "/images/industries.png",
+            icon: "/images/logos/corporate-facilities.svg",
             title: "Corporate Facilities",
             points: [
               "End-to-end management of logistics and workforce requirements for corporate facilities across India.",

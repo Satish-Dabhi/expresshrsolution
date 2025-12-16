@@ -28,7 +28,7 @@ export default function ReadyToMove() {
   const orangeFillWidth = "100%";
 
   // Dot x movement for mobile and desktop
-  const dotX = isDesktop ? "1510%" : "780%"; // Smaller move on mobile
+  const dotX = isDesktop ? "1510%" : "1510%"; // Smaller move on mobile
 
   return (
     <section
@@ -57,7 +57,7 @@ export default function ReadyToMove() {
             className="
               relative
               overflow-hidden
-              h-[0.65em] w-[5em] md:w-[9em]
+              h-[0.65em] w-[9em]
               border-[3px] border-orange-500
               rounded-full mx-2
               inline-flex items-center

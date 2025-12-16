@@ -8,8 +8,12 @@ import Image from "next/image";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState<string | null>(null);
-  const [mobileSubmenusOpen, setMobileSubmenusOpen] = useState<Record<string, boolean>>({});
+  const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState<string | null>(
+    null
+  );
+  const [mobileSubmenusOpen, setMobileSubmenusOpen] = useState<
+    Record<string, boolean>
+  >({});
 
   const pathname = usePathname();
   const submenuRef = useRef<HTMLUListElement | null>(null);
@@ -23,7 +27,10 @@ const Navbar = () => {
       subLinks: [
         { name: "Bulk Cargo Movement", href: "/services/bulk-cargo-movement" },
         { name: "Government Liaising", href: "/services/government-liaising" },
-        { name: "Warehouse Management", href: "/services/warehouse-management" },
+        {
+          name: "Warehouse Management",
+          href: "/services/warehouse-management",
+        },
         { name: "Transportation", href: "/services/transportation" },
       ],
     },
@@ -67,8 +74,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed left-1/2 -translate-x-1/2 z-50 transition-all duration-300 mt-10 w-[70%] py-4
-        backdrop-blur-md border border-white/20 rounded-4xl bg-black/10`}
+      className="
+    fixed left-1/2 -translate-x-1/2 z-50
+    mt-20 w-[70%] py-4
+    transition-all duration-300
+    bg-[rgba(75,75,75,0.5)]
+    border border-white/10
+    rounded-2xl
+  "
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
@@ -93,10 +106,11 @@ const Navbar = () => {
                     {/* Link text - navigates */}
                     <Link
                       href={link.href}
-                      className={`transition-all duration-300 transform ${pathname.startsWith(link.href)
+                      className={`transition-all duration-300 transform ${
+                        pathname.startsWith(link.href)
                           ? "text-primary scale-110 -translate-y-0.5"
                           : "hover:text-primary"
-                        }`}
+                      }`}
                     >
                       {link.name}
                     </Link>
@@ -114,8 +128,9 @@ const Navbar = () => {
                       tabIndex={0}
                     >
                       <ChevronDown
-                        className={`w-4 h-4 mt-1 transition-transform ${desktopSubmenuOpen === link.name ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 mt-1 transition-transform ${
+                          desktopSubmenuOpen === link.name ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
                   </div>
@@ -130,10 +145,11 @@ const Navbar = () => {
                         <li key={sublink.href} className="mb-1 last:mb-0">
                           <Link
                             href={sublink.href}
-                            className={`block px-2 py-1 rounded hover:bg-gray-100 transition-colors ${pathname === sublink.href
+                            className={`block px-2 py-1 rounded hover:bg-gray-100 transition-colors ${
+                              pathname === sublink.href
                                 ? "text-primary font-semibold"
                                 : ""
-                              }`}
+                            }`}
                             onClick={() => setDesktopSubmenuOpen(null)} // close submenu on click
                           >
                             {sublink.name}
@@ -146,10 +162,11 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className={`transition-all duration-300 transform ${pathname === link.href
+                  className={`transition-all duration-300 transform ${
+                    pathname === link.href
                       ? "text-primary scale-110 -translate-y-0.5"
                       : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
-                    }`}
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -164,7 +181,11 @@ const Navbar = () => {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? (
+            <X className="h-6 w-6" />
+          ) : (
+            <Menu className="h-6 w-6" />
+          )}
         </button>
       </div>
 
@@ -179,13 +200,16 @@ const Navbar = () => {
                     <button
                       onClick={() => toggleMobileSubmenu(link.name)}
                       className="flex items-center justify-between w-full text-white hover:text-primary focus:outline-none"
-                      aria-expanded={mobileSubmenusOpen[link.name] ? "true" : "false"}
+                      aria-expanded={
+                        mobileSubmenusOpen[link.name] ? "true" : "false"
+                      }
                       aria-controls={`submenu-${link.name}`}
                     >
                       {link.name}
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${mobileSubmenusOpen[link.name] ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 transition-transform ${
+                          mobileSubmenusOpen[link.name] ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
                     {mobileSubmenusOpen[link.name] && (
@@ -199,10 +223,11 @@ const Navbar = () => {
                             <Link
                               href={sublink.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className={`block text-sm transition-colors ${pathname === sublink.href
+                              className={`block text-sm transition-colors ${
+                                pathname === sublink.href
                                   ? "text-primary"
                                   : "text-white hover:text-primary"
-                                }`}
+                              }`}
                               role="menuitem"
                             >
                               {sublink.name}
@@ -216,10 +241,11 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`transition-colors ${pathname === link.href
+                    className={`transition-colors ${
+                      pathname === link.href
                         ? "text-primary"
                         : "text-white hover:text-primary"
-                      }`}
+                    }`}
                   >
                     {link.name}
                   </Link>

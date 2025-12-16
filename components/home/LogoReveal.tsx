@@ -13,7 +13,7 @@ export default function LogoReveal({
   const [showSplash, setShowSplash] = useState(true);
   const [expandSquare, setExpandSquare] = useState(false);
 
-  const fullText = "EXPRESS HR SOLUTION";
+  const fullText = "EXPRESS HR SOLUTIONS";
 
   useEffect(() => {
     let i = 0;
