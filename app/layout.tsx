@@ -1,10 +1,9 @@
+import ClientLayout from "@/components/ClientLayout";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import LogoReveal from "@/components/home/LogoReveal";
-import ClientLayout from "@/components/ClientLayout";
 
 const instrument = Instrument_Sans({
   subsets: ["latin"],

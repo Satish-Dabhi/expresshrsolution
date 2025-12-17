@@ -6,6 +6,15 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 
+interface NavLink {
+  name: string;
+  href: string;
+  subLinks?: {
+    name: string;
+    href: string;
+  }[];
+}
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [desktopSubmenuOpen, setDesktopSubmenuOpen] = useState<string | null>(
@@ -18,21 +27,21 @@ const Navbar = () => {
   const pathname = usePathname();
   const submenuRef = useRef<HTMLUListElement | null>(null);
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
     { name: "About Us", href: "/about-us" },
     {
       name: "Services",
-      href: "#",
-      subLinks: [
-        { name: "Bulk Cargo Movement", href: "/services/bulk-cargo-movement" },
-        { name: "Government Liaising", href: "/services/government-liaising" },
-        {
-          name: "Warehouse Management",
-          href: "/services/warehouse-management",
-        },
-        { name: "Transportation", href: "/services/transportation" },
-      ],
+      href: "/services",
+      // subLinks: [
+      //   { name: "Bulk Cargo Movement", href: "/services/bulk-cargo-movement" },
+      //   { name: "Government Liaising", href: "/services/government-liaising" },
+      //   {
+      //     name: "Warehouse Management",
+      //     href: "/services/warehouse-management",
+      //   },
+      //   { name: "Transportation", href: "/services/transportation" },
+      // ],
     },
     { name: "Industries", href: "/our-clients" },
     { name: "Contact Us", href: "/contact-us" },

@@ -1,11 +1,10 @@
-import HeroRevealSection from "@/components/home/HeroRevealSection";
 import StatementSection from "@/components/home/StatementSection";
 import WarehouseStickySection from "@/components/home/WarehouseStickySection";
 
 import AnimatedImageSection from "@/components/AnimatedImageSection";
-import CurvedDivider from "@/components/home/CurvedDivider";
+import CurvedDivider from "@/components/CurvedDivider";
 import IndustriesSticky from "@/components/home/IndustriesSticky";
-import ReadyToMove from "@/components/home/ReadyToMove";
+import ReadyToMove from "@/components/ReadyToMove";
 import StatsSection from "@/components/home/StatsSection";
 import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
@@ -24,8 +23,9 @@ export default function Home() {
         image="/images/home-hero.jpg"
         title="Building India’s Most Reliable Workforce-Driven Logistics Ecosystem"
         subtitle=""
-        height="900px"
+        // height="900px"
         titleMarginTop="10rem"
+        animationDelay={2000}
       />
 
       {/* CONTAINER SECTIONS */}
@@ -108,7 +108,7 @@ export default function Home() {
         image="/images/box.jpg"
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
         subtitle="Ankit Ahuja, XYZ Co."
-        height="900px"
+        // height="900px"
       />
 
       {/* CONTAINER */}
