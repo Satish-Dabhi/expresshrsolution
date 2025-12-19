@@ -2,8 +2,7 @@
 
 import { motion, PanInfo } from "framer-motion";
 import Image from "next/image";
-import { useState, useRef, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const items = [
   {
@@ -83,20 +82,27 @@ export default function WarehouseStickySection() {
   }, [isMobile]);
 
   // drag ending detection
+
+  useEffect(() => {
+    if (!carouselRef.current) return;
+
+    const el = carouselRef.current;
+    setDragWidth(el.scrollWidth - el.offsetWidth);
+  }, [items]);
+
   const handleDragEnd = (
     _event: MouseEvent | TouchEvent | PointerEvent,
     info: PanInfo
   ) => {
-    if (!carouselRef.current) return;
+    const slideWidth = carouselRef.current?.offsetWidth ?? 0;
 
-    const containerWidth = carouselRef.current.offsetWidth;
+    if (info.offset.x < -slideWidth / 4 && active < items.length - 1) {
+      setActive((prev) => prev + 1);
+    }
 
-    // total drag distance on x-axis
-    const dragX = info.offset.x;
-
-    const newIndex = Math.round(Math.abs(dragX) / containerWidth);
-
-    setActive(Math.min(Math.max(newIndex, 0), items.length - 1));
+    if (info.offset.x > slideWidth / 4 && active > 0) {
+      setActive((prev) => prev - 1);
+    }
   };
 
   return (
@@ -144,7 +150,7 @@ export default function WarehouseStickySection() {
                   x: -(active * (carouselRef.current?.offsetWidth || 0)),
                 }}
                 transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                className="flex"
+                className="flex touch-pan-y"
               >
                 {items.map((item, i) => (
                   <motion.div
@@ -190,7 +196,7 @@ export default function WarehouseStickySection() {
               </motion.div>
             </motion.div>
 
-            {/* DOTS NAVIGATION */}
+            {/* DOTS */}
             <div className="flex justify-center gap-2 mt-2">
               {items.map((_, i) => (
                 <button

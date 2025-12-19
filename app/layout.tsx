@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import CurvedDivider from "@/components/CurvedDivider";
+import ReadyToMove from "@/components/ReadyToMove";
 
 const instrument = Instrument_Sans({
   subsets: ["latin"],
@@ -26,6 +28,12 @@ export default function RootLayout({
         <ClientLayout>
           <Navbar />
           {children}
+          <CurvedDivider />
+
+          {/* CONTAINER */}
+          <div className="mx-auto w-full max-w-[1400px]">
+            <ReadyToMove />
+          </div>
           <Footer />
         </ClientLayout>
       </body>

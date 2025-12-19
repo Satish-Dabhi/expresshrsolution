@@ -10,6 +10,7 @@ import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
+import FlipkartBanner from "@/components/home/FlipkartBanner";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
@@ -103,6 +104,8 @@ export default function Home() {
         ]}
       />
 
+      <FlipkartBanner />
+
       {/* FULL WIDTH */}
       <AnimatedImageSection
         image="/images/box.jpg"
@@ -138,13 +141,6 @@ export default function Home() {
       {/* CONTAINER */}
       <div className="mx-auto w-full max-w-[1400px]">
         <StatsSection />
-      </div>
-
-      <CurvedDivider />
-
-      {/* CONTAINER */}
-      <div className="mx-auto w-full max-w-[1400px]">
-        <ReadyToMove />
       </div>
     </>
   );

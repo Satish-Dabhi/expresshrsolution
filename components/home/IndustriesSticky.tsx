@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, PanInfo, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import StatementSection from "./StatementSection";
 
@@ -97,20 +97,23 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
     }
   }, [scrollYProgress, isMobile]);
 
-  /* ----------------------------------
-      Handle dot click scroll on mobile
-  ---------------------------------- */
-  useEffect(() => {
-    // On mobile, when activeIndex changes, nothing else needed because motion animates x
-  }, [activeIndex]);
-
-  /* ----------------------------------
-      Calculate proper X offset for centered card on mobile
-  ---------------------------------- */
   const gap = 16; // px gap between cards (gap-4 in Tailwind = 1rem = 16px)
-  const centerOffset = viewportWidth ? (viewportWidth - cardWidth) / 2 : 0;
-  // We'll animate to this x:
-  // -activeIndex * (cardWidth + gap) + centerOffset
+  const centerOffset = viewportWidth / 2 - cardWidth / 2;
+
+  const handleDragEnd = (
+    _event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
+    const swipeThreshold = cardWidth / 3;
+
+    if (info.offset.x < -swipeThreshold && activeIndex < items.length - 1) {
+      setActiveIndex((prev) => prev + 1);
+    }
+
+    if (info.offset.x > swipeThreshold && activeIndex > 0) {
+      setActiveIndex((prev) => prev - 1);
+    }
+  };
 
   return (
     <section ref={sectionRef} className="relative w-full">
@@ -245,18 +248,25 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
             <div className="relative w-full overflow-hidden" ref={viewportRef}>
               {/* TRACK */}
               <motion.div
+                drag="x"
+                onDragEnd={handleDragEnd}
+                dragConstraints={{ left: 0, right: 0 }}
                 animate={{
                   x: viewportWidth
                     ? centerOffset - activeIndex * (cardWidth + gap)
                     : 0,
                 }}
                 transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                className="flex gap-4"
+                className="flex gap-4 touch-pan-y"
               >
                 {items.map((item, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    className="bg-white rounded-xl shadow-sm flex-shrink-0 p-6"
+                    className={`
+              bg-white rounded-xl shadow-sm flex-shrink-0 p-6
+              transition-all duration-300
+              ${activeIndex === i ? "scale-[1.03]" : "opacity-70"}
+            `}
                     style={{ width: cardWidth }}
                   >
                     {item.icon && (
@@ -271,7 +281,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                     )}
 
                     <h3
-                      className="text-black font-semibold text-lg"
+                      className="text-black font-semibold"
                       style={{
                         fontFamily: "Instrument Sans",
                         fontWeight: 600,
@@ -289,7 +299,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                         </li>
                       ))}
                     </ul>
-                  </div>
+                  </motion.div>
                 ))}
               </motion.div>
 
@@ -300,9 +310,8 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                     key={i}
                     onClick={() => setActiveIndex(i)}
                     className={`h-2 rounded-full transition-all duration-300
-                      ${
-                        activeIndex === i ? "w-6 bg-black" : "w-2 bg-black/30"
-                      }`}
+              ${activeIndex === i ? "w-6 bg-black" : "w-2 bg-black/30"}
+            `}
                     aria-label={`Go to slide ${i + 1}`}
                     aria-current={activeIndex === i}
                   />

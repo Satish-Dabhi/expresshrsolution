@@ -2,12 +2,12 @@ import { Metadata } from "next";
 
 import CurvedDivider from "@/components/CurvedDivider";
 import GridTypewriter from "@/components/GridTypewriter";
-import StickyScrollSection from "@/components/services/StickyScrollSection";
-import { ExtendedCapabilities } from "@/components/services/ExtendedCapabilities";
 import ReadyToMove from "@/components/ReadyToMove";
+import { ExtendedCapabilities } from "@/components/services/ExtendedCapabilities";
+import StickyScrollSection from "@/components/services/StickyScrollSection";
 
 export const metadata: Metadata = {
-  title: "Express HR Solution | About Us",
+  title: "Express HR Solution | Services",
   description: "Learn more about Express HR Solution.",
 };
 
@@ -55,7 +55,7 @@ const warehouseData = [
       "Attendance, tracking & documentation",
       "MIS dashboards & transparency",
     ],
-    outcome: ["100% complaint", "Audit-operations"],
+    outcome: ["100% complaint and Audit-ready operations."],
   },
 ];
 
@@ -91,19 +91,27 @@ const extendedCapabilitiesItems = [
   },
   {
     number: "04",
-    title: "Ene-to-End Operational Governance",
+    title: "End-to-End Operational Governance",
     description:
       "Audits, safety, compliance, site reporting, productivity measurements.",
     image: "/videos/warehouse.gif",
   },
 ];
 
-export default function AboutSection() {
+const heroContent = {
+  textLines: [
+    "Integrated Services.",
+    "Intelligent Execution.",
+    "Compliant Operations.",
+  ],
+};
+
+export default function Services() {
   return (
     <>
       <section className="h-[15rem] w-full bg-white"></section>
 
-      <GridTypewriter />
+      <GridTypewriter textLines={heroContent.textLines} desc={""} />
 
       <StickyScrollSection items={warehouseData} />
 
@@ -113,10 +121,6 @@ export default function AboutSection() {
         title="Extended Capabilities"
         items={extendedCapabilitiesItems}
       />
-
-      <CurvedDivider />
-
-      <ReadyToMove />
     </>
   );
 }

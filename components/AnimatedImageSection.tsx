@@ -185,6 +185,7 @@ export default function AnimatedImageSection({
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             display: "flex",
+            flexDirection: "column", // <-- add this line
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
