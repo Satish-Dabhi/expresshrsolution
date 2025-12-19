@@ -29,23 +29,13 @@ const Navbar = () => {
 
   const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
     {
       name: "Services",
       href: "/services",
-      // subLinks: [
-      //   { name: "Bulk Cargo Movement", href: "/services/bulk-cargo-movement" },
-      //   { name: "Government Liaising", href: "/services/government-liaising" },
-      //   {
-      //     name: "Warehouse Management",
-      //     href: "/services/warehouse-management",
-      //   },
-      //   { name: "Transportation", href: "/services/transportation" },
-      // ],
     },
-    { name: "Industries", href: "/our-clients" },
+    { name: "About", href: "/about" },
+    { name: "Industries", href: "/industries" },
     { name: "Contact Us", href: "/contact-us" },
-    { name: "Impact", href: "/blog" },
   ];
 
   // Toggle mobile submenu open/close by name
