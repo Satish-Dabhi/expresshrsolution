@@ -65,7 +65,7 @@ export default function StatsSection() {
                         Make data driven decisions with real time insights and ensure every reward aligns with your business objectives.
                     </h2>
 
-                    <p className="font-[Instrument Sans] text-[16px] md:text-[20px] text-gray-500 leading-6 mt-6 max-w-2xl">
+                    <p className="font-[Instrument Sans] text-[16px] md:text-[20px] text-[#A8A8A8] leading-6 mt-6 max-w-2xl">
                         Gone are the days of complex spreadsheets and manual processes. Simplify compensation planning with a single platform that puts you in control of every decision.
                     </p>
                     <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 gap-x-12 md:gap-x-0">
@@ -74,7 +74,7 @@ export default function StatsSection() {
                             <p className="text-[32px] md:text-[40px] font-semibold text-black">
                                 <CounterTS to={15000} />+
                             </p>
-                            <p className="mt-2 text-[14px] text-gray-500 leading-5">Workforce <br /> deployed</p>
+                            <p className="mt-2 text-[18px] md:text-[24px] text-[#A8A8A8] font-semibold">Workforce <br /> deployed</p>
                         </div>
 
                         {/* 2 */}
@@ -83,7 +83,7 @@ export default function StatsSection() {
                                 <CounterTS to={200} />
                                 +
                             </p>
-                            <p className="mt-2 text-[14px] text-gray-500 leading-5">Active <br /> Sites</p>
+                            <p className="mt-2 text-[18px] md:text-[24px] text-[#A8A8A8] font-semibold">Active <br /> Sites</p>
                         </div>
 
                         {/* 3 */}
@@ -92,7 +92,7 @@ export default function StatsSection() {
                                 <CounterTS to={10} />
                                 +
                             </p>
-                            <p className="mt-2 text-[14px] text-gray-500 leading-5">
+                            <p className="mt-2 text-[18px] md:text-[24px] text-[#A8A8A8] font-semibold">
                                 Presence <br /> in Cities <br /> PAN India
                             </p>
                         </div>
@@ -103,7 +103,7 @@ export default function StatsSection() {
                                 <CounterTS to={50} />
                                 +
                             </p>
-                            <p className="mt-2 text-[14px] text-gray-500 leading-5">
+                            <p className="mt-2 text-[18px] md:text-[24px] text-[#A8A8A8] font-semibold">
                                 Corporate <br /> Clients served
                             </p>
                         </div>

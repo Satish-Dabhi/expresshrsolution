@@ -46,7 +46,7 @@ export function ExtendedCapabilities({
                 )}
 
                 {item.outcome && (
-                  <p className="text-sm text-gray-400 italic">{item.outcome}</p>
+                  <p className="text-[24px] text-[#AFAFAF] font-semibold">{item.outcome}</p>
                 )}
               </div>
 

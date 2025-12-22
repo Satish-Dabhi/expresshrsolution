@@ -35,22 +35,22 @@ const leaders: Leader[] = [
       "Driving large-scale execution, warehouse performance, & workforce systems.",
     image: "/images/leaders/rahul-das.png",
   },
-  {
-    id: 2,
-    name: "Mamta Das",
-    role: "Founder & Chairperson",
-    description:
-      "Pioneering woman leader driving India’s workforce empowerment and governance excellence",
-    image: "/images/leaders/mamta-das.png",
-  },
-  {
-    id: 3,
-    name: "Rishikant Shinde",
-    role: "Governance Advisor",
-    description:
-      "Expert in labour compliance, Mathadi, industrial relations & welfare.",
-    image: "/images/leaders/rishikant-shinde.png",
-  },
+  // {
+  //   id: 2,
+  //   name: "Mamta Das",
+  //   role: "Founder & Chairperson",
+  //   description:
+  //     "Pioneering woman leader driving India’s workforce empowerment and governance excellence",
+  //   image: "/images/leaders/mamta-das.png",
+  // },
+  // {
+  //   id: 3,
+  //   name: "Rishikant Shinde",
+  //   role: "Governance Advisor",
+  //   description:
+  //     "Expert in labour compliance, Mathadi, industrial relations & welfare.",
+  //   image: "/images/leaders/rishikant-shinde.png",
+  // },
 ];
 
 const careerContent = {

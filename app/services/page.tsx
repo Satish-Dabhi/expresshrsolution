@@ -5,6 +5,8 @@ import GridTypewriter from "@/components/GridTypewriter";
 import ReadyToMove from "@/components/ReadyToMove";
 import { ExtendedCapabilities } from "@/components/services/ExtendedCapabilities";
 import StickyScrollSection from "@/components/services/StickyScrollSection";
+import StatsSection from "@/components/home/StatsSection";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Services",
@@ -34,7 +36,7 @@ const warehouseData = [
       "Real-time productivity tracking",
       "Training & skill development",
     ],
-    outcome: ["Zero down", "High reliability", "Disciplined execution"],
+    outcome: ["Zero downtime", "High reliability", "Disciplined execution"],
   },
   {
     title: "Facility & Industrial Management",
@@ -55,7 +57,7 @@ const warehouseData = [
       "Attendance, tracking & documentation",
       "MIS dashboards & transparency",
     ],
-    outcome: ["100% complaint and Audit-ready operations."],
+    outcome: ["100% compliant and Audit-ready operations."],
   },
 ];
 
@@ -121,6 +123,26 @@ export default function Services() {
         title="Extended Capabilities"
         items={extendedCapabilitiesItems}
       />
+
+      <Image
+        src="/images/hr-facade.png"
+        alt="section image"
+        width={1920}
+        height={397}
+        className="
+          w-full 
+          h-[220px]       
+          md:h-[397px]   
+          object-cover 
+          opacity-100 
+          rotate-0
+        "
+        priority
+      />
+
+      <div className="mx-auto w-full max-w-[1400px]">
+        <StatsSection />
+      </div>
     </>
   );
 }

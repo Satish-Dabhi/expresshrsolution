@@ -104,7 +104,7 @@ export default function Home() {
         ]}
       />
 
-      <FlipkartBanner />
+      {/* <FlipkartBanner /> */}
 
       {/* FULL WIDTH */}
       <AnimatedImageSection
