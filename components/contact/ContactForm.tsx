@@ -1,110 +1,41 @@
 "use client";
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Send } from "lucide-react";
+import ContactField from "./ContactField";
 
-export default function ContactForm() {
-    const [formData, setFormData] = useState({
-        name: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        company: "",
-        service: "",
-        message: "",
-    });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+type Props = {
+  title: string;
+  secondFieldLabel: string;
+};
 
-    const handleInputChange = (field: string, value: string) => {
-        setFormData((prev) => ({ ...prev, [field]: value }));
-    };
+export default function ContactForm({ title, secondFieldLabel }: Props) {
+  return (
+    <motion.form
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="space-y-8"
+    >
+      <p className="text-orange-500 font-medium text-[20px]">{title}</p>
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsSubmitting(true);
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <ContactField label="Name" name="name" />
+        <ContactField label="Email" name="email" type="email" />
+        <ContactField label="Company" name="company" />
+        <ContactField label={secondFieldLabel} name="interest" />
+      </div>
 
-        // Simulate async action
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+      <ContactField label="Message" name="message" textarea />
 
-        setFormData({
-            name: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            company: "",
-            service: "",
-            message: "",
-        });
-        setIsSubmitting(false);
-    };
-
-    return (
-        <Card className="bg-card border border-border rounded-2xl shadow-md hover:shadow-xl transition-all">
-            <CardContent className="p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <Label htmlFor="name">Name *</Label>
-                        <Input
-                            id="name"
-                            value={formData.name}
-                            onChange={(e) => handleInputChange("name", e.target.value)}
-                            required
-                            className="mt-1 border-[#f0f0f0] text-white"
-                        />
-                    </div>
-
-                    <div>
-                        <Label htmlFor="email">Email Address *</Label>
-                        <Input
-                            id="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={(e) => handleInputChange("email", e.target.value)}
-                            required
-                            className="mt-1 border-[#f0f0f0] text-white"
-                        />
-                    </div>
-
-                    <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                            id="phone"
-                            type="tel"
-                            value={formData.phone}
-                            onChange={(e) => handleInputChange("phone", e.target.value)}
-                            className="mt-1 border-[#f0f0f0] text-white"
-                        />
-                    </div>
-
-                    <div>
-                        <Label htmlFor="message">Message *</Label>
-                        <Textarea
-                            id="message"
-                            value={formData.message}
-                            onChange={(e) => handleInputChange("message", e.target.value)}
-                            required
-                            rows={5}
-                            className="mt-1 border-[#f0f0f0] text-white"
-                            placeholder="Tell us about your HR needs and how we can help..."
-                        />
-                    </div>
-
-                    <Button
-                        type="submit"
-                        className="w-full bg-primary hover:bg-pumpkin-orange text-white py-3 text-lg flex items-center justify-center gap-2"
-                        disabled={isSubmitting}
-                    >
-                        {isSubmitting ? "Sending..." : <>
-                            Send Message <Send className="h-5 w-5" />
-                        </>}
-                    </Button>
-                </form>
-            </CardContent>
-        </Card>
-    );
+      {/* Orange Submit Button */}
+      <Button
+        type="submit"
+        className="bg-orange-500 hover:bg-orange-600 text-white rounded-none px-10"
+      >
+        Submit
+      </Button>
+    </motion.form>
+  );
 }

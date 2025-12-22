@@ -111,7 +111,7 @@ const heroContent = {
 export default function Services() {
   return (
     <>
-      <section className="h-[15rem] w-full bg-white"></section>
+      <section className="h-[10rem] w-full bg-white"></section>
 
       <GridTypewriter textLines={heroContent.textLines} desc={""} />
 

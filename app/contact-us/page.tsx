@@ -1,6 +1,6 @@
-import ContactSectionClient from "@/components/contact/ContactSectionClient";
-import ParallaxHero from "@/components/ParallaxHero";
-import SectionDivider from "@/components/SectionDivider";
+import ContactForm from "@/components/contact/ContactForm";
+import ContactInfo from "@/components/contact/ContactInfo";
+import GridTypewriter from "@/components/GridTypewriter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -8,23 +8,38 @@ export const metadata: Metadata = {
   description: "Get in touch with Express HR Solution.",
 };
 
+const heroContent = {
+  textLines: ["Lets Build Reliable", "Operations Together"],
+};
+
 export default function ContactSection() {
   return (
     <>
-      <ParallaxHero
-        title="Contact Us"
-        backgroundImage="/images/bg2.jpg"
-      />
-      <section id="contact" className="py-20 bg-background text-foreground">
-        <div className="container mx-auto px-6 lg:px-12 max-w-6xl mx-auto">
-          <h3 className="text-3xl md:text-4xl font-bold mb-8 text-secondary text-center">
-            Get in Touch
-          </h3>
+      <section className="h-[10rem] w-full bg-white"></section>
 
-          <SectionDivider />
-          <div className="mt-10 grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <ContactSectionClient />
+      <GridTypewriter textLines={heroContent.textLines} desc={""} />
+
+      <section className="px-6 md:px-20 py-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          {/* Left Forms */}
+          <div className="lg:col-span-2 space-y-24">
+            <h1 className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold mb-12">
+              Contact Us
+            </h1>
+
+            <ContactForm
+              title="Get in touch with us for any Business enquiries and questions"
+              secondFieldLabel="Services Interested In"
+            />
+
+            <ContactForm
+              title="Get in touch with us for Career Opportunities"
+              secondFieldLabel="Role Interested In"
+            />
           </div>
+
+          {/* Right Info */}
+          <ContactInfo />
         </div>
       </section>
     </>

@@ -1,49 +1,50 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin } from "lucide-react";
-
-const contactInfo = [
-    {
-        icon: MapPin,
-        title: "Address",
-        details:
-            "17/A, Arenja Arcade, Sector 17, Vashi, Navi Mumbai-400705",
-    },
-    {
-        icon: Phone,
-        title: "Phone",
-        details: "022-27898875",
-    },
-    {
-        icon: Mail,
-        title: "Email",
-        details: "gawade@thepragatigroup.com",
-    },
-
-];
 
 export default function ContactInfo() {
-    return (
-        <div className="space-y-8">
-            {contactInfo.map((info, index) => (
-                <motion.div
-                    key={index}
-                    className="flex items-start space-x-5"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 250 }}
-                >
-                    <div className="flex-shrink-0">
-                        <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
-                            <info.icon className="h-6 w-6 text-primary" />
-                        </div>
-                    </div>
-                    <div>
-                        <h4 className="text-lg font-semibold mb-1">{info.title}</h4>
-                        <p className="text-muted-foreground font-medium">{info.details}</p>
-                    </div>
-                </motion.div>
-            ))}
-        </div>
-    );
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="
+        space-y-10 
+        text-sm 
+        text-left 
+        lg:text-right 
+        lg:ml-auto
+      "
+    >
+      <div>
+        <p className="uppercase text-[24px] font-semibold text-[#A8A8A8]">
+          Office
+        </p>
+        <p className="text-[20px] mt-2 font-medium">
+          Express HR Solutions Pvt. Ltd
+          <br />
+          3A, ARENJA ARCADE, SECTOR 17,
+          <br />
+          VASHI, Thane, Maharashtra, 400705
+        </p>
+      </div>
+
+      <div>
+        <p className="uppercase text-[24px] font-semibold text-[#A8A8A8]">
+          Email
+        </p>
+        <p className="text-[20px] mt-2 font-medium">
+          info@expresshrsolutions.com
+        </p>
+      </div>
+
+      <div>
+        <p className="uppercase text-[24px] font-semibold text-[#A8A8A8]">
+          Phone
+        </p>
+        <p className="text-[20px] mt-2 font-medium">+91 99673 26161</p>
+      </div>
+    </motion.div>
+  );
 }
