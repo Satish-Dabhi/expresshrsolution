@@ -4,13 +4,11 @@ import WarehouseStickySection from "@/components/home/WarehouseStickySection";
 import AnimatedImageSection from "@/components/AnimatedImageSection";
 import CurvedDivider from "@/components/CurvedDivider";
 import IndustriesSticky from "@/components/home/IndustriesSticky";
-import ReadyToMove from "@/components/ReadyToMove";
 import StatsSection from "@/components/home/StatsSection";
 import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
-import FlipkartBanner from "@/components/home/FlipkartBanner";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
@@ -30,7 +28,7 @@ export default function Home() {
       />
 
       {/* CONTAINER SECTIONS */}
-      <div className="mx-auto w-full max-w-[1400px] my-16">
+      <div className="mx-auto w-full max-w-[1400px]">
         <StatementSection
           title={`From warehouses\nto workforces`}
           description="Express HR Solutions delivers execution excellence backed by compliant governance and on-ground productivity."

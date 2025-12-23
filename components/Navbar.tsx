@@ -36,6 +36,7 @@ const Navbar = () => {
     { name: "About", href: "/about" },
     { name: "Industries", href: "/industries" },
     { name: "Contact Us", href: "/contact-us" },
+    { name: "Careers", href: "/careers" },
   ];
 
   // Toggle mobile submenu open/close by name

@@ -13,10 +13,10 @@ const Card = ({ className = "", children }: CardProps) => (
     className={cn(
       `
       h-[150px] lg:h-[200px]
-      rounded-xl bg-white
+      rounded-xl
+      bg-white/90
       border border-gray-100
       flex items-center justify-center
-      opacity-30
       transition-all duration-300
     `,
       className
@@ -25,6 +25,7 @@ const Card = ({ className = "", children }: CardProps) => (
     {children}
   </div>
 );
+
 
 const TYPING_SPEED = 70;
 const LINE_PAUSE = 600;
@@ -114,7 +115,7 @@ export default function GridTypewriter({
 
   return (
     <section className="relative w-full mb-24 bg-[#ebebeb]">
-      <div className="relative mx-auto px-4 sm:px-6 grid grid-cols-6 grid-rows-3 gap-2">
+      <div className="relative mx-auto px-4 sm:px-6 grid grid-cols-6 grid-rows-3 gap-2 bg-[#ef7f1b87]">
         {[...Array(18)].map((_, i) => (
           <Card key={i} />
         ))}

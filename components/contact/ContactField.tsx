@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 type Props = {
   label: string;
   name: string;
-  type?: "text" | "email";
+  type?: "text" | "email" | "file";
   textarea?: boolean;
 };
 
@@ -27,6 +27,12 @@ export default function ContactField({
           name={name}
           className="border-0 border-b border-orange-200 rounded-none focus-visible:ring-0 focus:border-orange-500"
           rows={3}
+        />
+      ) : type === "file" ? (
+        <input
+          type="file"
+          name={name}
+          className="border-0 border-b border-orange-200 rounded-none focus:outline-none focus:border-orange-500"
         />
       ) : (
         <Input

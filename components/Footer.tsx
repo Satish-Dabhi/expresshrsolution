@@ -36,21 +36,13 @@ export default function Footer() {
             </h4>
 
             <ul className="space-y-4 text-gray-500 text-[18px] md:text-[24px] font-[Instrument_Sans]">
-              <li>+0000 0000</li>
+              <li>+91 99673 26161</li>
               <li>
                 <Link
-                  href="mailto:team@expresshr.com"
+                  href="mailto:info@expresshrsolutions.com"
                   className="hover:text-gray-700"
                 >
-                  team@expresshr.com
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="mailto:team@expresshr.com"
-                  className="hover:text-gray-700"
-                >
-                  team@expresshr.com
+                  info@expresshrsolutions.com
                 </Link>
               </li>
             </ul>

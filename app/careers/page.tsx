@@ -1,15 +1,15 @@
-import { ContactForm } from "@/components/contact/ContactForm";
+import { CareerForm } from "@/components/contact/CareerForm";
 import ContactInfo from "@/components/contact/ContactInfo";
 import GridTypewriter from "@/components/GridTypewriter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Express HR Solution | Contact Us",
+  title: "Express HR Solution | Careers",
   description: "Get in touch with Express HR Solution.",
 };
 
 const heroContent = {
-  textLines: ["Lets Build Reliable", "Operations Together"],
+  textLines: ["Join Our Team"],
 };
 
 export default function ContactSection() {
@@ -24,10 +24,10 @@ export default function ContactSection() {
           {/* Left Forms */}
           <div className="lg:col-span-2 space-y-24">
             <h1 className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold mb-12">
-              Contact Us
+              Careers
             </h1>
 
-            <ContactForm />
+            <CareerForm />
           </div>
 
           {/* Right Info */}

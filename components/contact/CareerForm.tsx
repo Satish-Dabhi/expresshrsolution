@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import ContactField from "./ContactField";
 
-export function ContactForm() {
+export function CareerForm() {
   return (
     <motion.form
       initial={{ opacity: 0, y: 30 }}
@@ -14,14 +14,16 @@ export function ContactForm() {
       className="space-y-8"
     >
       <p className="text-orange-500 font-medium text-[20px]">
-        Get in touch with us for any Business enquiries and questions
+        Get in touch with us for Career Opportunities
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ContactField label="Name" name="name" />
+        <ContactField label="Full Name" name="name" />
         <ContactField label="Email" name="email" type="email" />
-        <ContactField label="Company" name="company" />
-        <ContactField label="Services Interested In" name="interest" />
+        <ContactField label="Phone Number" name="phone" />
+        <ContactField label="Role Interested In" name="position" />
+        {/* CV Upload Field */}
+        <ContactField label="Attach CV" name="cv" type="file" />
       </div>
 
       <ContactField label="Message" name="message" textarea />

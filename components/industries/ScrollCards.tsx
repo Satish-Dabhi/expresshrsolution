@@ -1,13 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  MotionValue,
-  PanInfo,
-} from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 /* ---------------- TYPES ---------------- */
@@ -188,11 +182,11 @@ const cards: CardData[] = [
       {
         label: "On-Ground Coordination",
         description:
-          "Structured workforce deployment aligned with site timeless and operational plans.",
+          "Structured workforce deployment aligned with site timelines and operational plans.",
       },
     ],
     outcome:
-      "Faster tamarind times, safer sited, and smooth industrial operations.",
+      "Faster turnaround times, safer sites, and smooth industrial operations.",
   },
 ];
 
@@ -209,6 +203,12 @@ export default function ScrollCards() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(0);
 
+  // Separate heights for desktop and mobile
+  const [desktopCardHeight, setDesktopCardHeight] = useState<number | null>(
+    null
+  );
+  const [mobileCardHeight, setMobileCardHeight] = useState<number | null>(null);
+
   /* ---------------- RESPONSIVE ---------------- */
 
   useEffect(() => {
@@ -220,10 +220,8 @@ export default function ScrollCards() {
 
   useEffect(() => {
     if (!mobileViewportRef.current) return;
-
     const update = () =>
       setViewportWidth(mobileViewportRef.current?.offsetWidth ?? 0);
-
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
@@ -236,48 +234,40 @@ export default function ScrollCards() {
     offset: ["start start", "end end"],
   });
 
-  // 2 cards visible, so total steps = total cards - 2
   const totalSteps = Math.max(cards.length - 2, 0);
   const maxX = totalSteps * (CARD_WIDTH + GAP);
-
   const x = useTransform(scrollYProgress, [0, 1], [0, -maxX]);
 
   useEffect(() => {
     if (isMobile) return;
-
     const unsub = scrollYProgress.on("change", (v) => {
       const idx = Math.round(v * totalSteps);
       setActiveIndex(idx);
     });
-
     return () => unsub();
   }, [scrollYProgress, totalSteps, isMobile]);
 
-  /* ---------------- MOBILE DRAG ---------------- */
+  // Refs for measuring card heights
+  const desktopRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const mobileRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const centerOffset = viewportWidth / 2 - CARD_WIDTH / 2;
+  // Measure desktop card heights
+  useEffect(() => {
+    if (isMobile) return;
+    const heights = desktopRefs.current
+      .filter((el): el is HTMLDivElement => el !== null)
+      .map((el) => el.getBoundingClientRect().height);
+    if (heights.length) setDesktopCardHeight(Math.max(...heights));
+  }, [isMobile]);
 
-  // Calculate drag constraints dynamically (left and right bounds)
-  const dragConstraints = {
-    left: -((cards.length - 1) * (CARD_WIDTH + GAP)) + centerOffset,
-    right: centerOffset,
-  };
-
-  const handleDragEnd = (
-    _: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
-    const threshold = CARD_WIDTH / 3;
-
-    if (info.offset.x < -threshold && activeIndex < cards.length - 1) {
-      setActiveIndex((i) => i + 1);
-    }
-    if (info.offset.x > threshold && activeIndex > 0) {
-      setActiveIndex((i) => i - 1);
-    }
-  };
-
-  /* ---------------- RENDER ---------------- */
+  // Measure mobile card heights
+  useEffect(() => {
+    if (!isMobile) return;
+    const heights = mobileRefs.current
+      .filter((el): el is HTMLDivElement => el !== null)
+      .map((el) => el.getBoundingClientRect().height);
+    if (heights.length) setMobileCardHeight(Math.max(...heights));
+  }, [isMobile, viewportWidth]);
 
   return (
     <section ref={sectionRef} className="relative w-full">
@@ -288,15 +278,22 @@ export default function ScrollCards() {
           {!isMobile && (
             <div className="overflow-hidden">
               <div
-                className="mx-auto overflow-hidden"
+                className="mx-auto overflow-hidden py-4"
                 style={{ width: `${CARD_WIDTH * 2 + GAP}px` }}
               >
                 <motion.div
                   style={{ x }}
                   className="flex gap-[24px] will-change-transform"
                 >
-                  {cards.map((card) => (
-                    <DesktopCard key={card.title} card={card} />
+                  {cards.map((card, i) => (
+                    <DesktopCard
+                      key={card.title}
+                      card={card}
+                      height={desktopCardHeight}
+                      refCallback={(el) => {
+                        desktopRefs.current[i] = el;
+                      }}
+                    />
                   ))}
                 </motion.div>
               </div>
@@ -307,33 +304,46 @@ export default function ScrollCards() {
           {isMobile && (
             <div ref={mobileViewportRef} className="overflow-hidden w-full">
               <motion.div
+                className="flex"
                 drag="x"
                 dragConstraints={{
                   left: -(cards.length - 1) * viewportWidth,
                   right: 0,
                 }}
-                dragElastic={0.2} // makes drag feel smoother
+                dragElastic={0.15}
                 onDragEnd={(_, info) => {
-                  const swipeThreshold = viewportWidth / 5; // how far you need to swipe
-                  const velocity = info.velocity.x;
-
-                  if (info.offset.x < -swipeThreshold || velocity < -500) {
-                    // swipe left
-                    setActiveIndex((prev) =>
-                      Math.min(prev + 1, cards.length - 1)
-                    );
-                  } else if (info.offset.x > swipeThreshold || velocity > 500) {
-                    // swipe right
-                    setActiveIndex((prev) => Math.max(prev - 1, 0));
+                  const swipeThreshold = viewportWidth / 4;
+                  if (
+                    info.offset.x < -swipeThreshold &&
+                    activeIndex < cards.length - 1
+                  ) {
+                    setActiveIndex((i) => i + 1);
+                  } else if (
+                    info.offset.x > swipeThreshold &&
+                    activeIndex > 0
+                  ) {
+                    setActiveIndex((i) => i - 1);
                   }
                 }}
                 animate={{ x: -activeIndex * viewportWidth }}
-                transition={{ type: "spring", stiffness: 150, damping: 25 }}
-                className="flex"
+                transition={{ type: "spring", stiffness: 160, damping: 28 }}
               >
                 {cards.map((card, i) => (
-                  <div key={card.title} style={{ minWidth: viewportWidth }}>
-                    <MobileCard card={card} active={i === activeIndex} />
+                  <div
+                    key={card.title}
+                    className="flex-shrink-0 px-4"
+                    style={{
+                      width: viewportWidth,
+                      height: mobileCardHeight ?? "auto",
+                    }}
+                  >
+                    <MobileCard
+                      card={card}
+                      active={i === activeIndex}
+                      refCallback={(el) => {
+                        mobileRefs.current[i] = el;
+                      }}
+                    />
                   </div>
                 ))}
               </motion.div>
@@ -356,66 +366,67 @@ export default function ScrollCards() {
       </div>
 
       {/* SCROLL SPACER: only scroll as many steps as cards - 2 */}
-      {!isMobile && (
-        <div
-          style={{
-            height: `${totalSteps * 100}vh`,
-          }}
-        />
-      )}
+      {!isMobile && <div style={{ height: `${totalSteps * 100}vh` }} />}
     </section>
   );
 }
 
-/* ---------------- CARDS ---------------- */
+/* ---------------- DESKTOP CARD ---------------- */
 
-function DesktopCard({ card }: { card: CardData }) {
+function DesktopCard({
+  card,
+  height,
+  refCallback,
+}: {
+  card: CardData;
+  height: number | null;
+  refCallback: (el: HTMLDivElement | null) => void;
+}) {
   return (
     <div
-      className="rounded-2xl overflow-hidden bg-white shadow-lg flex-shrink-0"
-      style={{ width: CARD_WIDTH }}
+      ref={refCallback}
+      className="rounded-2xl overflow-hidden bg-white shadow-lg flex-shrink-0 flex flex-col"
+      style={{
+        width: CARD_WIDTH,
+        height: height ?? "auto",
+        maxHeight: "90vh",
+      }}
     >
-      <div className="relative h-[250px]">
+      <div className="relative h-[200px]">
         <Image
           src={card.image}
           alt={card.title}
           fill
           className="object-cover"
+          unoptimized
         />
-        {/* <div className="absolute inset-0 bg-orange-500/70" /> */}
         <h3 className="absolute bottom-4 left-4 text-white text-[32px] md:text-[48px] font-semibold">
           {card.title}
         </h3>
       </div>
+
       <div className="p-6 space-y-5">
-        {/* Pain Points */}
         <div>
-          <h4 className="font-semibold text-black mb-2">Pain Points</h4>
+          <h4 className="font-semibold mb-2">Pain Points</h4>
           <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
-            {card.painPoints.map((point, i) => (
-              <li key={i} className="text-gray-600">
-                {point}
-              </li>
+            {card.painPoints.map((p, i) => (
+              <li key={i}>{p}</li>
             ))}
           </ul>
         </div>
 
-        {/* Our Solutions */}
         <div>
-          <h4 className="font-semibold text-black mb-2">Our Solutions</h4>
-          <ul className="space-y-2 text-sm ">
-            {card.solutions.map((solution, i) => (
+          <h4 className="font-semibold mb-2">Our Solutions</h4>
+          <ul className="space-y-2 text-sm">
+            {card.solutions.map((s, i) => (
               <li key={i}>
-                <span className="font-semibold text-black">
-                  {solution.label}:
-                </span>{" "}
-                <span className="text-gray-600">{solution.description}</span>
+                <span className="font-semibold">{s.label}:</span>{" "}
+                <span className="text-gray-600">{s.description}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Outcome */}
         <div>
           <h4 className="font-semibold text-orange-600 mb-1">Outcome</h4>
           <p className="text-sm text-gray-600">{card.outcome}</p>
@@ -425,56 +436,62 @@ function DesktopCard({ card }: { card: CardData }) {
   );
 }
 
-function MobileCard({ card, active }: { card: CardData; active: boolean }) {
+/* ---------------- MOBILE CARD ---------------- */
+
+function MobileCard({
+  card,
+  active,
+  refCallback,
+}: {
+  card: CardData;
+  active: boolean;
+  refCallback: (el: HTMLDivElement | null) => void;
+}) {
   return (
     <motion.div
-      style={{ width: "100%" }} // full width of the mobile container
-      className={`rounded-2xl bg-white shadow-lg flex-shrink-0 transition-all
-        ${active ? "scale-[1.03]" : "opacity-70"}`}
+      ref={refCallback}
+      className={`rounded-2xl bg-white shadow-lg flex flex-col transition-all ${
+        active ? "scale-[1.02]" : "opacity-70"
+      }`}
     >
-      <div className="relative h-[320px] md:h-[400px]">
+      <div className="relative h-[260px]">
         <Image
           src={card.image}
           alt={card.title}
           fill
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-orange-500/70" />
-        <h3 className="absolute bottom-4 left-4 text-white text-[28px] md:text-[32px] font-semibold">
+        <div className="absolute inset-0 bg-black/40" />
+        <h3 className="absolute bottom-4 left-4 right-4 text-white text-[26px] font-semibold">
           {card.title}
         </h3>
       </div>
 
-      <div className="p-5 md:p-6 space-y-4 md:space-y-5">
-        {/* Pain Points */}
+      <div className="p-5 space-y-4">
         <div>
-          <h4 className="font-semibold text-black mb-1">Pain Points</h4>
-          <ul className="list-disc list-inside space-y-1 text-xs sm:text-sm text-gray-600">
-            {card.painPoints.map((point, i) => (
-              <li key={i}>{point}</li>
+          <h4 className="font-semibold mb-1">Pain Points</h4>
+          <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+            {card.painPoints.map((p, i) => (
+              <li key={i}>{p}</li>
             ))}
           </ul>
         </div>
 
-        {/* Our Solutions */}
         <div>
-          <h4 className="font-semibold text-black mb-1">Our Solutions</h4>
-          <ul className="space-y-1 text-xs sm:text-sm text-gray-600">
-            {card.solutions.map((solution, i) => (
+          <h4 className="font-semibold mb-1">Our Solutions</h4>
+          <ul className="space-y-1 text-sm">
+            {card.solutions.map((s, i) => (
               <li key={i}>
-                <span className="font-semibold text-black">
-                  {solution.label}:
-                </span>{" "}
-                {solution.description}
+                <span className="font-semibold">{s.label}:</span>{" "}
+                <span className="text-gray-600">{s.description}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        {/* Outcome */}
         <div>
-          <h4 className="font-semibold text-orange-600 mb-1">Outcome</h4>
-          <p className="text-xs sm:text-sm text-gray-600">{card.outcome}</p>
+          <h4 className="font-semibold text-orange-600">Outcome</h4>
+          <p className="text-sm text-gray-600">{card.outcome}</p>
         </div>
       </div>
     </motion.div>

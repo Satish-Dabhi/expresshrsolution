@@ -27,7 +27,7 @@ export default function TrustedHeading() {
 
     return (
         <section ref={ref} className="w-full text-center py-12 md:py-16">
-            <motion.p
+            {/* <motion.p
                 className="text-gray-400"
                 style={{
                     fontFamily: "Instrument Sans",
@@ -40,7 +40,7 @@ export default function TrustedHeading() {
                 transition={{ duration: 0.6 }}
             >
                 Trusted by Operators
-            </motion.p>
+            </motion.p> */}
 
             <h2
                 className="text-black"

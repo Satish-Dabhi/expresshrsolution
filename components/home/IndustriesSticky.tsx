@@ -123,48 +123,49 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
           title={`Built for Critical\nIndustries`}
           description="We support companies in Food, Pharma, Retail, and Manufacturing with Tailored Logistics."
         />
-        <div
-          className="
+        {!isMobile && (
+          <div
+            className="
             max-w-[1400px] mx-auto w-full
             flex flex-col md:flex-row
             gap-6 md:gap-10
             px-4 md:px-0
             py-10 md:py-0
           "
-        >
-          {/* LEFT IMAGE → DESKTOP ONLY */}
-          <div
-            className="hidden md:block relative rounded-xl overflow-hidden shrink-0"
-            style={{
-              width: "clamp(240px, 80vw, 480px)",
-              height: "clamp(260px, 60vw, 520px)",
-            }}
           >
-            <motion.div
-              // key={activeIndex}
-              initial={{ opacity: 0, scale: 1.03 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0"
+            {/* LEFT IMAGE → DESKTOP ONLY */}
+            <div
+              className="hidden md:block relative rounded-xl overflow-hidden shrink-0"
+              style={{
+                width: "clamp(240px, 80vw, 480px)",
+                height: "clamp(260px, 60vw, 520px)",
+              }}
             >
-              <Image
-                // src={items[activeIndex].image} //dynamic
-                src={"/images/industries.png"} //static
-                alt="Active"
-                fill
-                className="object-cover"
-              />
-            </motion.div>
-          </div>
+              <motion.div
+                // key={activeIndex}
+                initial={{ opacity: 0, scale: 1.03 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0"
+              >
+                <Image
+                  // src={items[activeIndex].image} //dynamic
+                  src={"/images/industries.png"} //static
+                  alt="Active"
+                  fill
+                  className="object-cover"
+                />
+              </motion.div>
+            </div>
 
-          {/* DESKTOP RIGHT SCROLL-BASED CARDS */}
-          {!isMobile && (
+            {/* DESKTOP RIGHT SCROLL-BASED CARDS */}
+
             <div className="w-full relative overflow-hidden">
               <motion.div style={{ x }} className="flex gap-8">
                 {items.map((item, i) => (
                   <div
                     key={i}
-                    className="bg-white border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8 flex flex-col justify-between"
+                    className="bg-orange-500/90 border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8 flex flex-col justify-between"
                     style={{
                       width: "clamp(240px, 80vw, 480px)",
                       height: "clamp(260px, 60vw, 520px)",
@@ -221,8 +222,8 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                 ))}
               </motion.div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
 
         {/* MOBILE VERSION */}
         {isMobile && (

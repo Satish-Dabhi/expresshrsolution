@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 
 const heroContent = {
   textLines: ["Who We Are"],
-  description: `Express HR Solutions is a workforce-powered operations company that delivers structured execution, compliant governance, and seamless on-ground performance across India’s supply chain ecosystem.
+  description: `Express HR provides workforce-powered operational execution with compliance and governance, ensuring seamless on-ground performance accross India's supply chain ecosystem.
 
-Backed by 15+ years of experience and our legacy, we blend people, process, and technology to run high-volume operational environments with precision.`,
+Backed by 15+ years of experience, we blend people, process, and technology to run high-volume operational environments with precision.`,
 };
 
 const leaders: Leader[] = [
@@ -59,7 +59,7 @@ const careerContent = {
   description: `On-ground and corporate roles with training, compliance, and career growth.`,
   button: {
     label: "Join the team",
-    href: "/contact-us",
+    href: "/careers",
   },
 };
 
@@ -75,14 +75,16 @@ export default function AboutSection() {
 
       <SplitFeatureSection
         title="Mission"
-        description="To empower business with reliable, trained, and compliant workforce-powered operational system that scale."
+        description="To empower businesses with reliable and compliant workforce-driven operational system that scale."
         image="/images/about-mission.png"
+        topDecoration="/images/logos/right.svg"
       />
 
       <SplitFeatureSection
         title="Vision"
         description="To lead India’s transformation in on-ground execution — where skilled people and disciplined processes create predictable outcomes."
         image="/images/about-vision.png"
+        topDecoration="/images/logos/left.svg"
         reverse
       />
 
