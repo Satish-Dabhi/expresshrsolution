@@ -19,7 +19,7 @@ export default function SplitFeatureSection({
   reverse = false,
 }: SplitFeatureSectionProps) {
   return (
-    <section className="w-full py-[60px] md:py-[100px] px-4 md:pl-[30px]">
+    <section className="w-full py-[30px] md:py-[50px] px-4 md:pl-[30px]">
       <div
         className={cn(
           // Mobile: column | Desktop: row

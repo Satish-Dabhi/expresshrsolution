@@ -5,27 +5,21 @@ import { cn } from "@/lib/utils";
 
 interface CardProps {
   className?: string;
+  style?: React.CSSProperties;
   children?: React.ReactNode;
 }
 
-const Card = ({ className = "", children }: CardProps) => (
+const Card = ({ className = "", style, children }: CardProps) => (
   <div
+    style={style}
     className={cn(
-      `
-      h-[150px] lg:h-[200px]
-      rounded-xl
-      bg-white/90
-      border border-gray-100
-      flex items-center justify-center
-      transition-all duration-300
-    `,
+      "rounded-xl bg-white border border-[#EF7F1B]/40 transition-colors duration-500 animate-grid-float will-change-transform hover:border-[#EF7F1B]/70",
       className
     )}
   >
     {children}
   </div>
 );
-
 
 const TYPING_SPEED = 70;
 const LINE_PAUSE = 600;
@@ -56,16 +50,31 @@ export default function GridTypewriter({
   const [typedDesc, setTypedDesc] = useState<string[]>([]);
   const [descParaIndex, setDescParaIndex] = useState(0);
   const [descCharIndex, setDescCharIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Adjust total cards based on screen size
+  let totalCards = 18;
+  if (windowWidth < 640) {
+    totalCards = 9; // mobile
+  } else if (windowWidth < 1024) {
+    totalCards = 12; // tablet
+  }
 
   const headingDone = currentLine >= textLines.length;
   const descDone = descParaIndex >= descParas.length;
 
-  /** Heading typing */
+  // Typing animation for heading
   useEffect(() => {
     if (headingDone) return;
-
     if (currentChar < textLines[currentLine].length) {
-      const timeout = setTimeout(() => {
+      const t = setTimeout(() => {
         setTypedLines((prev) => {
           const copy = [...prev];
           copy[currentLine] =
@@ -74,25 +83,22 @@ export default function GridTypewriter({
         });
         setCurrentChar((c) => c + 1);
       }, TYPING_SPEED);
-
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(t);
     } else {
-      const pause = setTimeout(() => {
+      const p = setTimeout(() => {
         setCurrentLine((l) => l + 1);
         setCurrentChar(0);
       }, LINE_PAUSE);
-
-      return () => clearTimeout(pause);
+      return () => clearTimeout(p);
     }
   }, [currentChar, currentLine, headingDone, textLines]);
 
-  /** Description typing */
+  // Typing animation for description
   useEffect(() => {
     if (!headingDone || !desc) return;
     if (descParaIndex >= descParas.length) return;
-
     if (descCharIndex < descParas[descParaIndex].length) {
-      const timeout = setTimeout(() => {
+      const t = setTimeout(() => {
         setTypedDesc((prev) => {
           const copy = [...prev];
           copy[descParaIndex] =
@@ -102,8 +108,7 @@ export default function GridTypewriter({
         });
         setDescCharIndex((c) => c + 1);
       }, DESC_TYPING_SPEED);
-
-      return () => clearTimeout(timeout);
+      return () => clearTimeout(t);
     } else {
       setDescParaIndex((p) => p + 1);
       setDescCharIndex(0);
@@ -114,16 +119,26 @@ export default function GridTypewriter({
   while (typedDesc.length < descParas.length) typedDesc.push("");
 
   return (
-    <section className="relative w-full mb-24 bg-[#ebebeb]">
-      <div className="relative mx-auto px-4 sm:px-6 grid grid-cols-6 grid-rows-3 gap-2 bg-[#ef7f1b87]">
-        {[...Array(18)].map((_, i) => (
-          <Card key={i} />
+    <section className="relative w-full mb-24 bg-[#ebebeb] overflow-hidden">
+      <div className="relative mx-auto px-3 sm:px-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
+        {/* Background overlays */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#EF7F1B]/5 via-transparent to-black/5 pointer-events-none z-0" />
+        <div className="absolute inset-0 grid-line-shimmer pointer-events-none z-0" />
+
+        {/* Grid cards */}
+        {[...Array(totalCards)].map((_, i) => (
+          <Card
+            key={i}
+            className={cn(
+              "aspect-square sm:aspect-[1.2] lg:aspect-[1.5]",
+              i >= 9 ? "hidden sm:block" : "" // first 9 always visible on mobile, rest show from sm+
+            )}
+            style={{ animationDelay: `${i * 150}ms` }}
+          />
         ))}
 
-        <div
-          className="absolute inset-0 flex items-center justify-center text-center z-10 px-4"
-          style={{ pointerEvents: "none" }}
-        >
+        {/* Centered typing text */}
+        <div className="absolute inset-0 flex items-center justify-center text-center z-10 px-4 pointer-events-none">
           <div>
             {/* Heading */}
             {typedLines.map((line, i) => (
@@ -140,20 +155,20 @@ export default function GridTypewriter({
               </p>
             ))}
 
-            {/* Sub Title */}
+            {/* Subtitle */}
             {subTitle && headingDone && (
-              <p className="mt-3 text-[24px] md:text-[36px] font-semibold animate-fade-up">
+              <p className="mt-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold animate-fade-up">
                 {subTitle}
               </p>
             )}
 
             {/* Description */}
             {desc && (
-              <div className="mt-3 max-w-5xl mx-auto space-y-4">
+              <div className="mt-3 max-w-5xl mx-auto space-y-4 sm:space-y-6">
                 {typedDesc.map((para, i) => (
                   <p
                     key={i}
-                    className="text-[12px] md:text-[25px] leading-relaxed"
+                    className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"
                   >
                     {para}
                     {headingDone &&
@@ -172,14 +187,14 @@ export default function GridTypewriter({
                 {button.href ? (
                   <a
                     href={button.href}
-                    className="inline-block px-8 py-3 text-[24px] md:text-[36px] font-semibold rounded-[0.5rem] bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
+                    className="inline-block px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </a>
                 ) : (
                   <button
                     onClick={button.onClick}
-                    className="px-8 py-3 text-[24px] md:text-[36px] font-semibold rounded-[0.5rem] bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
+                    className="px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </button>
@@ -209,11 +224,6 @@ export default function GridTypewriter({
         .animate-fade-up {
           animation: fadeUp 0.6s ease-out both;
         }
-
-        .animate-scale-fade {
-          animation: scaleFade 0.5s ease-out both;
-        }
-
         @keyframes fadeUp {
           from {
             opacity: 0;
@@ -225,6 +235,9 @@ export default function GridTypewriter({
           }
         }
 
+        .animate-scale-fade {
+          animation: scaleFade 0.5s ease-out both;
+        }
         @keyframes scaleFade {
           from {
             opacity: 0;
@@ -233,6 +246,47 @@ export default function GridTypewriter({
           to {
             opacity: 1;
             transform: scale(1);
+          }
+        }
+
+        .animate-grid-float {
+          animation: gridFloat 16s ease-in-out infinite;
+        }
+        @keyframes gridFloat {
+          0% {
+            transform: translate3d(0, 0, 0);
+          }
+          50% {
+            transform: translate3d(0, -5px, 0);
+          }
+          100% {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .grid-line-shimmer {
+          background: linear-gradient(
+            120deg,
+            transparent 40%,
+            rgba(239, 127, 27, 0.35) 50%,
+            transparent 60%
+          );
+          background-size: 200% 100%;
+          animation: shimmerMove 12s linear infinite;
+        }
+        @keyframes shimmerMove {
+          from {
+            background-position: 200% 0;
+          }
+          to {
+            background-position: -200% 0;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-grid-float,
+          .grid-line-shimmer {
+            animation: none;
           }
         }
       `}</style>

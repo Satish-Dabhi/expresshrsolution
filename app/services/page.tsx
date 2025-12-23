@@ -80,8 +80,6 @@ const extendedCapabilitiesItems = [
       "Shelf management",
       "QC, packing & dispatch prep",
     ],
-    outcome:
-      "OUTCOME: Speed, accuracy & consistency for FMCG, Q-commerce & retail brands.",
     image: "/videos/warehouse.gif",
   },
   {

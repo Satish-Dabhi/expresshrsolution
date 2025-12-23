@@ -522,3 +522,70 @@
     opacity: 0;
   }
 }
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+.animate-blink {
+  animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.6s ease-out both;
+}
+
+@keyframes scaleFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-scale-fade {
+  animation: scaleFade 0.5s ease-out both;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.animate-float {
+  animation: float 10s ease-in-out infinite;
+}
+
+@keyframes bgShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-18px, -12px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.animate-bg-shift {
+  animation: bgShift 28s ease-in-out infinite;
+}

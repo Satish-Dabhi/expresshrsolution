@@ -56,16 +56,16 @@ export default function Footer() {
 
             <ul className="space-y-4 text-gray-500 text-[18px] md:text-[24px] font-[Instrument_Sans]">
               <li>
-                <Link href="/services/warehouse">Warehouse</Link>
+                <Link href="/services">Warehouse</Link>
               </li>
               <li>
-                <Link href="/services/workforce">Workforce</Link>
+                <Link href="/services">Workforce</Link>
               </li>
               <li>
-                <Link href="/services/facility">Facility</Link>
+                <Link href="/services">Facility</Link>
               </li>
               <li>
-                <Link href="/services/governance">Governance</Link>
+                <Link href="/services">Governance</Link>
               </li>
             </ul>
           </div>

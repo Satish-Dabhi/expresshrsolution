@@ -122,7 +122,7 @@ export default function LeadershipSection({ leaders }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-full h-[80vh]"
+                className="w-full h-[90vh]"
               >
                 <LeaderImage
                   src={current.image}
@@ -176,7 +176,7 @@ export default function LeadershipSection({ leaders }: Props) {
             className="flex flex-col items-center px-4"
           >
             {/* IMAGE */}
-            <div className="w-full h-[360px] mb-6">
+            <div className="w-full h-[650px] mb-6">
               <LeaderImage
                 src={current.image}
                 alt={current.name}
