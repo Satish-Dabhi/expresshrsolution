@@ -94,7 +94,7 @@ export default function AboutSection() {
 
       <LeadershipSection leaders={leaders} />
 
-      <div className="mt-30">
+      <div className="mt-10 md:mt-30">
         <GridTypewriter
           textLines={careerContent.textLines}
           subTitle={careerContent.subTitle}

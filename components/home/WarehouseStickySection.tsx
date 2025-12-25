@@ -111,105 +111,79 @@ export default function WarehouseStickySection() {
       <div className="max-w-[1400px] mx-auto w-full px-4 md:px-0 relative">
         {/* ================= MOBILE ================= */}
         {isMobile && (
-          <div className="w-full p-5 pb-10 flex flex-col gap-6">
-            {/* TOP IMAGE */}
-            <div className="w-full h-[320px] rounded-xl overflow-hidden relative bg-white">
-              <motion.div
-                key={active}
-                initial={{ opacity: 0.5, scale: 0.96 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.45 }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={items[active].gif}
-                  alt="mobile-gif"
-                  fill
-                  className="object-cover"
-                />
-
-                <div
-                  className="absolute inset-0 mix-blend-multiply"
-                  style={{
-                    background:
-                      items[active].color === "orange"
-                        ? "rgba(255,124,54,0.65)"
-                        : "rgba(0,0,0,0.25)",
-                  }}
-                />
-              </motion.div>
-            </div>
-
-            {/* CAROUSEL */}
-            <motion.div ref={carouselRef} className="overflow-hidden">
-              <motion.div
-                drag="x"
-                dragConstraints={{ left: -dragWidth, right: 0 }}
-                onDragEnd={handleDragEnd}
-                animate={{
-                  x: -(active * (carouselRef.current?.offsetWidth || 0)),
-                }}
-                transition={{ type: "spring", stiffness: 200, damping: 25 }}
-                className="flex touch-pan-y"
-              >
-                {items.map((item, i) => (
+          <div className="w-full pb-10 flex flex-col gap-10">
+            {items.map((item, i) => (
+              <div key={i} className="flex flex-col gap-6">
+                {/* IMAGE */}
+                <div className="w-full h-[320px] rounded-xl overflow-hidden relative bg-white">
                   <motion.div
-                    key={i}
-                    className={`
-              w-full flex-shrink-0
-              p-6 bg-white rounded-xl shadow-sm
-              transition-all duration-300
-              ${active === i ? "scale-[1.01]" : "opacity-80"}
-            `}
+                    initial={{ opacity: 0.5, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.45 }}
+                    className="absolute inset-0"
                   >
-                    <span
-                      className="text-xs tracking-widest text-black/50 mb-8"
-                      style={{
-                        fontFamily: "Instrument Sans",
-                        fontWeight: 600,
-                        fontSize: "24px",
-                        lineHeight: "1.3",
-                        color: "#AFAFAF",
-                      }}
-                    >
-                      {item.label}
-                    </span>
+                    <Image
+                      src={item.gif}
+                      alt={item.label}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
 
-                    <h3
-                      className="mt-2 text-black"
+                    <div
+                      className="absolute inset-0 mix-blend-multiply"
                       style={{
-                        fontFamily: "Instrument Sans",
-                        fontWeight: 600,
-                        fontSize: "26px",
-                        lineHeight: "1.3",
+                        background:
+                          item.color === "orange"
+                            ? "rgba(255,124,54,0.65)"
+                            : "rgba(0,0,0,0.25)",
                       }}
-                    >
-                      {item.title.map((t, j) => (
-                        <span key={j}>
-                          {t}
-                          <br />
-                        </span>
-                      ))}
-                    </h3>
+                    />
                   </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
+                </div>
 
-            {/* DOTS */}
-            <div className="flex justify-center gap-2 mt-2">
-              {items.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActive(i)}
-                  className={`
-            h-2 rounded-full transition-all duration-300
-            ${active === i ? "w-6 bg-black" : "w-2 bg-black/30"}
-          `}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
-              ))}
-            </div>
+                {/* CONTENT */}
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45 }}
+                  className="p-6 bg-white rounded-xl shadow-sm"
+                >
+                  <span
+                    className="block mb-4"
+                    style={{
+                      fontFamily: "Instrument Sans",
+                      fontWeight: 600,
+                      fontSize: "24px",
+                      lineHeight: "1.3",
+                      color: "#AFAFAF",
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    {item.label}
+                  </span>
+
+                  <h3
+                    className="text-black"
+                    style={{
+                      fontFamily: "Instrument Sans",
+                      fontWeight: 600,
+                      fontSize: "26px",
+                      lineHeight: "1.3",
+                    }}
+                  >
+                    {item.title.map((t, j) => (
+                      <span key={j}>
+                        {t}
+                        <br />
+                      </span>
+                    ))}
+                  </h3>
+                </motion.div>
+              </div>
+            ))}
           </div>
         )}
 

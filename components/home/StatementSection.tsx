@@ -10,8 +10,8 @@ export default function StatementSection({
   description,
 }: StatementSectionProps) {
   return (
-    <section className="w-full bg-white py-8 my-2 px-0 md:px-10">
-      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-0 flex flex-col md:flex-row items-start justify-between gap-10 md:gap-16">
+    <section className="w-full bg-white py-3 md:py-8 my-2 px-0 md:px-9">
+      <div className="mx-auto w-full max-w-[1400px] px-6 md:px-0 flex flex-col md:flex-row items-start justify-between gap-3 md:gap-16">
 
         {/* LEFT — HEADING */}
         <h2

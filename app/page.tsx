@@ -57,9 +57,8 @@ export default function Home() {
             icon: "/images/logos/electronics-technology.svg",
             title: "Electronics & Technology",
             points: [
-              "ESD-safe handling & packaging",
-              "Express air & ground transport",
-              "Customs-ready documentation support",
+              "ESD safe handling",
+              "Ground transportation",
             ],
           },
           {
@@ -109,7 +108,7 @@ export default function Home() {
         image="/images/box.jpg"
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
         subtitle="Ankit Ahuja, XYZ Co."
-        // height="900px"
+          titleSpeed={100}
       />
 
       {/* CONTAINER */}
