@@ -13,7 +13,7 @@ const Card = ({ className = "", style, children }: CardProps) => (
   <div
     style={style}
     className={cn(
-      "rounded-xl bg-white border border-[#EF7F1B]/40 transition-colors duration-500 animate-grid-float will-change-transform hover:border-[#EF7F1B]/70",
+      "rounded-xl bg-white border border-[#F4F4F4]/40 transition-colors duration-500 animate-grid-float will-change-transform hover:border-[#F4F4F4]/70",
       className
     )}
   >
@@ -122,8 +122,8 @@ export default function GridTypewriter({
     <section className="relative w-full mb-24 bg-[#ebebeb] overflow-hidden">
       <div className="relative mx-auto px-3 sm:px-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
         {/* Background overlays */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#EF7F1B]/5 via-transparent to-black/5 pointer-events-none z-0" />
-        <div className="absolute inset-0 grid-line-shimmer pointer-events-none z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F4F4F4]/5 via-transparent to-black/5 pointer-events-none z-0" />
+        <div className="absolute inset-0 grid-line-shimmer-section pointer-events-none z-0" />
 
         {/* Grid cards */}
         {[...Array(totalCards)].map((_, i) => (
@@ -187,14 +187,14 @@ export default function GridTypewriter({
                 {button.href ? (
                   <a
                     href={button.href}
-                    className="inline-block px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
+                    className="inline-block px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#F4F4F4] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </a>
                 ) : (
                   <button
                     onClick={button.onClick}
-                    className="px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
+                    className="px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#F4F4F4] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </button>
