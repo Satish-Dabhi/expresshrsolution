@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -22,7 +21,7 @@ interface CardData {
 const cards: CardData[] = [
   {
     title: "FMCG & Food",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/FMCH_and_Food.mp4",
     painPoints: [
       "Expired or near-expiry stock reaching market",
       "Missed delivery timelines impacting distribution confidence",
@@ -56,7 +55,7 @@ const cards: CardData[] = [
   },
   {
     title: "Retail & Lifestyle",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/Retail_and_lifestyle.mp4",
     painPoints: [
       "High manpower attrition across stores and malls",
       "Inconsistent service quality impacting brand experience",
@@ -84,7 +83,7 @@ const cards: CardData[] = [
   },
   {
     title: "E-Commerce & Q-Commerce",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/E_commerce_and_q_commerce.mp4",
     painPoints: [
       "Stock unavailable due to poor assortment planning",
       "Over-commitment on delivery timelines without rider availability",
@@ -112,7 +111,7 @@ const cards: CardData[] = [
   },
   {
     title: "Pharma & Healthcare",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/Pharma_and_healthcare.mp4",
     painPoints: [
       "Risk of contamination or handling errors",
       "Strict compliance and document requirements",
@@ -140,7 +139,7 @@ const cards: CardData[] = [
   },
   {
     title: "Manufacturing & Packaging",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/Manufacturing_and_packaging.mp4",
     painPoints: [
       "Unavailability of skilled manpower during peak cycles",
       "Production delays due to raw material mismanagement",
@@ -162,7 +161,7 @@ const cards: CardData[] = [
   },
   {
     title: "Port, Rail & Industrial Infrastructure",
-    image: "/videos/warehouse.gif",
+    image: "/videos/industries/Port_rail_and_Industrial.mp4",
     painPoints: [
       "Delays in rake unloading impacting downstream supply chains",
       "Safety risk in high-volume industrial environments",
@@ -393,13 +392,16 @@ function DesktopCard({
       }}
     >
       <div className="relative h-[200px]">
-        <Image
+        <video
           src={card.image}
-          alt={card.title}
-          fill
-          className="object-cover"
-          unoptimized
-        />
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          Your browser does not support the video tag.
+        </video>
         <h3 className="absolute bottom-4 left-4 text-white text-[32px] md:text-[48px] font-semibold">
           {card.title}
         </h3>
@@ -455,12 +457,16 @@ function MobileCard({
       }`}
     >
       <div className="relative h-[260px]">
-        <Image
+        <video
           src={card.image}
-          alt={card.title}
-          fill
-          className="object-cover"
-        />
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-black/40" />
         <h3 className="absolute bottom-4 left-4 right-4 text-white text-[26px] font-semibold">
           {card.title}

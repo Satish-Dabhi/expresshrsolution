@@ -1,32 +1,31 @@
 "use client";
 
-import { motion, PanInfo } from "framer-motion";
-import Image from "next/image";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const items = [
   {
     label: "WAREHOUSE",
     title: ["Inventory accuracy,", "pallet movement,", "dock coordination"],
-    gif: "/videos/warehouse.gif",
+    gif: "/videos/home/WAREHOUSE.mp4",
     color: "orange",
   },
   {
     label: "WORKFORCE",
     title: ["Skilled deployment", "across 3PL/4PL", "environments"],
-    gif: "/videos/WORKFORCE.gif",
+    gif: "/videos/home/WORKFORCE.mp4",
     color: "orange",
   },
   {
     label: "FACILITY",
     title: ["Safe, clean, efficient", "industrial spaces"],
-    gif: "/videos/FACILITY.gif",
+    gif: "/videos/home/FACILITY.mp4",
     color: "orange",
   },
   {
     label: "GOVERNANCE",
     title: ["Compliance, audits,", "transparency & MIS"],
-    gif: "/videos/GOVERNANCE.gif",
+    gif: "/videos/home/GOVERNANCE.mp4",
     color: "orange",
   },
 ];
@@ -36,9 +35,6 @@ export default function WarehouseStickySection() {
   const stepsRef = useRef<HTMLDivElement[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [dragWidth, setDragWidth] = useState(0);
-
   // detect mobile
   useEffect(() => {
     const update = () => setIsMobile(window.innerWidth < 768);
@@ -46,14 +42,6 @@ export default function WarehouseStickySection() {
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
-
-  useEffect(() => {
-    if (carouselRef.current) {
-      setDragWidth(
-        carouselRef.current.scrollWidth - carouselRef.current.offsetWidth
-      );
-    }
-  }, [carouselRef.current]);
 
   // desktop scroll tracking
   useEffect(() => {
@@ -81,30 +69,6 @@ export default function WarehouseStickySection() {
     return () => window.removeEventListener("scroll", handler);
   }, [isMobile]);
 
-  // drag ending detection
-
-  useEffect(() => {
-    if (!carouselRef.current) return;
-
-    const el = carouselRef.current;
-    setDragWidth(el.scrollWidth - el.offsetWidth);
-  }, [items]);
-
-  const handleDragEnd = (
-    _event: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
-  ) => {
-    const slideWidth = carouselRef.current?.offsetWidth ?? 0;
-
-    if (info.offset.x < -slideWidth / 4 && active < items.length - 1) {
-      setActive((prev) => prev + 1);
-    }
-
-    if (info.offset.x > slideWidth / 4 && active > 0) {
-      setActive((prev) => prev - 1);
-    }
-  };
-
   return (
     <section className="relative w-full bg-[rgba(217,217,217,0.2)]">
       {/* 1400px container */}
@@ -115,7 +79,7 @@ export default function WarehouseStickySection() {
             {items.map((item, i) => (
               <div key={i} className="flex flex-col gap-6">
                 {/* IMAGE */}
-                <div className="w-full h-[320px] rounded-xl overflow-hidden relative bg-white">
+                <div className="w-full h-[400px] rounded-xl overflow-hidden relative bg-white">
                   <motion.div
                     initial={{ opacity: 0.5, scale: 0.96 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -123,13 +87,16 @@ export default function WarehouseStickySection() {
                     transition={{ duration: 0.45 }}
                     className="absolute inset-0"
                   >
-                    <Image
+                    <video
                       src={item.gif}
-                      alt={item.label}
-                      fill
-                      className="object-cover"
-                      unoptimized
-                    />
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                    >
+                      Your browser does not support the video tag.
+                    </video>
 
                     <div
                       className="absolute inset-0 mix-blend-multiply"
@@ -253,12 +220,16 @@ export default function WarehouseStickySection() {
                   transition={{ duration: 0.55 }}
                   className="absolute inset-0"
                 >
-                  <Image
+                  <video
                     src={items[active].gif}
-                    alt="desktop-gif"
-                    fill
-                    className="object-cover"
-                  />
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="absolute inset-0 w-full h-full object-cover"
+                  >
+                    Your browser does not support the video tag.
+                  </video>
                   <div className="absolute inset-0 mix-blend-multiply bg-[rgba(255,124,54,0.75)]" />
                 </motion.div>
               </div>

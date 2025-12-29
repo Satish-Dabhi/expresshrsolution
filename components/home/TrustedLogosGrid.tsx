@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { Fragment } from "react";
 
 const logos = [
   { src: "/images/logos/pfizer.png", alt: "Pfizer" },
@@ -82,7 +83,7 @@ export default function TrustedLogosGrid() {
 
         {/* ----------- MOBILE: 3-column grid with empty-logo-empty per row ----------- */}
         {logos.map((logo, i) => (
-          <>
+          <Fragment key={i}>
             <Card key={`left-${i}`} className="md:hidden" />
             <Card key={`logo-${i}`} hover className="md:hidden relative">
               <div className="relative w-full h-full flex items-center justify-center">
@@ -95,7 +96,7 @@ export default function TrustedLogosGrid() {
               </div>
             </Card>
             <Card key={`right-${i}`} className="md:hidden" />
-          </>
+          </Fragment>
         ))}
       </div>
     </section>
