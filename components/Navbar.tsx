@@ -87,7 +87,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center space-x-2 text-white font-semibold">
           <Image
-            src="/images/logos/footer-logo.png"
+            src="/images/logos/express-logo.png"
             alt="Brand Logo"
             width={150}
             height={150}

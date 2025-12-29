@@ -55,7 +55,7 @@ export default function LogoReveal({
             {/* LOGO + TEXT */}
             <div className="absolute z-50 flex flex-col items-center">
               <Image
-                src="/images/logos/footer-logo.png"
+                src="/images/logos/express-logo.png"
                 alt="Logo"
                 width={150}
                 height={60}

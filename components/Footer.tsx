@@ -19,7 +19,7 @@ export default function Footer() {
         {/* LOGO */}
         <div className="flex justify-start">
           <Image
-            src="/images/logos/footer-logo.png"
+            src="/images/logos/express-logo.png"
             alt="Express HR Solutions"
             width={417}
             height={141}
