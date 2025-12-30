@@ -41,10 +41,10 @@ export default function CoreValues() {
                 visible: { opacity: 1, y: 0 },
               }}
               transition={{ duration: 0.4 }}
-              className="flex items-center text-[15px] md:text-[25px]"
+              className="flex items-center text-[16px] md:text-[25px]"
             >
               {value}
-              {index !== values.length - 1 && <span className="mx-3 text-[15px] md:text-[25px]">·</span>}
+              {index !== values.length - 1 && <span className="mx-3 text-[16px] md:text-[25px]">·</span>}
             </motion.span>
           ))}
         </motion.div>

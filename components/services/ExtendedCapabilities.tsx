@@ -23,7 +23,7 @@ export function ExtendedCapabilities({
       <div className="lg:flex lg:gap-16">
         {/* Left Sticky Title */}
         <div className="hidden lg:block lg:w-2/5 sticky top-24 self-start">
-          <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold pr-4 pt-20">
+          <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold pr-4 pt-20 mb-16">
             {title}
           </h2>
         </div>

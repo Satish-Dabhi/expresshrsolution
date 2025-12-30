@@ -40,7 +40,7 @@ const Card = ({ children, className = "", hover = false }: CardProps) => (
 export default function TrustedLogosGrid() {
   return (
     <section className="relative w-full py-24">
-      <div className="relative z-10  bg-[#F4F4F4] gap-3 md:gap-5 grid grid-cols-3 md:grid-cols-6">
+      <div className="relative z-10  bg-[#ebebeb] gap-2 sm:gap-3 grid grid-cols-3 md:grid-cols-6">
         {/* Top gradient */}
         <div className="pointer-events-none absolute top-0 left-0 w-full h-40 custom-top-gradient z-20" />
         {/* Bottom gradient */}

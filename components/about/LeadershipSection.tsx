@@ -105,14 +105,14 @@ export default function LeadershipSection({ leaders }: Props) {
   const current = leaders[activeIndex];
 
   return (
-    <section className="relative bg-white py-10">
+    <section className="relative bg-white py-10  max-w-[1440px] mx-auto">
       {/* ================= DESKTOP ================= */}
       <div
         ref={containerRef}
         className="relative hidden lg:block"
         style={{ height: `${leaders.length * 100}vh` }}
       >
-        <div className="sticky top-0 h-screen flex">
+        <div className="sticky top-0 flex">
           {/* IMAGE */}
           <div className="w-1/2 h-full flex items-center justify-center px-16">
             <AnimatePresence mode="wait">
@@ -122,7 +122,7 @@ export default function LeadershipSection({ leaders }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-full h-[90vh]"
+                className="w-full h-[775px]"
               >
                 <LeaderImage
                   src={current.image}
@@ -134,7 +134,7 @@ export default function LeadershipSection({ leaders }: Props) {
           </div>
 
           {/* CONTENT */}
-          <div className="w-1/2 h-full p-16">
+          <div className="w-1/2 h-full px-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -142,17 +142,17 @@ export default function LeadershipSection({ leaders }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex flex-col justify-between items-end h-full"
+                className="flex flex-col justify-between h-[775px]"
               >
                 <h2 className="text-[64px] font-semibold tracking-widest mb-10">
-                  Leadership
+                  Founder
                 </h2>
 
                 <h3 className="text-[36px] font-semibold">{current.name}</h3>
 
-                <p className="mt-2 text-[22px]">{current.role}</p>
+                <p className="mt-2 text-[25px]">{current.role}</p>
 
-                <p className="mt-6 text-[20px]">{current.description}</p>
+                <p className="mt-6 text-[25px]">{current.description}</p>
               </motion.div>
             </AnimatePresence>
           </div>
@@ -186,15 +186,18 @@ export default function LeadershipSection({ leaders }: Props) {
 
             {/* CONTENT */}
             <div className="text-center max-w-md">
-              <h3 className="text-xl font-semibold">{current.name}</h3>
-              <p className="text-sm text-gray-500 mt-1">{current.role}</p>
-              <p className="mt-4 text-gray-600">{current.description}</p>
+              <h2 className="text-[32px] font-semibold tracking-widest mb-6">
+                Founder
+              </h2>
+              <h3 className="text-[28px] font-semibold">{current.name}</h3>
+              <p className="text-[22px] text-gray-500 mt-1">{current.role}</p>
+              <p className="mt-4 text-[22px] text-gray-600">{current.description}</p>
             </div>
           </motion.div>
         </AnimatePresence>
 
         {/* DOTS */}
-        <div className="flex justify-center gap-2 mt-6">
+        {/* <div className="flex justify-center gap-2 mt-6">
           {leaders.map((_, i) => (
             <button
               key={i}
@@ -214,7 +217,7 @@ export default function LeadershipSection({ leaders }: Props) {
               )}
             </button>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );

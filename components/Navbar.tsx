@@ -29,11 +29,11 @@ const Navbar = () => {
 
   const navLinks: NavLink[] = [
     { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
     {
       name: "Services",
       href: "/services",
     },
-    { name: "About", href: "/about" },
     { name: "Industries", href: "/industries" },
     { name: "Contact Us", href: "/contact-us" },
     { name: "Careers", href: "/careers" },

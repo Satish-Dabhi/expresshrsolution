@@ -168,7 +168,7 @@ export default function GridTypewriter({
                 {typedDesc.map((para, i) => (
                   <p
                     key={i}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed"
+                    className="text-[16px] sm:text-[20px] md:text-[25px] leading-relaxed"
                   >
                     {para}
                     {headingDone &&
@@ -187,14 +187,14 @@ export default function GridTypewriter({
                 {button.href ? (
                   <a
                     href={button.href}
-                    className="inline-block px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#F4F4F4] text-white hover:scale-105 transition-transform"
+                    className="inline-block px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </a>
                 ) : (
                   <button
                     onClick={button.onClick}
-                    className="px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#F4F4F4] text-white hover:scale-105 transition-transform"
+                    className="px-8 py-3 text-[20px] sm:text-[28px] md:text-[36px] font-semibold rounded-lg bg-[#EF7F1B] text-white hover:scale-105 transition-transform"
                   >
                     {button.label}
                   </button>
