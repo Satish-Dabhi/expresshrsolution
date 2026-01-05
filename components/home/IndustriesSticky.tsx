@@ -165,13 +165,13 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                 {items.map((item, i) => (
                   <div
                     key={i}
-                    className="bg-orange-500/90 border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8 flex flex-col justify-between"
+                    className="bg-white border border-neutral-200 shadow-sm rounded-xl flex-shrink-0 p-8 flex flex-col"
                     style={{
                       width: "clamp(240px, 80vw, 480px)",
                       height: "clamp(260px, 60vw, 520px)",
                     }}
                   >
-                    <div className="w-15 h-15 relative">
+                    <div className="w-[67px] h-[67px] relative mb-20">
                       {item.icon && (
                         <Image
                           src={item.icon}
@@ -187,7 +187,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                         style={{
                           fontFamily: "Instrument Sans",
                           fontWeight: 600,
-                          fontSize: "clamp(26px, 5vw, 40px)",
+                          fontSize: "clamp(26px, 5vw, 48px)",
                         }}
                       >
                         {item.title}
@@ -207,7 +207,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                             className="text-black/70 flex items-start gap-2"
                             style={{
                               fontFamily: "Instrument Sans",
-                              fontSize: "clamp(14px, 3vw, 18px)",
+                              fontSize: "clamp(14px, 3vw, 20px)",
                             }}
                           >
                             <span className="text-neutral-400 text-xl leading-none">

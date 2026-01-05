@@ -1,3 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Instagram, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -37,13 +41,52 @@ export default function Footer() {
 
             <ul className="space-y-4 text-gray-500 text-[18px] md:text-[24px] font-[Instrument_Sans]">
               <li>+91 99673 26161</li>
+
               <li>
                 <Link
                   href="mailto:info@expresshrsolutions.com"
-                  className="hover:text-gray-700"
+                  className="hover:text-gray-700 transition-colors"
                 >
                   info@expresshrsolutions.com
                 </Link>
+              </li>
+
+              {/* SOCIAL ICONS */}
+              <li>
+                <div className="flex items-center gap-5 pt-2">
+                  <motion.a
+                    href="https://www.linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-500 hover:text-gray-800 transition-colors"
+                  >
+                    <Linkedin className="w-6 h-6 md:w-7 md:h-7" />
+                  </motion.a>
+
+                  <motion.a
+                    href="https://www.instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-500 hover:text-gray-800 transition-colors"
+                  >
+                    <Instagram className="w-6 h-6 md:w-7 md:h-7" />
+                  </motion.a>
+
+                  <motion.a
+                    href="https://twitter.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-500 hover:text-gray-800 transition-colors"
+                  >
+                    <Twitter className="w-6 h-6 md:w-7 md:h-7" />
+                  </motion.a>
+                </div>
               </li>
             </ul>
           </div>

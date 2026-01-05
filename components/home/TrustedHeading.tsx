@@ -26,7 +26,7 @@ export default function TrustedHeading() {
     }, [isInView]);
 
     return (
-        <section ref={ref} className="w-full text-center py-12 md:py-16">
+        <section ref={ref} className="w-full text-center py-12 md:py-[160px]">
             {/* <motion.p
                 className="text-gray-400"
                 style={{
@@ -43,13 +43,12 @@ export default function TrustedHeading() {
             </motion.p> */}
 
             <h2
-                className="text-black"
+                className="text-black text-[32px] md:text-[48px] lg:text-[64px] "
                 style={{
                     fontFamily: "Instrument Sans",
                     fontWeight: 600,
-                    fontSize: "clamp(32px, 4vw, 52px)",
                     lineHeight: "1.15",
-                    maxWidth: "900px",
+                    maxWidth: "1100px",
                     margin: "0 auto",
                 }}
             >

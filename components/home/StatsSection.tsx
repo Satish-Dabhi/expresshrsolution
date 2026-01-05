@@ -52,14 +52,15 @@ function CounterTS({
 
 export default function StatsSection() {
   return (
-    <section className="w-full px-6 md:px-20 py-24 flex justify-center">
-      <div className="max-w-6xl flex flex-col items-center text-center">
+    <section className="w-full px-6 md:px-20 py-24 flex justify-center row">
+<div className="hidden md:block md:w-1/4"></div>
+      <div className="max-w-6xl flex flex-col w-full md:w-3/4">
         <h2 className="font-[Instrument Sans] font-semibold text-[32px] md:text-[48px] leading-[1.1] text-black">
           Make data driven decisions with real time insights. We take complete
           ownership of manpower operations, compliance, and payroll management
         </h2>
 
-        <p className="font-[Instrument Sans] text-[16px] md:text-[20px] text-[#A8A8A8] leading-6 mt-6 max-w-2xl">
+        <p className="font-[Instrument Sans] text-[16px] md:text-[20px] text-[#A8A8A8] leading-6 mt-6">
           Our live attendance and efficiency insights give you control without
           daily involvement.
         </p>

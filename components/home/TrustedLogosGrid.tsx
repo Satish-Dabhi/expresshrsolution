@@ -5,10 +5,10 @@ import Image from "next/image";
 import { Fragment } from "react";
 
 const logos = [
-  { src: "/images/logos/pfizer.png", alt: "Pfizer" },
-  { src: "/images/logos/abbott.png", alt: "Abbott" },
-  { src: "/images/logos/reliance.png", alt: "Reliance" },
-  { src: "/images/logos/samsung.png", alt: "Samsung" },
+  { src: "/images/logos/reliance-logo.png", alt: "Reliance" },
+  { src: "/images/logos/aditya-birla-group.png", alt: "Aditya Birla" },
+  { src: "/images/logos/Gati.png", alt: "Gati" },
+  { src: "/images/logos/Godrej.png", alt: "Godrej & Boyce" },
 ];
 
 interface CardProps {
@@ -20,7 +20,7 @@ interface CardProps {
 const Card = ({ children, className = "", hover = false }: CardProps) => (
   <div
     className={cn(
-      `
+      `bg-white
       h-[120px] md:h-[160px]
       rounded-xl bg-white
       border border-gray-100
@@ -40,7 +40,7 @@ const Card = ({ children, className = "", hover = false }: CardProps) => (
 export default function TrustedLogosGrid() {
   return (
     <section className="relative w-full py-24">
-      <div className="relative z-10  bg-[#ebebeb] gap-2 sm:gap-3 grid grid-cols-3 md:grid-cols-6">
+      <div className="relative z-10  bg-[#ebebeb] gap-1 sm:gap-1 grid grid-cols-3 md:grid-cols-6">
         {/* Top gradient */}
         <div className="pointer-events-none absolute top-0 left-0 w-full h-40 custom-top-gradient z-20" />
         {/* Bottom gradient */}

@@ -15,11 +15,10 @@ export default function StatementSection({
 
         {/* LEFT — HEADING */}
         <h2
-          className="text-black"
+          className="text-black text-[32px] md:text-[48px] lg:text-[64px] "
           style={{
             fontFamily: 'Instrument Sans',
             fontWeight: 600,
-            fontSize: 'clamp(32px, 5vw, 60px)', // perfect at all screen sizes
             lineHeight: '1.05',
             maxWidth: '560px',
           }}

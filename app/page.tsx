@@ -9,11 +9,22 @@ import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
+import InfiniteLogoMarquee from "@/components/home/InfiniteLogoMarquee";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
   description: "Welcome to Express HR Solution. We provide the best services.",
 };
+
+const logos = [
+  "/images/logos/ACG_Logo.jpg",
+  "/images/logos/bestseller.png",
+  "/images/logos/Gati.png",
+  "/images/logos/runaya.jpg",
+  "/images/logos/Vedanta.png",
+  "/images/logos/Godrej.png",
+  "/images/logos/aditya-birla-group.png",
+];
 
 export default function Home() {
   return (
@@ -28,7 +39,7 @@ export default function Home() {
       />
 
       {/* CONTAINER SECTIONS */}
-      <div className="mx-auto w-full max-w-[1400px]">
+      <div className="mx-auto w-full max-w-[1400px] my-[60px] md:my-[184px] ">
         <StatementSection
           title={`From warehouses\nto workforces`}
           description="Express HR Solutions delivers execution excellence backed by compliant governance and on-ground productivity."
@@ -37,7 +48,10 @@ export default function Home() {
 
       {/* FULL WIDTH SECTIONS */}
       <WarehouseStickySection />
-      <CurvedDivider />
+
+      <div className="my-[107px]">
+        <CurvedDivider />
+      </div>
 
       {/* FULL WIDTH */}
       <IndustriesSticky
@@ -107,8 +121,8 @@ export default function Home() {
       <AnimatedImageSection
         image="/images/box.jpg"
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
-        subtitle="Ankit Ahuja, XYZ Co."
-          titleSpeed={100}
+        subtitle="- Ankit Ahuja, XYZ Co."
+        titleSpeed={100}
       />
 
       {/* CONTAINER */}
@@ -117,6 +131,9 @@ export default function Home() {
       </div>
 
       <TrustedLogosGrid />
+
+      <InfiniteLogoMarquee logos={logos} speed={40} />
+
 
       {/* FULL WIDTH IMAGE */}
       <Image

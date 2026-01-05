@@ -25,62 +25,88 @@ export default function AnimatedImageSection({
   const [typedTitle, setTypedTitle] = useState("");
   const [typedSubtitle, setTypedSubtitle] = useState("");
   const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const delay = Number(animationDelay) / 1000;
 
+  /* ----------------------------------------
+     IMAGE / MASK ANIMATION (UNCHANGED)
+  ---------------------------------------- */
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setShouldAnimate(true);
-          observer.disconnect(); // stop observing after triggered
+          observer.disconnect();
         }
       },
-      { threshold: 0.4 } // triggers when 40% of section is visible
+      { threshold: 0.4 }
     );
 
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
   }, []);
 
+  /* ----------------------------------------
+     USER SCROLL DETECTION (TEXT ONLY)
+  ---------------------------------------- */
+useEffect(() => {
+  const onUserScroll = (e: Event) => {
+    // only real user interactions
+    if (!e.isTrusted) return;
+
+    setHasScrolled(true);
+
+    window.removeEventListener("wheel", onUserScroll);
+    window.removeEventListener("touchmove", onUserScroll);
+    window.removeEventListener("keydown", onUserScroll);
+  };
+
+  window.addEventListener("wheel", onUserScroll, { passive: true });
+  window.addEventListener("touchmove", onUserScroll, { passive: true });
+  window.addEventListener("keydown", onUserScroll);
+
+  return () => {
+    window.removeEventListener("wheel", onUserScroll);
+    window.removeEventListener("touchmove", onUserScroll);
+    window.removeEventListener("keydown", onUserScroll);
+  };
+}, []);
+
+
+  /* ----------------------------------------
+     TYPEWRITER EFFECT (ON SCROLL)
+  ---------------------------------------- */
   useEffect(() => {
-    if (!shouldAnimate) return;
+    if (!shouldAnimate || !hasScrolled) return;
 
     let i = 0;
     const titleInterval = setInterval(() => {
-      setTypedTitle(title.slice(0, i));
+      setTypedTitle(title.slice(0, i + 1));
       i++;
-      if (i > title.length) {
+
+      if (i === title.length) {
         clearInterval(titleInterval);
 
         if (subtitle) {
           let j = 0;
           const subtitleInterval = setInterval(() => {
-            setTypedSubtitle(subtitle.slice(0, j));
+            setTypedSubtitle(subtitle.slice(0, j + 1));
             j++;
-            if (j > subtitle.length) {
-              clearInterval(subtitleInterval);
-            }
+            if (j === subtitle.length) clearInterval(subtitleInterval);
           }, titleSpeed);
         }
       }
     }, titleSpeed);
 
     return () => clearInterval(titleInterval);
-  }, [shouldAnimate, title, subtitle, titleSpeed]);
+  }, [shouldAnimate, hasScrolled, title, subtitle, titleSpeed]);
 
-  useEffect(() => {
-    if (!shouldAnimate) return;
-
-    const timer = setTimeout(() => {
-      controls.start("animate");
-    }, Number(animationDelay));
-
-    return () => clearTimeout(timer);
-  }, [shouldAnimate, controls]);
-
+  /* ----------------------------------------
+     FRAMER MOTION VARIANTS (UNCHANGED)
+  ---------------------------------------- */
   const imageVariants = {
     initial: { clipPath: "inset(41% 0 36% 0 round 25px)" },
     animate: { clipPath: "inset(0% 0% 0% 0% round 0px)" },
@@ -119,11 +145,7 @@ export default function AnimatedImageSection({
             delay,
             ease: [0.77, 0, 0.175, 1],
           }}
-          style={{
-            position: "absolute",
-            left: 0,
-            zIndex: 2,
-          }}
+          style={{ position: "absolute", left: 0, zIndex: 2 }}
         >
           <svg width="100%" viewBox="0 0 605 153" fill="none">
             <path
@@ -149,11 +171,7 @@ export default function AnimatedImageSection({
             delay,
             ease: [0.77, 0, 0.175, 1],
           }}
-          style={{
-            position: "absolute",
-            right: 0,
-            zIndex: 2,
-          }}
+          style={{ position: "absolute", right: 0, zIndex: 2 }}
         >
           <svg width="100%" viewBox="0 0 893 183" fill="none">
             <path
@@ -185,20 +203,19 @@ export default function AnimatedImageSection({
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             display: "flex",
-            flexDirection: "column", // <-- add this line
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
             textAlign: "center",
             padding: "0 50px",
           }}
         >
-          {/* <div className="w-full flex justify-center"> */}
           <h1
             className="
-                text-white font-semibold leading-none
-                text-[64px]
-                max-[1199px]:text-[48px]
-              "
+              text-white font-semibold leading-none
+              text-[64px]
+              max-[1199px]:text-[48px]
+            "
             style={{ marginTop: titleMarginTop }}
           >
             {typedTitle}
@@ -209,7 +226,6 @@ export default function AnimatedImageSection({
               {typedSubtitle}
             </p>
           )}
-          {/* </div> */}
         </motion.div>
       </div>
     </section>

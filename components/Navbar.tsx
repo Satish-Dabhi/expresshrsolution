@@ -78,7 +78,7 @@ const Navbar = () => {
     fixed left-1/2 -translate-x-1/2 z-50
     mt-20 w-[70%] py-4
     transition-all duration-300
-    bg-[rgba(75,75,75,0.5)]
+    bg-[rgba(75,75,75,0.2)]
     border border-white/10
     rounded-2xl
   "
