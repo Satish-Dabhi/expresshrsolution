@@ -177,21 +177,23 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                           src={item.icon}
                           alt={item.title}
                           fill
-                          className="w-full h-full object-contain"
+                          className="w-full h-full object-contain filter hue-rotate-30 saturate-150"
                         />
                       )}
                     </div>
                     <div>
-                      <h3
-                        className="text-black mb-4"
-                        style={{
-                          fontFamily: "Instrument Sans",
-                          fontWeight: 600,
-                          fontSize: "clamp(26px, 5vw, 48px)",
-                        }}
-                      >
-                        {item.title}
-                      </h3>
+                      <div className="flex flex-col justify-end h-[10rem] mb-4">
+                        <h3
+                          className="text-black"
+                          style={{
+                            fontFamily: "Instrument Sans",
+                            fontWeight: 600,
+                            fontSize: "clamp(26px, 5vw, 48px)",
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+                      </div>
 
                       <div className="flex flex-col gap-1">
                         {item.points.map((line, i) => (

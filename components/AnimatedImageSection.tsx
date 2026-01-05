@@ -13,6 +13,8 @@ interface AnimatedImageSectionProps {
   height?: string;
 }
 
+
+
 export default function AnimatedImageSection({
   image,
   title,
@@ -30,6 +32,41 @@ export default function AnimatedImageSection({
   const ref = useRef<HTMLDivElement>(null);
   const controls = useAnimation();
   const delay = Number(animationDelay) / 1000;
+
+  const renderAnimatedText = (text: string, delayStart = 0) => {
+    // Split text into words
+    const words = text.split(" ");
+
+    return (
+      <h1
+        className="
+        text-white font-semibold leading-tight
+        text-[64px] max-[1199px]:text-[48px] max-[767px]:text-[32px]
+        w-full text-center
+        whitespace-normal
+      "
+      >
+        {words.map((word, index) => (
+          <motion.span
+  key={index}
+  className="inline-block mr-[8px]"
+  initial={{ opacity: 0, y: 20 }}
+  animate={shouldAnimate && hasScrolled ? { opacity: 1, y: 0 } : {}}
+  transition={{
+    duration: 1.4,
+    delay: delayStart + Math.sin(index / words.length * Math.PI) * 0.7, // wave effect
+    ease: "easeOut",
+  }}
+>
+  {word}
+</motion.span>
+
+
+        ))}
+      </h1>
+    );
+  };
+
 
   /* ----------------------------------------
      IMAGE / MASK ANIMATION (UNCHANGED)
@@ -52,57 +89,64 @@ export default function AnimatedImageSection({
   /* ----------------------------------------
      USER SCROLL DETECTION (TEXT ONLY)
   ---------------------------------------- */
-useEffect(() => {
-  const onUserScroll = (e: Event) => {
-    // only real user interactions
-    if (!e.isTrusted) return;
+  useEffect(() => {
+    const onUserScroll = (e: Event) => {
+      // only real user interactions
+      if (!e.isTrusted) return;
 
-    setHasScrolled(true);
+      setHasScrolled(true);
 
-    window.removeEventListener("wheel", onUserScroll);
-    window.removeEventListener("touchmove", onUserScroll);
-    window.removeEventListener("keydown", onUserScroll);
-  };
+      window.removeEventListener("wheel", onUserScroll);
+      window.removeEventListener("touchmove", onUserScroll);
+      window.removeEventListener("keydown", onUserScroll);
+    };
 
-  window.addEventListener("wheel", onUserScroll, { passive: true });
-  window.addEventListener("touchmove", onUserScroll, { passive: true });
-  window.addEventListener("keydown", onUserScroll);
+    window.addEventListener("wheel", onUserScroll, { passive: true });
+    window.addEventListener("touchmove", onUserScroll, { passive: true });
+    window.addEventListener("keydown", onUserScroll);
 
-  return () => {
-    window.removeEventListener("wheel", onUserScroll);
-    window.removeEventListener("touchmove", onUserScroll);
-    window.removeEventListener("keydown", onUserScroll);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("wheel", onUserScroll);
+      window.removeEventListener("touchmove", onUserScroll);
+      window.removeEventListener("keydown", onUserScroll);
+    };
+  }, []);
 
 
   /* ----------------------------------------
      TYPEWRITER EFFECT (ON SCROLL)
   ---------------------------------------- */
-  useEffect(() => {
-    if (!shouldAnimate || !hasScrolled) return;
+  // useEffect(() => {
+  //   if (!shouldAnimate || !hasScrolled) return;
 
-    let i = 0;
-    const titleInterval = setInterval(() => {
-      setTypedTitle(title.slice(0, i + 1));
-      i++;
+  //   let titleIndex = 0;
+  //   let subtitleIndex = 0;
+  //   let lastTime = 0;
 
-      if (i === title.length) {
-        clearInterval(titleInterval);
+  //   const step = (timestamp: number) => {
+  //     if (!lastTime) lastTime = timestamp;
+  //     const delta = timestamp - lastTime;
 
-        if (subtitle) {
-          let j = 0;
-          const subtitleInterval = setInterval(() => {
-            setTypedSubtitle(subtitle.slice(0, j + 1));
-            j++;
-            if (j === subtitle.length) clearInterval(subtitleInterval);
-          }, titleSpeed);
-        }
-      }
-    }, titleSpeed);
+  //     // control speed by titleSpeed (ms per character)
+  //     if (delta >= titleSpeed) {
+  //       if (titleIndex < title.length) {
+  //         setTypedTitle(title.slice(0, titleIndex + 1));
+  //         titleIndex++;
+  //       } else if (subtitle && subtitleIndex < subtitle.length) {
+  //         setTypedSubtitle(subtitle.slice(0, subtitleIndex + 1));
+  //         subtitleIndex++;
+  //       }
+  //       lastTime = timestamp;
+  //     }
 
-    return () => clearInterval(titleInterval);
-  }, [shouldAnimate, hasScrolled, title, subtitle, titleSpeed]);
+  //     if (titleIndex < title.length || (subtitle && subtitleIndex < subtitle.length)) {
+  //       requestAnimationFrame(step);
+  //     }
+  //   };
+
+  //   requestAnimationFrame(step);
+  // }, [shouldAnimate, hasScrolled, title, subtitle, titleSpeed]);
+
 
   /* ----------------------------------------
      FRAMER MOTION VARIANTS (UNCHANGED)
@@ -210,23 +254,32 @@ useEffect(() => {
             padding: "0 50px",
           }}
         >
-          <h1
-            className="
-              text-white font-semibold leading-none
-              text-[64px]
-              max-[1199px]:text-[48px]
-            "
-            style={{ marginTop: titleMarginTop }}
-          >
-            {typedTitle}
-          </h1>
+          {/* Smooth animated title */}
+          <div style={{ marginTop: titleMarginTop }}>
+            {renderAnimatedText(title)}
+          </div>
 
+          {/* Smooth animated subtitle */}
           {subtitle && (
             <p className="mt-[50px] text-[24px] font-semibold text-[#A8A8A8] leading-none">
-              {typedSubtitle}
+              {subtitle.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={shouldAnimate && hasScrolled ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: 0.3,
+                    delay: 0.5 + index * 0.02, // start after title
+                    ease: [0.77, 0, 0.175, 1],
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
             </p>
           )}
         </motion.div>
+
       </div>
     </section>
   );
