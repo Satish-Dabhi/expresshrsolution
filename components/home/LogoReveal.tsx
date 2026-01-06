@@ -4,30 +4,39 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-/**
- * The brand logo appears in an opening splash sequence
- * and smoothly transitions into the homepage.
- */
 export default function LogoReveal({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [text, setText] = useState("");
   const [showSplash, setShowSplash] = useState(true);
-  const [expandLogo, setExpandLogo] = useState(false);
+  const [expandSquare, setExpandSquare] = useState(false);
+
+  const fullText = "EXPRESS HR SOLUTIONS";
 
   useEffect(() => {
+    let i = 0;
+    const typer = setInterval(() => {
+      setText(fullText.slice(0, i + 1));
+      i++;
+      if (i === fullText.length) clearInterval(typer);
+    }, 55);
+
     const timers = [
-      setTimeout(() => setExpandLogo(true), 800),
-      setTimeout(() => setShowSplash(false), 1600),
+      setTimeout(() => setExpandSquare(true), 1200),
+      setTimeout(() => setShowSplash(false), 2500),
     ];
 
-    return () => timers.forEach(clearTimeout);
+    return () => {
+      clearInterval(typer);
+      timers.forEach(clearTimeout);
+    };
   }, []);
 
   return (
     <>
-      {/* NORMAL APP FLOW */}
+      {/* NORMAL APP FLOW — NEVER BROKEN */}
       <div>{children}</div>
 
       {/* SPLASH OVERLAY */}
@@ -36,27 +45,41 @@ export default function LogoReveal({
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 z-50 bg-white flex items-center justify-center"
+            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="
+              fixed inset-0 z-50
+              bg-white
+              flex items-center justify-center
+            "
           >
-            {/* EXPANDING LOGO */}
-            <motion.div
-              initial={{ scale: 1 }}
-              animate={expandLogo ? { scale: 35 } : { scale: 1 }}
-              transition={{
-                duration: 1.8,
-                ease: [0.76, 0, 0.24, 1],
-              }}
-              className="relative"
-            >
+            {/* LOGO + TEXT */}
+            <div className="absolute z-50 flex flex-col items-center">
               <Image
                 src="/images/logos/express-logo.png"
                 alt="Logo"
                 width={150}
                 height={60}
-                priority
               />
-            </motion.div>
+              {/* <p className="mt-4 text-black text-lg tracking-wide font-medium">
+                {text}
+              </p> */}
+            </div>
+
+            {/* EXPANDING SQUARE */}
+            <motion.div
+              initial={{ scale: 1.2 }}
+              animate={expandSquare ? { scale: 50 } : { scale: 1.2 }}
+              transition={{
+                duration: 4,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+              className="
+                absolute
+                w-[145px]
+                h-[50px]
+                bg-gray-400/10
+              "
+            />
           </motion.div>
         )}
       </AnimatePresence>

@@ -7,13 +7,13 @@ const items = [
   {
     label: "WAREHOUSE",
     title: ["Inventory accuracy,", "pallet movement,", "dock coordination"],
-    gif: "/videos/home/WAREHOUSE.mp4",
+    gif: "/videos/home/warehouse-new.mp4",
     color: "orange",
   },
   {
     label: "WORKFORCE",
     title: ["Skilled deployment", "across 3PL/4PL", "environments"],
-    gif: "/videos/home/WORKFORCE.mp4",
+    gif: "/videos/home/workforce-new.mp4",
     color: "orange",
   },
   {
