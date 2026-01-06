@@ -121,7 +121,7 @@ export default function Home() {
       <AnimatedImageSection
         image="/images/box.jpg"
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
-        subtitle="- Ankit Ahuja, XYZ Co."
+        subtitle="Ankit Ahuja, XYZ Co."
         titleSpeed={100}
         // title="Building India’s Most Reliable Workforce-Driven Logistics Ecosystem"
       />
