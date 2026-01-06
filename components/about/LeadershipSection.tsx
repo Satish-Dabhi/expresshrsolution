@@ -142,9 +142,9 @@ export default function LeadershipSection({ leaders }: Props) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -40 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex flex-col justify-between h-[775px]"
+                className="flex flex-col h-[775px]"
               >
-                <h2 className="text-[64px] font-semibold tracking-widest mb-10">
+                <h2 className="text-[64px] font-semibold tracking-widest mb-10" style={{ lineHeight: '64px' }}>
                   Founder
                 </h2>
 

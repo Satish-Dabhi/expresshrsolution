@@ -189,15 +189,16 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                             fontFamily: "Instrument Sans",
                             fontWeight: 600,
                             fontSize: "clamp(26px, 5vw, 48px)",
+                            lineHeight: '48px'
                           }}
                         >
                           {item.title}
                         </h3>
                       </div>
 
-                      <div className="flex flex-col gap-1">
+                      <ul className="flex flex-col gap-1 list-disc pl-5">
                         {item.points.map((line, i) => (
-                          <motion.p
+                          <motion.li
                             key={i}
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -206,19 +207,17 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                               delay: i * 0.25,
                               ease: "easeOut",
                             }}
-                            className="text-black/70 flex items-start gap-2"
+                            className="text-black/70 marker:text-neutral-400"
                             style={{
                               fontFamily: "Instrument Sans",
                               fontSize: "clamp(14px, 3vw, 20px)",
                             }}
                           >
-                            <span className="text-neutral-400 text-xl leading-none">
-                              •
-                            </span>
-                            <span>{line}</span>
-                          </motion.p>
+                            {line}
+                          </motion.li>
                         ))}
-                      </div>
+                      </ul>
+
                     </div>
                   </div>
                 ))}

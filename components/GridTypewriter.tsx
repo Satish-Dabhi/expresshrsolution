@@ -120,7 +120,7 @@ export default function GridTypewriter({
 
   return (
     <section className="relative w-full mb-24 bg-[#ebebeb] overflow-hidden">
-      <div className="relative mx-auto px-3 sm:px-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
+      <div className="relative mx-auto px-3 sm:px-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-1">
         {/* Background overlays */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#F4F4F4]/5 via-transparent to-black/5 pointer-events-none z-0" />
         <div className="absolute inset-0 grid-line-shimmer-section pointer-events-none z-0" />

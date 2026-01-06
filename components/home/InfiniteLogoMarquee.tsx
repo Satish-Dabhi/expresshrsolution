@@ -36,7 +36,7 @@ export default function InfiniteLogoMarquee({
             <img
               src={logo}
               alt={`logo-${index}`}
-              className="object-contain w-full h-16 md:h-20"
+              className="object-contain w-full h-16 md:h-20 grayscale"
             />
           </div>
         ))}

@@ -29,7 +29,7 @@ const Card = ({ children, className = "", hover = false }: CardProps) => (
       transition-all duration-300
     `,
       hover &&
-        "hover:border-orange-400 hover:shadow-[0_0_20px_rgba(255,156,0,0.25)] hover:scale-[1.03]",
+      "hover:border-orange-400 hover:shadow-[0_0_20px_rgba(255,156,0,0.25)] hover:scale-[1.03]",
       className
     )}
   >
@@ -67,7 +67,7 @@ export default function TrustedLogosGrid() {
                 src={logo.src}
                 alt={logo.alt}
                 fill
-                className="object-contain p-4"
+                className="object-contain p-4 grayscale"
               />
             </div>
           </Card>
