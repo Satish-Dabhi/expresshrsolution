@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useAnimation } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 interface AnimatedImageSectionProps {
@@ -11,6 +12,8 @@ interface AnimatedImageSectionProps {
   titleMarginTop?: string;
   animationDelay?: number;
   height?: string;
+  linkBelowTitle?: string;       // URL
+  linkTextBelowTitle?: string;   // Display text
 }
 
 
@@ -23,6 +26,8 @@ export default function AnimatedImageSection({
   height = "1023px",
   titleMarginTop = "0",
   animationDelay = 0,
+  linkBelowTitle,
+  linkTextBelowTitle
 }: AnimatedImageSectionProps) {
   const [typedTitle, setTypedTitle] = useState("");
   const [typedSubtitle, setTypedSubtitle] = useState("");
@@ -277,6 +282,23 @@ export default function AnimatedImageSection({
               ))}
             </p>
           )}
+
+          {linkBelowTitle && linkTextBelowTitle && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={shouldAnimate && hasScrolled ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 1, delay: 1 }}
+              className="mt-6 inline-block"
+            >
+              <Link
+                href={linkBelowTitle}
+                className="text-white font-bold text-lg underline"
+              >
+                {linkTextBelowTitle}
+              </Link>
+            </motion.div>
+          )}
+
         </motion.div>
 
       </div>

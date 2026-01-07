@@ -105,7 +105,7 @@ export default function GridTypewriter({
   return (
     <section
       ref={ref}
-      className="relative w-full mb-24 bg-[#ebebeb] overflow-hidden"
+      className="relative w-full mb-24 bg-[#d9d9d945] overflow-hidden"
     >
       <div className="relative mx-auto px-3 sm:px-6 grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-1">
         {/* Background overlays */}
@@ -117,7 +117,7 @@ export default function GridTypewriter({
           <Card
             key={i}
             className={cn(
-              "aspect-square sm:aspect-[1.2] lg:aspect-[1.5]",
+              "aspect-square sm:aspect-[1.2] lg:aspect-[216px]",
               i >= 9 ? "hidden sm:block" : ""
             )}
             style={{ animationDelay: `${i * 150}ms` }}
@@ -170,7 +170,7 @@ export default function GridTypewriter({
 
             {/* DESCRIPTION */}
             {desc && (
-              <div className="mt-6 max-w-5xl mx-auto space-y-4 sm:space-y-6">
+              <div className="mt-6 max-w-6xl mx-auto space-y-4 sm:space-y-6">
                 {descParas.map((para, i) => (
                   <motion.p
                     key={i}

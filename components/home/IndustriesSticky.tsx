@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, PanInfo, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import StatementSection from "./StatementSection";
+import Link from "next/link";
 
 interface IndustryItem {
   title: string;
@@ -135,27 +136,42 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
           >
             {/* LEFT IMAGE → DESKTOP ONLY */}
             <div
-              className="hidden md:block relative rounded-xl overflow-hidden shrink-0"
+              className="hidden md:block relative rounded-xl overflow-hidden shrink-0 group cursor-pointer"
               style={{
                 width: "clamp(240px, 80vw, 480px)",
                 height: "clamp(260px, 60vw, 520px)",
               }}
             >
+              {/* Image */}
               <motion.div
-                // key={activeIndex}
                 initial={{ opacity: 0, scale: 1.03 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="absolute inset-0"
+                className="absolute inset-0 pointer-events-none"
               >
                 <Image
-                  // src={items[activeIndex].image} //dynamic
-                  src={"/images/industries.png"} //static
-                  alt="Active"
+                  src="/images/industries.png"
+                  alt="Industries"
                   fill
                   className="object-cover"
+                  priority
                 />
               </motion.div>
+
+              {/* Overlay */}
+              <Link
+                href="/industries"
+                className="absolute inset-0 flex items-center justify-center z-10"
+              >
+                <div
+                  className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100
+                 flex items-center justify-center transition-opacity duration-300"
+                >
+                  <span className="text-white text-xl font-semibold tracking-wide">
+                    View more
+                  </span>
+                </div>
+              </Link>
             </div>
 
             {/* DESKTOP RIGHT SCROLL-BASED CARDS */}
@@ -196,7 +212,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                         </h3>
                       </div>
 
-                      <ul className="flex flex-col list-disc pl-5">
+                      <ul className="flex flex-col list-disc pl-5 mr-0 md:mr-15">
                         {item.points.map((line, i) => (
                           <motion.li
                             key={i}

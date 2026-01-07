@@ -19,11 +19,8 @@ export const metadata: Metadata = {
 const logos = [
   "/images/logos/ACG_Logo.jpg",
   "/images/logos/bestseller.png",
-  "/images/logos/Gati.png",
   "/images/logos/runaya.jpg",
   "/images/logos/Vedanta.png",
-  "/images/logos/Godrej.png",
-  "/images/logos/aditya-birla-group.png",
 ];
 
 export default function Home() {
@@ -36,6 +33,8 @@ export default function Home() {
         // height="900px"
         titleMarginTop="10rem"
         animationDelay={2000}
+        linkBelowTitle="/about"
+        linkTextBelowTitle="About us"
       />
 
       {/* CONTAINER SECTIONS */}
@@ -123,7 +122,7 @@ export default function Home() {
         title='"Express HR Solutions turned finance from a bottleneck into a partner"'
         subtitle="Ankit Ahuja, XYZ Co."
         titleSpeed={100}
-        // title="Building India’s Most Reliable Workforce-Driven Logistics Ecosystem"
+      // title="Building India’s Most Reliable Workforce-Driven Logistics Ecosystem"
       />
 
       {/* CONTAINER */}
@@ -133,7 +132,7 @@ export default function Home() {
 
       <TrustedLogosGrid />
 
-      <InfiniteLogoMarquee logos={logos} speed={1} />
+      <InfiniteLogoMarquee logos={logos} speed={100} />
 
 
       {/* FULL WIDTH IMAGE */}
