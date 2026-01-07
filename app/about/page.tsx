@@ -30,9 +30,9 @@ const leaders: Leader[] = [
   {
     id: 1,
     name: "Rahul Das",
-    role: "Director (Operations)",
+    role: "Director, Operations",
     description:
-      "Driving large-scale execution, warehouse performance, & workforce systems.",
+      "Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision. His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.",
     image: "/images/leaders/rahul-das.png",
   },
   // {

@@ -76,21 +76,21 @@ const Navbar = () => {
     <nav
       className="
     fixed left-1/2 -translate-x-1/2 z-50
-    mt-20 w-[70%] py-4
+    mt-20 w-[70%] md:w-[50%] py-[9px]
     transition-all duration-300
     bg-[rgba(75,75,75,0.2)]
     border border-white/10
-    rounded-2xl
+    rounded-[9px]
   "
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="px-[9px] flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2 text-white font-semibold">
           <Image
             src="/images/logos/express-hr-logo.png"
             alt="Brand Logo"
-            width={150}
-            height={150}
+            width={131}
+            height={44}
             priority
             className="drop-shadow-2xl"
           />
@@ -106,7 +106,7 @@ const Navbar = () => {
                     {/* Link text - navigates */}
                     <Link
                       href={link.href}
-                      className={`transition-all duration-300 transform ${
+                      className={`transition-all duration-300 transform text-[13px] ${
                         pathname.startsWith(link.href)
                           ? "text-primary scale-110 -translate-y-0.5"
                           : "hover:text-primary"
@@ -162,7 +162,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className={`transition-all duration-300 transform ${
+                  className={`transition-all duration-300 transform text-[13px] ${
                     pathname === link.href
                       ? "text-primary scale-110 -translate-y-0.5"
                       : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"

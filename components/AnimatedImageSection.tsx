@@ -48,20 +48,18 @@ export default function AnimatedImageSection({
       >
         {words.map((word, index) => (
           <motion.span
-  key={index}
-  className="inline-block mr-[8px]"
-  initial={{ opacity: 0, y: 20 }}
-  animate={shouldAnimate && hasScrolled ? { opacity: 1, y: 0 } : {}}
-  transition={{
-    duration: 1.4,
-    delay: delayStart + Math.sin(index / words.length * Math.PI) * 0.7, // wave effect
-    ease: "easeOut",
-  }}
->
-  {word}
-</motion.span>
-
-
+            key={index}
+            className="inline-block mr-[8px]"
+            initial={{ opacity: 0, y: 20 }}
+            animate={shouldAnimate && hasScrolled ? { opacity: 1, y: 0 } : {}}
+            transition={{
+              duration: 1.4,
+              delay: delayStart + Math.sin(index / words.length * Math.PI) * 0.7, // wave effect
+              ease: "easeOut",
+            }}
+          >
+            {word}
+          </motion.span>
         ))}
       </h1>
     );
@@ -252,6 +250,7 @@ export default function AnimatedImageSection({
             alignItems: "center",
             textAlign: "center",
             padding: "0 50px",
+            borderRadius: '12px'
           }}
         >
           {/* Smooth animated title */}

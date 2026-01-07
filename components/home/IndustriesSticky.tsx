@@ -171,7 +171,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                       height: "clamp(260px, 60vw, 520px)",
                     }}
                   >
-                    <div className="w-[67px] h-[67px] relative mb-20">
+                    <div className="w-[60px] h-[60px] relative mb-20">
                       {item.icon && (
                         <Image
                           src={item.icon}
@@ -182,13 +182,13 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                       )}
                     </div>
                     <div>
-                      <div className="flex flex-col justify-end h-[10rem] mb-4">
+                      <div className="flex flex-col justify-end h-[13rem] mb-4">
                         <h3
                           className="text-black"
                           style={{
                             fontFamily: "Instrument Sans",
                             fontWeight: 600,
-                            fontSize: "clamp(26px, 5vw, 48px)",
+                            fontSize: "clamp(26px, 5vw, 42px)",
                             lineHeight: '48px'
                           }}
                         >
@@ -196,7 +196,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                         </h3>
                       </div>
 
-                      <ul className="flex flex-col gap-1 list-disc pl-5">
+                      <ul className="flex flex-col list-disc pl-5">
                         {item.points.map((line, i) => (
                           <motion.li
                             key={i}
@@ -207,10 +207,10 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                               delay: i * 0.25,
                               ease: "easeOut",
                             }}
-                            className="text-black/70 marker:text-neutral-400"
+                            className="text-[#A8A8A8] marker:text-neutral-400"
                             style={{
                               fontFamily: "Instrument Sans",
-                              fontSize: "clamp(14px, 3vw, 20px)",
+                              fontSize: "clamp(14px, 3vw, 16px)",
                             }}
                           >
                             {line}

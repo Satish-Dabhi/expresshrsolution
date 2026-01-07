@@ -109,53 +109,72 @@ export default function LeadershipSection({ leaders }: Props) {
       {/* ================= DESKTOP ================= */}
       <div
         ref={containerRef}
-        className="relative hidden lg:block"
+        className="relative hidden lg:block bg-white"
         style={{ height: `${leaders.length * 100}vh` }}
       >
-        <div className="sticky top-0 flex">
+        <div className="sticky top-0 flex items-center min-h-screen max-w-[1600px] mx-auto">
+
           {/* IMAGE */}
-          <div className="w-1/2 h-full flex items-center justify-center px-16">
+          <div className="w-1/2 flex items-center justify-center px-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current.image}
-                initial={{ opacity: 0, scale: 1.05 }}
+                initial={{ opacity: 0, scale: 1.03 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
+                exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-full h-[775px]"
+                className="
+            w-full
+            max-w-[520px]
+            h-[600px]
+            flex
+            items-center
+            justify-center
+          "
               >
                 <LeaderImage
                   src={current.image}
                   alt={current.name}
-                  className="w-full h-full"
+                  className="w-full h-full object-contain"
                 />
               </motion.div>
             </AnimatePresence>
           </div>
 
+
           {/* CONTENT */}
-          <div className="w-1/2 h-full px-16">
+          <div className="w-1/2 px-16">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -40 }}
+                exit={{ opacity: 0, y: -30 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="flex flex-col h-[775px]"
+                className="flex flex-col max-w-[640px]"
               >
-                <h2 className="text-[64px] font-semibold tracking-widest mb-10" style={{ lineHeight: '64px' }}>
+                <h2
+                  className="text-[64px] font-semibold tracking-widest mb-10"
+                  style={{ lineHeight: "64px" }}
+                >
                   Founder
                 </h2>
 
-                <h3 className="text-[36px] font-semibold">{current.name}</h3>
+                <h3 className="text-[36px] font-semibold">
+                  {current.name}
+                </h3>
 
-                <p className="mt-2 text-[25px]">{current.role}</p>
+                <p className="mt-2 text-[25px] text-gray-600">
+                  {current.role}
+                </p>
 
-                <p className="mt-6 text-[25px]">{current.description}</p>
+                <p className="mt-6 text-[25px] leading-relaxed">
+                  {current.description}
+                </p>
               </motion.div>
             </AnimatePresence>
           </div>
+
         </div>
       </div>
 

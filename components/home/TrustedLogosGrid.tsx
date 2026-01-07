@@ -91,7 +91,7 @@ export default function TrustedLogosGrid() {
                   src={logo.src}
                   alt={logo.alt}
                   fill
-                  className="object-contain p-4"
+                  className="object-contain p-4 grayscale"
                 />
               </div>
             </Card>

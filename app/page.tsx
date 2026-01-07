@@ -133,7 +133,7 @@ export default function Home() {
 
       <TrustedLogosGrid />
 
-      <InfiniteLogoMarquee logos={logos} speed={40} />
+      <InfiniteLogoMarquee logos={logos} speed={1} />
 
 
       {/* FULL WIDTH IMAGE */}

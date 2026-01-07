@@ -144,7 +144,7 @@ export default function GridTypewriter({
             {typedLines.map((line, i) => (
               <p
                 key={i}
-                className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold leading-tight"
+                className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold leading-tight mb-7"
               >
                 {line}
                 {!headingDone &&
