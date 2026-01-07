@@ -30,7 +30,7 @@ export default function SplitFeatureSection({
         {/* CONTENT */}
         <div className="w-full md:w-1/2 overflow-hidden">
           <h1 className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold mb-4">{title}</h1>
-          <p className="text-gray-600 text-[16px] sm:text-[20px] md:text-[25px] leading-relaxed">{description}</p>
+          <p className="text-[16px] sm:text-[20px] md:text-[25px] leading-relaxed">{description}</p>
         </div>
         {/* IMAGE WRAPPER */}
         <div className="relative w-full md:w-1/2 h-[280px] md:h-[550px] overflow-hidden">

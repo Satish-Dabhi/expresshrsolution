@@ -102,22 +102,6 @@ export default function GridTypewriter({
 
   const descParas = desc ? desc.split("\n\n") : [];
 
-  /* ----------------------------------------
-     FRAMER VARIANTS
-  ---------------------------------------- */
-  const lineVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.9,
-        delay: i * 0.25,
-        ease: [0.77, 0, 0.175, 1],
-      },
-    }),
-  };
-
   return (
     <section
       ref={ref}
@@ -147,12 +131,17 @@ export default function GridTypewriter({
             {textLines.map((line, i) => (
               <motion.p
                 key={i}
-                custom={i}
-                variants={lineVariants}
-                initial="hidden"
+                initial={{ opacity: 0, y: 24 }}
                 animate={
-                  shouldAnimate && hasScrolled ? "visible" : "hidden"
+                  shouldAnimate && hasScrolled
+                    ? { opacity: 1, y: 0 }
+                    : {}
                 }
+                transition={{
+                  duration: 0.9,
+                  delay: i * 0.25,
+                  ease: [0.77, 0, 0.175, 1],
+                }}
                 className="text-[28px] sm:text-[40px] lg:text-[64px] font-semibold leading-tight mb-6"
               >
                 {line}
@@ -179,7 +168,7 @@ export default function GridTypewriter({
               </motion.p>
             )}
 
-            {/* DESCRIPTION — PARAGRAPH BY PARAGRAPH */}
+            {/* DESCRIPTION */}
             {desc && (
               <div className="mt-6 max-w-5xl mx-auto space-y-4 sm:space-y-6">
                 {descParas.map((para, i) => (
