@@ -76,15 +76,15 @@ export default function AboutSection() {
       <SplitFeatureSection
         title="Mission"
         description="To empower businesses with reliable and compliant workforce-driven operational system that scale."
-        image="/images/about-mission.png"
-        topDecoration="/images/logos/right.svg"
+        image="/images/mission-left.png"
+        // topDecoration="/images/logos/right.svg"
       />
 
       <SplitFeatureSection
         title="Vision"
         description="To lead India’s transformation in on-ground execution — where skilled people and disciplined processes create predictable outcomes."
-        image="/images/about-vision.png"
-        topDecoration="/images/logos/left.svg"
+        image="/images/vision-right.png"
+        // topDecoration="/images/logos/left.svg"
         reverse
       />
 
