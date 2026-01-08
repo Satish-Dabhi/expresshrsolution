@@ -353,9 +353,8 @@ export default function ScrollCards() {
                   <button
                     key={i}
                     onClick={() => setActiveIndex(i)}
-                    className={`h-2 rounded-full transition-all ${
-                      activeIndex === i ? "w-6 bg-black" : "w-2 bg-black/30"
-                    }`}
+                    className={`h-2 rounded-full transition-all ${activeIndex === i ? "w-6 bg-black" : "w-2 bg-black/30"
+                      }`}
                   />
                 ))}
               </div>
@@ -384,55 +383,59 @@ function DesktopCard({
   return (
     <div
       ref={refCallback}
-      className="rounded-2xl overflow-hidden bg-white shadow-lg flex-shrink-0 flex flex-col"
+      className="rounded-2xl overflow-hidden bg-white shadow-lg flex-shrink-0"
       style={{
         width: CARD_WIDTH,
         height: height ?? "auto",
-        maxHeight: "90vh",
+        maxHeight: "99vh",
       }}
     >
-      <div className="relative h-[200px]">
-        <video
-          src={card.image}
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          Your browser does not support the video tag.
-        </video>
-        <h3 className="absolute bottom-4 left-4 text-white text-[32px] md:text-[48px] font-semibold">
-          {card.title}
-        </h3>
-      </div>
-
-      <div className="p-6 space-y-5">
-        <div>
-          <h4 className="font-semibold mb-2">Pain Points</h4>
-          <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
+      <div
+        className="grid h-full"
+        style={{
+          gridTemplateRows: "200px 140px 240px 80px",
+        }}
+      >
+        <div className="relative">
+          <video
+            src={card.image}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          <h3 className="absolute bottom-4 left-4 text-white text-[32px] md:text-[48px] font-semibold">
+            {card.title}
+          </h3>
+        </div>
+        <div className="pt-4 px-6 overflow-hidden flex flex-col">
+          <h4 className="font-semibold text-[22px]">Pain Points</h4>
+          <ul className="list-disc list-inside space-y-1 text-sm text-[#A8A8A8] font-light overflow-auto">
             {card.painPoints.map((p, i) => (
-              <li key={i}>{p}</li>
+              <li key={i} className="mb-0">{p}</li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-semibold mb-2">Our Solutions</h4>
-          <ul className="space-y-2 text-sm">
+        <div className="px-6 overflow-hidden flex flex-col">
+          <h4 className="font-semibold text-[22px]">Our Solutions</h4>
+          <ul className="list-disc list-inside space-y-1 text-sm overflow-auto">
             {card.solutions.map((s, i) => (
               <li key={i}>
                 <span className="font-semibold">{s.label}:</span>{" "}
-                <span className="text-gray-600">{s.description}</span>
+                <span className="text-[#A8A8A8]">{s.description}</span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div>
-          <h4 className="font-semibold text-orange-600 mb-1">Outcome</h4>
-          <p className="text-sm text-gray-600">{card.outcome}</p>
+
+        <div className="px-6">
+          <h4 className="font-semibold text-[#EF7F1B] text-[22px]">Outcome</h4>
+          <p className="text-sm text-[#A8A8A8]">{card.outcome}</p>
         </div>
+
       </div>
     </div>
   );
@@ -452,9 +455,8 @@ function MobileCard({
   return (
     <motion.div
       ref={refCallback}
-      className={`rounded-2xl bg-white shadow-lg flex flex-col transition-all ${
-        active ? "scale-[1.02]" : "opacity-70"
-      }`}
+      className={`rounded-2xl bg-white shadow-lg flex flex-col transition-all ${active ? "scale-[1.02]" : "opacity-70"
+        }`}
     >
       <div className="relative h-[260px]">
         <video
@@ -467,7 +469,6 @@ function MobileCard({
         >
           Your browser does not support the video tag.
         </video>
-        <div className="absolute inset-0 bg-black/40" />
         <h3 className="absolute bottom-4 left-4 right-4 text-white text-[26px] font-semibold">
           {card.title}
         </h3>
@@ -476,7 +477,7 @@ function MobileCard({
       <div className="p-5 space-y-4">
         <div>
           <h4 className="font-semibold mb-1">Pain Points</h4>
-          <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+          <ul className="list-disc list-inside text-sm text-[#A8A8A8] space-y-1">
             {card.painPoints.map((p, i) => (
               <li key={i}>{p}</li>
             ))}
@@ -489,15 +490,15 @@ function MobileCard({
             {card.solutions.map((s, i) => (
               <li key={i}>
                 <span className="font-semibold">{s.label}:</span>{" "}
-                <span className="text-gray-600">{s.description}</span>
+                <span className="text-[#A8A8A8]">{s.description}</span>
               </li>
             ))}
           </ul>
         </div>
 
         <div>
-          <h4 className="font-semibold text-orange-600">Outcome</h4>
-          <p className="text-sm text-gray-600">{card.outcome}</p>
+          <h4 className="font-semibold text-[#EF7F1B]">Outcome</h4>
+          <p className="text-sm text-[#A8A8A8]">{card.outcome}</p>
         </div>
       </div>
     </motion.div>
