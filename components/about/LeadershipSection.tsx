@@ -157,12 +157,12 @@ export default function LeadershipSection({ leaders }: Props) {
                   className="text-[64px] font-semibold tracking-widest mb-10"
                   style={{ lineHeight: "64px" }}
                 >
-                  Founder
-                </h2>
-
-                <h3 className="text-[36px] font-semibold">
                   {current.name}
-                </h3>
+                </h2>
+{/* 
+                <h3 className="text-[36px] font-semibold">
+                  {current.role}
+                </h3> */}
 
                 <p className="mt-2 text-[25px] text-gray-600">
                   {current.role}

@@ -25,7 +25,7 @@ export default function AboutSection() {
         desc={heroContent.description}
       />
 
-      <section className="flex items-center justify-center w-full max-w-[1400px] py-20 mx-auto">
+      <section className="flex items-center justify-center w-full max-w-[1400px] py-10 md:py-20 mx-auto">
         <h2
           className="
       font-semibold leading-none
