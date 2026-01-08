@@ -56,7 +56,7 @@ export default function Home() {
       <IndustriesSticky
         items={[
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/retail-e-commerce.svg",
             title: "Retail & E-commerce",
             points: [
@@ -66,7 +66,7 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/electronics-technology.svg",
             title: "Electronics & Technology",
             points: [
@@ -75,7 +75,7 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/fmcg-food.svg",
             title: "FMCG & Food",
             points: [
@@ -86,7 +86,7 @@ export default function Home() {
           },
 
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/construction.svg",
             title: "Construction & Infrastructure",
             points: [
@@ -95,7 +95,7 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/oil-gas.svg",
             title: "Oil & Gas",
             points: [
@@ -104,7 +104,7 @@ export default function Home() {
             ],
           },
           {
-            image: "/images/industries.png",
+            image: "/images/industries-new.png",
             icon: "/images/logos/corporate-facilities.svg",
             title: "Corporate Facilities",
             points: [

@@ -292,7 +292,7 @@ export default function AnimatedImageSection({
             >
               <Link
                 href={linkBelowTitle}
-                className="text-white font-bold text-lg underline"
+                className="text-white text-lg underline"
               >
                 {linkTextBelowTitle}
               </Link>

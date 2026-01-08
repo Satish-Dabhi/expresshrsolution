@@ -150,7 +150,7 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                 className="absolute inset-0 pointer-events-none"
               >
                 <Image
-                  src="/images/industries.png"
+                  src="/images/industries-new.png"
                   alt="Industries"
                   fill
                   className="object-cover"
@@ -164,13 +164,23 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                 className="absolute inset-0 flex items-center justify-center z-10"
               >
                 <div
-                  className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100
-                 flex items-center justify-center transition-opacity duration-300"
+                  className="
+    absolute inset-0
+    bg-black/60
+    opacity-0
+    flex items-center justify-center
+    transition-opacity duration-300
+    group-hover:opacity-100
+    group-active:opacity-100
+    group-focus-visible:opacity-100
+  "
                 >
-                  <span className="text-white text-xl font-semibold tracking-wide">
-                    View more
+                  <span className="text-white text-xl tracking-wide flex items-center">
+                    View more <span className="ml-1 text-2xl leading-none">→</span>
                   </span>
                 </div>
+
+
               </Link>
             </div>
 
@@ -254,11 +264,20 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                 className="absolute inset-0"
               >
                 <Image
-                  src={"/images/industries.png"}
+                  src={"/images/industries-new.png"}
                   alt="mobile-image"
                   fill
                   className="object-cover"
                 />
+                <Link
+                  href="/industries"
+                  className="absolute inset-0 z-10 flex items-end justify-center"
+                >
+                  <div className="mb-4 bg-black/70 text-white px-6 py-2 rounded-full text-sm flex items-center">
+                    View more <span className="ml-1 text-2xl leading-none">→</span>
+                  </div>
+                </Link>
+
               </motion.div>
             </div>
 
