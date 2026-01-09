@@ -17,6 +17,7 @@ interface Leader {
   role: string;
   description: string;
   image: string;
+  reverse?: true | false;
 }
 
 interface Props {
@@ -29,6 +30,7 @@ interface LeaderImageProps {
   className?: string;
   height?: string | number;
   width?: string | number;
+
 }
 
 function LeaderImage({
@@ -112,8 +114,11 @@ export default function LeadershipSection({ leaders }: Props) {
         className="relative hidden lg:block bg-white"
         style={{ height: `${leaders.length * 100}vh` }}
       >
-        <div className="sticky top-0 flex items-center min-h-screen max-w-[1600px] mx-auto">
-
+        <div
+          className={`sticky top-0 flex items-center min-h-screen max-w-[1600px] mx-auto
+    ${current.reverse ? "flex-row-reverse" : "flex-row"}
+  `}
+        >
           {/* IMAGE */}
           <div className="w-1/2 flex items-center justify-center px-16">
             <AnimatePresence mode="wait">
@@ -124,13 +129,13 @@ export default function LeadershipSection({ leaders }: Props) {
                 exit={{ opacity: 0, scale: 0.97 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="
-            w-full
-            max-w-[520px]
-            h-[600px]
-            flex
-            items-center
-            justify-center
-          "
+                          w-full
+                          max-w-[520px]
+                          h-[600px]
+                          flex
+                          items-center
+                          justify-center
+                        "
               >
                 <LeaderImage
                   src={current.image}
@@ -140,7 +145,6 @@ export default function LeadershipSection({ leaders }: Props) {
               </motion.div>
             </AnimatePresence>
           </div>
-
 
           {/* CONTENT */}
           <div className="w-1/2 px-16">
@@ -154,12 +158,12 @@ export default function LeadershipSection({ leaders }: Props) {
                 className="flex flex-col max-w-[640px]"
               >
                 <h2
-                  className="text-[64px] font-semibold tracking-widest mb-10"
+                  className="text-[64px] font-semibold mb-10"
                   style={{ lineHeight: "64px" }}
                 >
                   {current.name}
                 </h2>
-{/* 
+                {/* 
                 <h3 className="text-[36px] font-semibold">
                   {current.role}
                 </h3> */}

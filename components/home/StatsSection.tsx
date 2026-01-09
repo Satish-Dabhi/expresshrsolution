@@ -2,6 +2,7 @@
 
 import { animate, useInView, useMotionValue } from "framer-motion";
 import { useEffect, useRef } from "react";
+import StatsPieChart from "../services/StatsPieChart";
 
 function CounterTS({
   from = 0,
@@ -50,10 +51,38 @@ function CounterTS({
   );
 }
 
+function LegendItem({
+  color,
+  label,
+  value,
+}: {
+  color: string;
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <span
+          className="w-3 h-3 rounded-full"
+          style={{ backgroundColor: color }}
+        />
+        <span className="text-[18px] text-[#A8A8A8] font-semibold">
+          {label}
+        </span>
+      </div>
+      <span className="text-[20px] font-semibold text-black">
+        {value}
+      </span>
+    </div>
+  );
+}
+
+
 export default function StatsSection() {
   return (
     <section className="w-full px-6 md:px-20 py-24 flex justify-center row">
-<div className="hidden md:block md:w-1/4"></div>
+      <div className="hidden md:block md:w-1/4"></div>
       <div className="max-w-6xl flex flex-col w-full md:w-3/4">
         <h2 className="font-[Instrument Sans] font-semibold text-[32px] md:text-[48px] leading-[1.1] text-black">
           Make data driven decisions with real time insights. We take complete
@@ -66,7 +95,6 @@ export default function StatsSection() {
         </p>
 
         <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-y-10 md:gap-y-0 gap-x-12 md:gap-x-8 justify-center">
-          {/* 1 */}
           <div>
             <p className="text-[32px] md:text-[40px] font-semibold text-black">
               <CounterTS to={15000} />+
@@ -76,7 +104,6 @@ export default function StatsSection() {
             </p>
           </div>
 
-          {/* 2 */}
           <div>
             <p className="text-[32px] md:text-[40px] font-semibold text-black">
               <CounterTS to={200} />+
@@ -86,7 +113,6 @@ export default function StatsSection() {
             </p>
           </div>
 
-          {/* 3 */}
           <div>
             <p className="text-[32px] md:text-[40px] font-semibold text-black">
               <CounterTS to={10} />+
@@ -96,7 +122,6 @@ export default function StatsSection() {
             </p>
           </div>
 
-          {/* 4 */}
           <div>
             <p className="text-[32px] md:text-[40px] font-semibold text-black">
               <CounterTS to={50} />+
@@ -106,6 +131,36 @@ export default function StatsSection() {
             </p>
           </div>
         </div>
+
+        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+          <StatsPieChart />
+
+          <div className="space-y-6">
+            <LegendItem
+              color="#F97316"
+              label="Workforce Deployed"
+              value="15,000+"
+            />
+            <LegendItem
+              color="#FB923C"
+              label="Active Sites"
+              value="200+"
+            />
+            <LegendItem
+              color="#FDBA74"
+              label="Cities Served"
+              value="10+"
+            />
+            <LegendItem
+              color="#FED7AA"
+              label="Corporate Clients"
+              value="50+"
+            />
+          </div>
+
+        </div> */}
+
       </div>
     </section>
   );

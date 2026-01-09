@@ -26,7 +26,7 @@ export default function TrustedHeading() {
     }, [isInView]);
 
     return (
-        <section ref={ref} className="w-full text-center py-12 md:py-[160px]">
+        <section ref={ref} className="w-full text-center pt-12 md:pt-[160px] pb-8">
             {/* <motion.p
                 className="text-gray-400"
                 style={{

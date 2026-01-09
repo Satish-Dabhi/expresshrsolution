@@ -12,6 +12,7 @@ interface Leader {
   role: string;
   description: string;
   image: string;
+  reverse?: true | false;
 }
 
 export const metadata: Metadata = {
@@ -53,6 +54,18 @@ const leaders: Leader[] = [
   // },
 ];
 
+const rohitData: Leader[] = [
+  {
+    id: 1,
+    name: "Rohit Gaikwad",
+    role: "Business Head, HR Operations & Supply Chain",
+    description:
+      "Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands. At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.",
+    image: "/images/leaders/rahul-das.png",
+    reverse: true
+  },
+]
+
 const careerContent = {
   textLines: ["Careers"],
   subTitle: "Join The Workforce Behind India’s Supply Chains",
@@ -76,8 +89,8 @@ export default function AboutSection() {
       <SplitFeatureSection
         title="Mission"
         description="To empower businesses with reliable and compliant workforce-driven operational system that scale."
-        image="/images/about-mission.png"
-        // topDecoration="/images/logos/right.svg"
+        image="/images/about-mission-mask.png"
+      // topDecoration="/images/logos/right.svg"
       />
 
       <SplitFeatureSection
@@ -93,6 +106,8 @@ export default function AboutSection() {
       <CurvedDivider />
 
       <LeadershipSection leaders={leaders} />
+
+      <LeadershipSection leaders={rohitData} />
 
       <div className="mt-10 md:mt-30">
         <GridTypewriter

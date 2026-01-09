@@ -36,7 +36,7 @@ export default function SplitFeatureSection({
             }}>{title}</h1>
           <p className="" style={{
             fontFamily: 'Instrument Sans',
-            fontSize: 'clamp(14px, 1.6vw, 18px)', // responsive text size
+            fontSize: 'clamp(18px, 1.6vw, 24px)', // responsive text size
             lineHeight: '1.6',
             maxWidth: '400px',
           }}>{description}</p>

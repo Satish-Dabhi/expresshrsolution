@@ -63,15 +63,24 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
 
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full px-8 max-w-[1400px]">
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full px-8 max-w-[1400px] flex items-end">
+              {/* <motion.h3
+                key={activeItem.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-white font-semibold max-w-[60%] text-[24px] md:text-[40px] mr-5"
+              >
+                0{activeIndex + 1}
+              </motion.h3> */}
               <motion.h2
                 key={activeItem.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-white font-semibold max-w-[60%] text-[24px] md:text-[36px]"
+                className="text-white font-semibold max-w-[100%] text-[24px] md:text-[48px]"
               >
-                {activeItem.title}
+                0{activeIndex + 1}. {activeItem.title}
               </motion.h2>
             </div>
           </motion.div>
