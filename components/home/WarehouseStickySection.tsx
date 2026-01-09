@@ -25,7 +25,7 @@ const items = [
   {
     label: "GOVERNANCE",
     title: ["Compliance, audits,", "transparency & MIS"],
-    gif: "/videos/home/governance-new.mp4",
+    gif: "/videos/home/governance.mp4",
     color: "orange",
   },
 ];

@@ -61,8 +61,8 @@ export default function SplitFeatureSection({
               alt={`${title}_image`}
               fill
               className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-
+              sizes="(max-width: 768px) 100vw, 50vw"
+              style={{ borderRadius: "12px" }}
             />
           </div>
         </div>

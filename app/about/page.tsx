@@ -76,7 +76,7 @@ export default function AboutSection() {
       <SplitFeatureSection
         title="Mission"
         description="To empower businesses with reliable and compliant workforce-driven operational system that scale."
-        image="/images/mission-left.png"
+        image="/images/about-mission.png"
         // topDecoration="/images/logos/right.svg"
       />
 
