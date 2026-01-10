@@ -92,7 +92,6 @@ export default function AboutSection() {
         description={rahulData?.description}
         subDescription={rahulData?.role}
         image={rahulData?.image}
-        reverse
       />
 
       <SplitFeatureSection
@@ -100,6 +99,7 @@ export default function AboutSection() {
         description={rohitData?.description}
         subDescription={rohitData?.role}
         image={rohitData?.image}
+        reverse
       />
       {/* <LeadershipSection leaders={leaders} />
 
