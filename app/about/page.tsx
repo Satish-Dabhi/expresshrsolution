@@ -96,7 +96,7 @@ export default function AboutSection() {
       <SplitFeatureSection
         title="Vision"
         description="To lead India’s transformation in on-ground execution — where skilled people and disciplined processes create predictable outcomes."
-        image="/images/vision-right.png"
+        image="/images/vision-about-mask.png"
         // topDecoration="/images/logos/left.svg"
         reverse
       />

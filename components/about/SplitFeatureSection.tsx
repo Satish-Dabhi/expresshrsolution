@@ -38,11 +38,11 @@ export default function SplitFeatureSection({
             fontFamily: 'Instrument Sans',
             fontSize: 'clamp(18px, 1.6vw, 24px)', // responsive text size
             lineHeight: '1.6',
-            maxWidth: '400px',
+            maxWidth: '500px',
           }}>{description}</p>
         </div>
         {/* IMAGE WRAPPER */}
-        <div className="relative w-full md:w-1/2 aspect-[16/9] md:aspect-[4/3] overflow-hidden">
+        <div className="relative w-full md:w-1/2 aspect-[4/3] overflow-hidden">
           <div className="relative w-full h-full p-5">
             {/* Decoration */}
             {/* <div className="absolute top-0 left-0 right-0 z-10 pointer-events-none">

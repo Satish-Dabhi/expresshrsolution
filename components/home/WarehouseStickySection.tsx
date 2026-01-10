@@ -48,14 +48,22 @@ export default function WarehouseStickySection() {
     if (isMobile) return;
 
     const handler = () => {
-      const targetY = window.innerHeight * 0.65; // LOWER so card never jumps up
+      const targetY = window.innerHeight * 0.65;
 
-      const distances = stepsRef.current.map((el) => {
-        const rect = el.getBoundingClientRect();
+      // 🚨 refs not ready yet
+      if (
+        stepsRef.current.length !== items.length ||
+        stepsRef.current.some((el) => !el)
+      ) {
+        return;
+      }
+
+      const distances = stepsRef.current.map((el, index) => {
+        const rect = el!.getBoundingClientRect();
 
         // prevent negative snap on last card
-        if (rect.top < 0 && stepsRef.current.indexOf(el) === items.length - 1) {
-          return 999999; // keep last card at its position
+        if (rect.top < 0 && index === items.length - 1) {
+          return Number.MAX_SAFE_INTEGER;
         }
 
         return Math.abs(rect.top - targetY);
@@ -65,9 +73,11 @@ export default function WarehouseStickySection() {
       setActive(closest);
     };
 
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
+    handler(); // initial sync
+
     return () => window.removeEventListener("scroll", handler);
-  }, [isMobile]);
+  }, [isMobile, items.length]);
 
   return (
     <section className="relative w-full bg-[rgba(217,217,217,0.2)]">

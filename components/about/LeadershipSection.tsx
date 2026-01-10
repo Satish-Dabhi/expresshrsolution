@@ -209,10 +209,10 @@ export default function LeadershipSection({ leaders }: Props) {
 
             {/* CONTENT */}
             <div className="text-center max-w-md">
-              <h2 className="text-[32px] font-semibold tracking-widest mb-6">
-                Founder
+              <h2 className="text-[32px] font-semibold mb-3">
+                {current.name}
               </h2>
-              <h3 className="text-[28px] font-semibold">{current.name}</h3>
+              {/* <h3 className="text-[28px] font-semibold">{current.name}</h3> */}
               <p className="text-[22px] text-gray-500 mt-1">{current.role}</p>
               <p className="mt-4 text-[22px] text-gray-600">{current.description}</p>
             </div>
