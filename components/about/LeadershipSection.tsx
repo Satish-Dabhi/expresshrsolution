@@ -172,7 +172,7 @@ export default function LeadershipSection({ leaders }: Props) {
                   {current.role}
                 </p>
 
-                <p className="mt-6 text-[25px] leading-relaxed">
+                <p className="mt-6 text-[20px] leading-relaxed">
                   {current.description}
                 </p>
               </motion.div>

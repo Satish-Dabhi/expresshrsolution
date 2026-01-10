@@ -27,44 +27,26 @@ const heroContent = {
 Backed by 15+ years of experience, we blend people, process, and technology to run high-volume operational environments with precision.`,
 };
 
-const leaders: Leader[] = [
-  {
-    id: 1,
-    name: "Rahul Das",
-    role: "Director, Operations",
-    description:
-      "Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision. His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.",
-    image: "/images/leaders/rahul-das.png",
-  },
-  // {
-  //   id: 2,
-  //   name: "Mamta Das",
-  //   role: "Founder & Chairperson",
-  //   description:
-  //     "Pioneering woman leader driving India’s workforce empowerment and governance excellence",
-  //   image: "/images/leaders/mamta-das.png",
-  // },
-  // {
-  //   id: 3,
-  //   name: "Rishikant Shinde",
-  //   role: "Governance Advisor",
-  //   description:
-  //     "Expert in labour compliance, Mathadi, industrial relations & welfare.",
-  //   image: "/images/leaders/rishikant-shinde.png",
-  // },
-];
+const rahulData =
+{
+  id: 1,
+  name: "Rahul Das",
+  role: "Director, Operations",
+  description:
+    "Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision. His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.",
+  image: "/images/leaders/rahul-das.png",
+};
 
-const rohitData: Leader[] = [
-  {
-    id: 1,
-    name: "Rohit Gaikwad",
-    role: "Business Head, HR Operations & Supply Chain",
-    description:
-      "Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands. At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.",
-    image: "/images/leaders/rahul-das.png",
-    reverse: true
-  },
-]
+const rohitData =
+{
+  id: 1,
+  name: "Rohit Gaikwad",
+  role: "Business Head, HR Operations & Supply Chain",
+  description:
+    "Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands. At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.",
+  image: "/images/leaders/rahul-das.png",
+  reverse: true
+}
 
 const careerContent = {
   textLines: ["Careers"],
@@ -95,7 +77,7 @@ export default function AboutSection() {
 
       <SplitFeatureSection
         title="Vision"
-        description="To lead India’s transformation in on-ground execution — where skilled people and disciplined processes create predictable outcomes."
+        description="To lead India’s transformation in on-ground execution where skilled people and disciplined processes create predictable outcomes."
         image="/images/vision-about-mask.png"
         // topDecoration="/images/logos/left.svg"
         reverse
@@ -105,9 +87,23 @@ export default function AboutSection() {
 
       <CurvedDivider />
 
-      <LeadershipSection leaders={leaders} />
+      <SplitFeatureSection
+        title={rahulData?.name}
+        description={rahulData?.description}
+        subDescription={rahulData?.role}
+        image={rahulData?.image}
+        reverse
+      />
 
-      <LeadershipSection leaders={rohitData} />
+      <SplitFeatureSection
+        title={rohitData?.name}
+        description={rohitData?.description}
+        subDescription={rohitData?.role}
+        image={rohitData?.image}
+      />
+      {/* <LeadershipSection leaders={leaders} />
+
+      <LeadershipSection leaders={rohitData} /> */}
 
       <div className="mt-10 md:mt-30">
         <GridTypewriter

@@ -55,7 +55,7 @@ export function CareerForm() {
       transition={{ duration: 0.6 }}
       className="space-y-8"
     >
-      <p className="text-orange-500 font-medium text-[20px]">
+      <p className="text-orange-500 font-medium text-[20px] md:text-[24px]">
         Get in touch with us for Career Opportunities
       </p>
 

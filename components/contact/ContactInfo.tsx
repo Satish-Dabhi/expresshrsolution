@@ -23,9 +23,9 @@ export default function ContactInfo() {
         <p className="text-[16px] md:text-[20px] mt-2 font-medium">
           Express HR Solutions Pvt. Ltd
           <br />
-          3A, ARENJA ARCADE, SECTOR 17,
+          3A, Arenja arcade, Sector 17,
           <br />
-          VASHI, Thane, Maharashtra, 400705
+          Vashi, Thane, Maharashtra, 400705
         </p>
       </div>
 

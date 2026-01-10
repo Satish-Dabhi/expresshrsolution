@@ -78,10 +78,11 @@ const Navbar = () => {
     fixed left-1/2 -translate-x-1/2 z-50
     mt-20 w-[70%] md:w-[58%] py-[9px]
     transition-all duration-300
-    bg-[rgba(75,75,75,0.4)]
+    bg-[#0000004d]
     border border-white/10
     rounded-[9px]
   "
+  style={{backdropFilter: 'blur(30px)'}}
     >
       <div className="px-[9px] flex items-center justify-between">
         {/* Logo */}

@@ -18,7 +18,7 @@ export default function ContactField({
 }: Props) {
   return (
     <div className="flex flex-col gap-1">
-      <label className="text-xs tracking-widest text-orange-500 uppercase">
+      <label className="text-[16px] md:text-[20px] text-orange-500 uppercase">
         {label}
       </label>
 

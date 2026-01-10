@@ -11,7 +11,8 @@ export default function Footer() {
       <div
         className="
           mx-auto max-w-[1400px]
-          px-6 md:px-0
+          px-6 md:px-10
+          pr-0 md:pr-30
           py-20
           grid
           grid-cols-1 md:grid-cols-[auto_1fr]
@@ -36,10 +37,11 @@ export default function Footer() {
           {/* CONTACT */}
           <div>
             <h4 className="font-[600] text-[20px] md:text-[24px] mb-3 md:mb-5 text-black font-[Instrument_Sans]">
-              Contact
+              <Link href="/contact-us">Contact</Link>
+
             </h4>
 
-            <ul className="space-y-4 text-gray-500 text-[18px] md:text-[24px] font-[Instrument_Sans]">
+            <ul className="space-y-4 text-gray-500 text-[18px] md:text-[20px] font-[Instrument_Sans]">
               <li>+91 99673 26161</li>
 
               <li>
@@ -94,10 +96,10 @@ export default function Footer() {
           {/* SERVICES */}
           <div className="pt-5 md:pt-0">
             <h4 className="font-[600] text-[20px] md:text-[24px] mb-3 md:mb-5 text-black font-[Instrument_Sans]">
-              Services
+              <Link href="/services">Services</Link>
             </h4>
 
-            <ul className="space-y-4 text-gray-500 text-[18px] md:text-[24px] font-[Instrument_Sans]">
+            <ul className="space-y-4 text-gray-500 text-[18px] md:text-[20px] font-[Instrument_Sans]">
               <li>
                 <Link href="/services">Warehouse</Link>
               </li>
