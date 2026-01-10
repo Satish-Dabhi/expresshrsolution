@@ -43,7 +43,7 @@ export default function SplitFeatureSection({
             fontFamily: 'Instrument Sans',
             fontSize: 'clamp(18px, 1.6vw, 20px)', // responsive text size
             lineHeight: '1.6',
-            maxWidth: '500px',
+            maxWidth: '600px',
           }}>{description}</p>}
         </div>
         {/* IMAGE WRAPPER */}

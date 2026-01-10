@@ -70,17 +70,17 @@ export default function AboutSection() {
 
       <SplitFeatureSection
         title="Mission"
-        description="To empower businesses with reliable and compliant workforce-driven operational system that scale."
+        description="Our mission is to build and operate workforce-driven execution systems that enable enterprises to scale with stability and compliance. By assuming end-to-end responsibility for on-ground operations, we institutionalise discipline across people, processes, and governance—reducing operational risk while ensuring continuity, regulatory alignment, and consistent performance at scale."
         image="/images/about-mission-mask.png"
       // topDecoration="/images/logos/right.svg"
+        reverse
       />
 
       <SplitFeatureSection
         title="Vision"
-        description="To lead India’s transformation in on-ground execution where skilled people and disciplined processes create predictable outcomes."
-        image="/images/vision-about-mask.png"
+        description="Our vision is to play a defining role in India’s next phase of operational maturity. Through structured execution, skilled workforce integration, and accountable systems, we aim to establish a national benchmark for on-ground operations—where compliance is embedded, outcomes are predictable, and execution strength supports long-term economic and enterprise growth."
+        image="/images/vision-about.png"
         // topDecoration="/images/logos/left.svg"
-        reverse
       />
 
       <CoreValues />

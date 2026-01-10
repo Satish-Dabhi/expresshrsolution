@@ -21,6 +21,10 @@ const logos = [
   "/images/logos/bestseller.png",
   "/images/logos/runaya.jpg",
   "/images/logos/Vedanta.png",
+  "/images/logos/DOW.svg",
+  "/images/logos/prakash-dall.png",
+  "/images/logos/psa-singapore.webp",
+  "/images/logos/Gunnebo.png",
 ];
 
 export default function Home() {
