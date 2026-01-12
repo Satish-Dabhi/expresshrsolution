@@ -84,7 +84,7 @@ const Navbar = () => {
   "
   style={{backdropFilter: 'blur(30px)'}}
     >
-      <div className="px-[9px] flex items-center justify-between">
+      <div className="px-[9px] pr-0 md:pr-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2 text-white font-semibold">
           <Image
@@ -107,7 +107,7 @@ const Navbar = () => {
                     {/* Link text - navigates */}
                     <Link
                       href={link.href}
-                      className={`transition-all duration-300 transform text-[16px] ${pathname.startsWith(link.href)
+                      className={`transition-all duration-300 transform text-[14px] ${pathname.startsWith(link.href)
                           ? "text-primary scale-110 -translate-y-0.5"
                           : "hover:text-primary"
                         }`}
@@ -160,7 +160,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className={`transition-all duration-300 transform text-[13px] ${pathname === link.href
+                  className={`transition-all duration-300 transform text-[14px] ${pathname === link.href
                       ? "text-primary scale-110 -translate-y-0.5"
                       : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
                     }`}

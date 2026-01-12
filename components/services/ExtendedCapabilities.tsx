@@ -22,8 +22,8 @@ export function ExtendedCapabilities({
     <section className="mx-auto w-full max-w-[1400px] px-4 py-12">
       <div className="lg:flex lg:gap-16">
         {/* Left Sticky Title */}
-        <div className="hidden lg:block lg:w-2/5 sticky top-24 self-start">
-          <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold pr-4 pt-20 mb-16">
+        <div className="hidden lg:block lg:w-2/5 sticky top-[22%] self-start">
+          <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-semibold pr-4 mb-16" style={{ lineHeight: '64px' }}>
             {title}
           </h2>
         </div>
@@ -40,7 +40,14 @@ export function ExtendedCapabilities({
                 {item.list && (
                   <ul className="list-disc pl-5 mb-2 space-y-1">
                     {item.list.map((li, idx) => (
-                      <li key={idx}>{li}</li>
+                      <li key={idx}
+                        style={{
+                          fontFamily: "Instrument Sans",
+                          fontWeight: 400,
+                          fontSize: "clamp(18px, 1.6vw, 20px)",
+                          lineHeight: "1.1",
+                        }}
+                      >{li}</li>
                     ))}
                   </ul>
                 )}
@@ -51,7 +58,7 @@ export function ExtendedCapabilities({
               </div>
 
               {/* Image */}
-              <div className="relative w-full h-[340px] overflow-hidden">
+              <div className="relative w-full h-[340px] overflow-hidden mt-8">
                 <Image
                   src={item.image}
                   alt={item.title}

@@ -248,6 +248,40 @@ export default function IndustriesSticky({ items }: IndustriesStickyProps) {
                   </div>
                 ))}
               </motion.div>
+
+              {/* DESKTOP CTA AFTER LAST CARD */}
+              {!isMobile && (
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={
+                    activeIndex === totalSlides
+                      ? { opacity: 1, y: 0 }
+                      : { opacity: 0, y: 40 }
+                  }
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 pr-6"
+                  style={{
+                    pointerEvents: activeIndex === totalSlides ? 'auto' : 'none',
+                  }}
+                >
+                  <Link
+                    href="/industries"
+                    className="
+        inline-flex items-center gap-3
+        rounded-full
+        px-8 py-4
+        text-white text-lg font-medium
+        shadow-lg
+        transition-transform hover:scale-105
+      "
+                    style={{ backgroundColor: 'var(--bright-orange)' }}
+                  >
+                    Learn More
+                    <span className="text-2xl leading-none">→</span>
+                  </Link>
+                </motion.div>
+              )}
+
             </div>
           </div>
         )}

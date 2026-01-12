@@ -136,7 +136,7 @@ export default function Home() {
 
       <TrustedLogosGrid />
 
-      <InfiniteLogoMarquee logos={logos} speed={100} />
+      <InfiniteLogoMarquee logos={logos} height="h-24"/>
 
 
       {/* FULL WIDTH IMAGE */}

@@ -7,6 +7,8 @@ import { ExtendedCapabilities } from "@/components/services/ExtendedCapabilities
 import StickyScrollSection from "@/components/services/StickyScrollSection";
 import StatsSection from "@/components/home/StatsSection";
 import Image from "next/image";
+import FeatureCards from "@/components/services/FeatureCardsMasonry";
+import FeatureCardsMasonry from "@/components/services/FeatureCardsMasonry";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Services",
@@ -138,9 +140,28 @@ export default function Services() {
         priority
       />
 
-      <div className="mx-auto w-full max-w-[1400px]">
+      {/* <div className="mx-auto w-full max-w-[1400px]">
         <StatsSection />
-      </div>
+      </div> */}
+
+      <FeatureCardsMasonry
+        items={[
+          { id: '1', image: '/images/industries-old.png', title: '16,000+ Workers Empowered' },
+          { id: '2', description: '98% Workforce Retention in Key Accounts' },
+          {
+            id: '3',
+            image: '/images/home-hero.jpg',
+            title: '100% Statutory Compliance',
+          },
+          { id: '4', description: '50+ Skill Development Initiatives' },
+          {
+            id: '5',
+            image: '/images/box.jpg',
+            title: 'ESG & Safety Training Programs',
+          },
+        ]}
+      />
+
     </>
   );
 }

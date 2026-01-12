@@ -161,12 +161,12 @@ export default function AnimatedImageSection({
 
   const topMaskVariants = {
     initial: { top: "40%", width: "62%" },
-    animate: { top: 0, width: "44%" },
+    animate: { top: "-0.5%", width: "44%" },
   };
 
   const bottomMaskVariants = {
     initial: { bottom: "35%", width: "74.5%" },
-    animate: { bottom: 0, width: "64%" },
+    animate: { bottom: "-0.5%", width: "65%" },
   };
 
   return (

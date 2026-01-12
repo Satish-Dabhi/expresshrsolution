@@ -2,41 +2,37 @@
 
 import { motion } from "framer-motion";
 
-interface InfiniteLogoMarqueeProps {
-  logos: string[]; // Array of image URLs
-  speed?: number; // px per second
+interface LogoMarqueeProps {
+  logos: string[];
+  height?: string; // optional, default height of logos
 }
 
-export default function InfiniteLogoMarquee({
-  logos,
-  speed = 50,
-}: InfiniteLogoMarqueeProps) {
-  if (logos.length === 0) return null;
-
-  // Duplicate logos to create seamless loop
-  const duplicatedLogos = [...logos, ...logos];
+export default function InfiniteLogoMarquee({ logos, height = "h-20" }: LogoMarqueeProps) {
+  // Duplicate logos array for seamless infinite scroll
+  const logosLoop = [...logos, ...logos];
 
   return (
-    <div className="overflow-hidden w-full relative mb-15">
+    <div className={`overflow-hidden relative w-full ${height} bg-white mb-15`}>
       <motion.div
-        className="flex"
+        className="flex gap-8"
         animate={{ x: ["0%", "-50%"] }}
         transition={{
           repeat: Infinity,
+          repeatType: "loop",
+          duration: logos.length * 2, // adjust speed: more logos = slower
           ease: "linear",
-          duration: (logos.length * 2 * 100) / speed, // adjust duration by speed
         }}
       >
-        {duplicatedLogos.map((logo, index) => (
+        {logosLoop.map((logo, idx) => (
           <div
-            key={index}
-            className="flex-shrink-0 px-8 py-4"
-            style={{ minWidth: "150px" }} // adjust size
+            key={idx}
+            className={`flex-shrink-0 flex items-center justify-center ${height}`}
+            style={{ width: "200px" }} // adjust logo width if needed
           >
             <img
               src={logo}
-              alt={`logo-${index}`}
-              className="object-contain w-full h-16 md:h-20 grayscale"
+              alt={`Logo ${idx}`}
+              className="object-contain max-h-full max-w-full grayscale"
             />
           </div>
         ))}

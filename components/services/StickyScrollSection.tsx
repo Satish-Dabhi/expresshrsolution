@@ -64,21 +64,12 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
 
             <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full px-8 max-w-[1400px] flex items-end">
-              {/* <motion.h3
-                key={activeItem.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-white font-semibold max-w-[60%] text-[24px] md:text-[40px] mr-5"
-              >
-                0{activeIndex + 1}
-              </motion.h3> */}
               <motion.h2
                 key={activeItem.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-white font-semibold max-w-[100%] text-[24px] md:text-[48px]"
+                className="text-white font-semibold max-w-[100%] text-[32px] md:text-[48px]"
               >
                 0{activeIndex + 1}. {activeItem.title}
               </motion.h2>
@@ -89,19 +80,21 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
         {/* SERVICES + OUTCOME (25vh) */}
         <div className="sticky top-[65vh] h-[35vh] bg-white">
           <div className="mx-auto w-full max-w-[1400px] px-8 h-full flex justify-between items-start gap-16 pt-6">
-            {/* Services */}
+            {/* Services - 70% */}
             <motion.div
               key={`services-${activeIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="flex-shrink-0"
+              style={{ width: "60%" }}
             >
               <h3
                 className="mb-3"
                 style={{
                   fontFamily: "Instrument Sans",
                   fontWeight: 600,
-                  fontSize: "24px",
+                  fontSize: "25px",
                   lineHeight: "1.3",
                   color: "#AFAFAF",
                 }}
@@ -116,7 +109,7 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
                     style={{
                       fontFamily: "Instrument Sans",
                       fontWeight: 400,
-                      fontSize: "24px",
+                      fontSize: "clamp(18px, 1.6vw, 20px)",
                       lineHeight: "1.1",
                     }}
                   >
@@ -127,19 +120,21 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
               </ul>
             </motion.div>
 
-            {/* Outcome */}
+            {/* Outcome - 30% */}
             <motion.div
               key={`outcome-${activeIndex}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
+              className="flex-shrink-0"
+              style={{ width: "40%" }}
             >
               <h3
                 className="mb-3"
                 style={{
                   fontFamily: "Instrument Sans",
                   fontWeight: 600,
-                  fontSize: "24px",
+                  fontSize: "25px",
                   lineHeight: "1.3",
                   color: "#AFAFAF",
                 }}
@@ -154,7 +149,7 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
                     style={{
                       fontFamily: "Instrument Sans",
                       fontWeight: 400,
-                      fontSize: "24px",
+                      fontSize: "clamp(18px, 1.6vw, 20px)",
                       lineHeight: "1.1",
                     }}
                   >
@@ -165,6 +160,7 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
               </ul>
             </motion.div>
           </div>
+
         </div>
 
         {/* MOBILE */}

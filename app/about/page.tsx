@@ -27,26 +27,33 @@ const heroContent = {
 Backed by 15+ years of experience, we blend people, process, and technology to run high-volume operational environments with precision.`,
 };
 
-const rahulData =
-{
+const rahulData = {
   id: 1,
   name: "Rahul Das",
   role: "Director, Operations",
-  description:
-    "Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision. His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.",
+  description: () => (
+    <>
+      Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision.<br /><br />
+      His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.
+    </>
+  ),
   image: "/images/leaders/rahul-das.png",
 };
 
-const rohitData =
-{
+const rohitData = {
   id: 1,
   name: "Rohit Gaikwad",
   role: "Business Head, HR Operations & Supply Chain",
-  description:
-    "Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands. At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.",
-  image: "/images/leaders/rahul-das.png",
-  reverse: true
-}
+  description: () => (
+    <>
+      Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands.<br /><br />
+      At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.
+    </>
+  ),
+  image: "/images/leaders/rohit.jpeg",
+  reverse: true,
+};
+
 
 const careerContent = {
   textLines: ["Careers"],
@@ -70,17 +77,28 @@ export default function AboutSection() {
 
       <SplitFeatureSection
         title="Mission"
-        description="Our mission is to build and operate workforce-driven execution systems that enable enterprises to scale with stability and compliance. By assuming end-to-end responsibility for on-ground operations, we institutionalise discipline across people, processes, and governance—reducing operational risk while ensuring continuity, regulatory alignment, and consistent performance at scale."
         image="/images/about-mission-mask.png"
-      // topDecoration="/images/logos/right.svg"
+        description={
+          <>
+            Our mission is to build and operate{" "}
+            <span className="font-bold text-orange-500">workforce-driven execution systems</span>{" "}
+            that enable enterprises to scale with stability and compliance By assuming{" "}
+            <span className="font-bold text-orange-500">end-to-end responsibility for on-ground operations</span>
+            , we institutionalise discipline across people, processes, and governance—reducing operational risk while ensuring continuity, regulatory alignment, and consistent performance at scale.
+          </>
+        }
         reverse
       />
 
       <SplitFeatureSection
         title="Vision"
-        description="Our vision is to play a defining role in India’s next phase of operational maturity. Through structured execution, skilled workforce integration, and accountable systems, we aim to establish a national benchmark for on-ground operations—where compliance is embedded, outcomes are predictable, and execution strength supports long-term economic and enterprise growth."
-        image="/images/vision-about.png"
-        // topDecoration="/images/logos/left.svg"
+        description={
+          <>
+            Our vision is to play a defining role in{" "}
+            <span className="font-bold text-orange-500">India’s next phase of operational maturity</span>. Through structured execution, skilled workforce integration, and accountable systems, we aim to establish a {" "}
+            <span className="font-bold text-orange-500">national benchmark for on-ground operations</span> where compliance is embedded, outcomes are predictable, and execution strength supports long-term enterprise and economic growth.
+          </>
+        } image="/images/vision-about.png"
       />
 
       <CoreValues />
@@ -89,14 +107,14 @@ export default function AboutSection() {
 
       <SplitFeatureSection
         title={rahulData?.name}
-        description={rahulData?.description}
+        description={rahulData?.description()}
         subDescription={rahulData?.role}
         image={rahulData?.image}
       />
 
       <SplitFeatureSection
         title={rohitData?.name}
-        description={rohitData?.description}
+        description={rohitData?.description()}
         subDescription={rohitData?.role}
         image={rohitData?.image}
         reverse
