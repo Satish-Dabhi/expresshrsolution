@@ -84,7 +84,7 @@ const Navbar = () => {
   "
   style={{backdropFilter: 'blur(30px)'}}
     >
-      <div className="px-[9px] pr-0 md:pr-3 flex items-center justify-between">
+      <div className="px-3 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2 text-white font-semibold">
           <Image
@@ -98,7 +98,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex space-x-10 font-medium text-white">
+        <ul className="hidden md:flex space-x-10 font-medium text-white mr-1">
           {navLinks.map((link) => (
             <li key={link.name} className={link.subLinks ? "relative" : ""}>
               {link.subLinks ? (

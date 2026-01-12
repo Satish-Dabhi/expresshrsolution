@@ -82,7 +82,7 @@ const extendedCapabilitiesItems = [
       "Shelf management",
       "QC, packing & dispatch prep",
     ],
-    image: "/videos/warehouse.gif",
+    image: "/videos/services/dark_store_graphics.gif",
   },
   {
     number: "03",

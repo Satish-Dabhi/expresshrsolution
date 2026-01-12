@@ -53,7 +53,7 @@ export default function SplitFeatureSection({
                 fontFamily: "Instrument Sans",
                 fontSize: "clamp(18px, 1.6vw, 20px)",
                 lineHeight: "1.6",
-                maxWidth: "600px",
+                maxWidth: "585px",
               }}
             >
               {description}

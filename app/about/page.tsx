@@ -33,8 +33,8 @@ const rahulData = {
   role: "Director, Operations",
   description: () => (
     <>
-      Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA. He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision.<br /><br />
-      His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.
+      Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA.<br />
+      He leads PAN-India workforce deployment, 3PL operations, and logistics execution with engineering precision. His focus is on process control, consistency, and scalability, ensuring reliable outcomes at every site.
     </>
   ),
   image: "/images/leaders/rahul-das.png",
@@ -46,7 +46,7 @@ const rohitData = {
   role: "Business Head, HR Operations & Supply Chain",
   description: () => (
     <>
-      Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands.<br /><br />
+      Rohit Gaikwad brings over 15 years of leadership across retail, workforce operations, and supply chain execution, with deep expertise in ER–IR, compliance governance, and SOP-driven scale. A commerce graduate from the University of Mumbai, he has led large-format retail and enterprise operations for brands.<br />
       At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.
     </>
   ),

@@ -28,14 +28,19 @@ export function ExtendedCapabilities({
           </h2>
         </div>
 
+        {/* Mobile title at top */}
+        <div className="lg:hidden mb-8">
+          <h2 className="text-[32px] md:text-[48px] lg:text-[64px] font-bold">{title}</h2>
+        </div>
+
         {/* Right scrollable content */}
         <div className="lg:w-3/5">
           {items.map((item, i) => (
             <div key={i} className="mb-16">
-              <div className="mb-4 w-3/4">
-                <p className="text-4xl font-semibold">{item.number}</p>
-                <h3 className="text-4xl font-semibold mb-2">{item.title}</h3>
-                <p className="text-[20px] mb-2">{item.description}</p>
+              <div className="mb-4 w-full md:w-3/4">
+                <p className=" text-[20px] sm:text-[28px] md:text-[36px] font-semibold">{item.number}</p>
+                <h3 className=" text-[20px] sm:text-[28px] md:text-[36px] font-semibold mb-2">{item.title}</h3>
+                <p className="text-[16px] md:text-[20px] mb-2">{item.description}</p>
 
                 {item.list && (
                   <ul className="list-disc pl-5 mb-2 space-y-1">
@@ -44,7 +49,7 @@ export function ExtendedCapabilities({
                         style={{
                           fontFamily: "Instrument Sans",
                           fontWeight: 400,
-                          fontSize: "clamp(18px, 1.6vw, 20px)",
+                          fontSize: "clamp(16px, 1.6vw, 20px)",
                           lineHeight: "1.1",
                         }}
                       >{li}</li>
@@ -65,16 +70,12 @@ export function ExtendedCapabilities({
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 600px"
+                  style={{ borderRadius: '12px' }}
                 />
               </div>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Mobile title at top */}
-      <div className="lg:hidden mb-8">
-        <h2 className="text-2xl font-bold">{title}</h2>
       </div>
     </section>
   );
