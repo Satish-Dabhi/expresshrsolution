@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const warehouseData = [
   {
     title: "3PL Warehouse Management",
-    image: "/images/services-bg.png",
+    image: "/images/services/01.png",
     services: [
       "End-to-end warehouse operations",
       "Inventory tracking & SKU accuracy",
@@ -26,7 +26,7 @@ const warehouseData = [
   },
   {
     title: "4PL Workforce Deployment",
-    image: "/images/services-bg.png",
+    image: "/images/services/02.png",
     services: [
       "Skilled manpower for warehouse, factory & industrial sites",
       "Workforce planning & shift structuring",
@@ -38,7 +38,7 @@ const warehouseData = [
   },
   {
     title: "Facility & Industrial Management",
-    image: "/images/services-bg.png",
+    image: "/images/services/03.png",
     services: [
       "Industrial housekeeping &  sanitation",
       "Equipment cleaning & floor care",
@@ -49,7 +49,7 @@ const warehouseData = [
   },
   {
     title: "Governance, Compliance & On-ground control",
-    image: "/images/services-bg.png",
+    image: "/images/services/04.png",
     services: [
       "PPE audits, ID checks, statutory compliance",
       "Attendance, tracking & documentation",
@@ -85,14 +85,16 @@ const extendedCapabilitiesItems = [
     title: "Project & Government Liaison",
     description:
       "Labour law compliance, government approvals, vendor governance.",
-    image: "/videos/warehouse.gif",
+    image: "/videos/services/project-governance.mp4",
+    isVideo: true
   },
   {
     number: "04",
     title: "End-to-End Operational Governance",
     description:
       "Audits, safety, compliance, site reporting, productivity measurements.",
-    image: "/videos/warehouse.gif",
+    image: "/videos/services/end-to-end.mp4",
+    isVideo: true
   },
 ];
 

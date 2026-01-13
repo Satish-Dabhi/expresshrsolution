@@ -1,19 +1,9 @@
 import { Metadata } from "next";
 
-import GridTypewriter from "@/components/GridTypewriter";
-import SplitFeatureSection from "@/components/about/SplitFeatureSection";
-import CoreValues from "@/components/about/CoreValues";
 import CurvedDivider from "@/components/CurvedDivider";
-import LeadershipSection from "@/components/about/LeadershipSection";
-
-interface Leader {
-  id: number;
-  name: string;
-  role: string;
-  description: string;
-  image: string;
-  reverse?: true | false;
-}
+import GridTypewriter from "@/components/GridTypewriter";
+import CoreValues from "@/components/about/CoreValues";
+import SplitFeatureSection from "@/components/about/SplitFeatureSection";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | About Us",
@@ -81,10 +71,10 @@ export default function AboutSection() {
         description={
           <>
             Our mission is to build and operate{" "}
-            <span className="font-bold text-orange-500">workforce-driven execution systems</span>{" "}
-            that enable enterprises to scale with stability and compliance By assuming{" "}
-            <span className="font-bold text-orange-500">end-to-end responsibility for on-ground operations</span>
-            , we institutionalise discipline across people, processes, and governance—reducing operational risk while ensuring continuity, regulatory alignment, and consistent performance at scale.
+            <span className="font-bold text-orange-500">workforce driven execution systems</span>{" "}
+            that enable enterprises to scale with stability and compliance. By assuming{" "}
+            <span className="font-bold text-orange-500">end-to-end responsibility for on ground operations</span>
+            , we institutionalise discipline across people, processes, and governance reducing operational risk while ensuring continuity, regulatory alignment, and consistent performance at scale.
           </>
         }
         reverse

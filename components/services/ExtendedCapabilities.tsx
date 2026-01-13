@@ -9,6 +9,7 @@ export type CapabilityItem = {
   list?: string[];
   outcome?: string;
   image: string;
+  isVideo?: boolean;
 };
 
 export function ExtendedCapabilities({
@@ -63,16 +64,28 @@ export function ExtendedCapabilities({
               </div>
 
               {/* Image */}
-              <div className="relative w-full h-[340px] overflow-hidden mt-8">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 600px"
-                  style={{ borderRadius: '12px' }}
-                />
+              {/* Media */}
+              <div className="relative w-full h-[340px] overflow-hidden mt-8 rounded-[12px]">
+                {item.isVideo ? (
+                  <video
+                    src={item.image}
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 600px"
+                  />
+                )}
               </div>
+
             </div>
           ))}
         </div>
