@@ -20,7 +20,7 @@ export default function FeatureCardsMasonry({ items }: Props) {
   }
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[640px] mx-auto w-full max-w-[1400px] px-6 md:px-0 py-24 md:py-20">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[800px] mx-auto w-full max-w-[1400px] px-6 md:px-0 py-24 md:py-20">
       {/* Column 1 */}
       <div className="flex flex-col gap-6 h-full">
         <FeatureCard item={items[0]} className="h-[65vh] lg:h-[70%]" />

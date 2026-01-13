@@ -79,7 +79,7 @@ export default function StickyScrollSection({ items }: { items: Item[] }) {
 
         {/* SERVICES + OUTCOME (25vh) */}
         <div className="sticky top-[65vh] h-[35vh] bg-white">
-          <div className="mx-auto w-full max-w-[1400px] px-8 h-full flex justify-between items-start gap-16 pt-6">
+          <div className="mx-auto w-full max-w-[1400px] px-8 h-full flex justify-between items-start gap-16 pt-11">
             {/* Services - 70% */}
             <motion.div
               key={`services-${activeIndex}`}

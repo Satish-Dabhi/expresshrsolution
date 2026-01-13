@@ -2,13 +2,9 @@ import { Metadata } from "next";
 
 import CurvedDivider from "@/components/CurvedDivider";
 import GridTypewriter from "@/components/GridTypewriter";
-import ReadyToMove from "@/components/ReadyToMove";
 import { ExtendedCapabilities } from "@/components/services/ExtendedCapabilities";
-import StickyScrollSection from "@/components/services/StickyScrollSection";
-import StatsSection from "@/components/home/StatsSection";
-import Image from "next/image";
-import FeatureCards from "@/components/services/FeatureCardsMasonry";
 import FeatureCardsMasonry from "@/components/services/FeatureCardsMasonry";
+import StickyScrollSection from "@/components/services/StickyScrollSection";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Services",
@@ -123,26 +119,6 @@ export default function Services() {
         title="Extended Capabilities"
         items={extendedCapabilitiesItems}
       />
-
-      <Image
-        src="/images/hr-facade.png"
-        alt="section image"
-        width={1920}
-        height={397}
-        className="
-          w-full 
-          h-[220px]       
-          md:h-[397px]   
-          object-cover 
-          opacity-100 
-          rotate-0
-        "
-        priority
-      />
-
-      {/* <div className="mx-auto w-full max-w-[1400px]">
-        <StatsSection />
-      </div> */}
 
       <FeatureCardsMasonry
         items={[

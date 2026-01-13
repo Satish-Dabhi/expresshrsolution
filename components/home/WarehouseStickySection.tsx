@@ -19,7 +19,7 @@ const items = [
   {
     label: "FACILITY",
     title: ["Safe, clean, efficient", "industrial spaces"],
-    gif: "/videos/home/FACILITY.mp4",
+    gif: "/videos/home/FACILITY_NEW.mp4",
     color: "orange",
   },
   {
