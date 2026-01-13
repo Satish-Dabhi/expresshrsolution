@@ -44,7 +44,6 @@ const rohitData = {
   reverse: true,
 };
 
-
 const careerContent = {
   textLines: ["Careers"],
   subTitle: "Join The Workforce Behind India’s Supply Chains",
