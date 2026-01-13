@@ -47,80 +47,106 @@ export default function IndustryCarousel({ cards }: Props) {
                 </motion.div>
 
                 {/* RIGHT – CONTENT */}
-                <div>
-                    <motion.h2
-                        key={card.title}
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.4 }}
-                        className="text-[20px] sm:text-[28px] md:text-[36px] font-semibold mb-2"
-                    >
-                        {card.title}
-                    </motion.h2>
+                <div className="flex flex-col h-full justify-between">
 
-                    <p className="text-gray-600 mb-6" style={{
-                        fontFamily: "Instrument Sans",
-                        fontSize: "clamp(18px, 1.6vw, 20px)",
-                        lineHeight: "1.6",
-                        maxWidth: "600px",
-                    }}>
-                        Our unwavering quality ensures you receive purity chemicals,
-                        meeting your standards.
-                    </p>
+                    {/* TOP */}
+                    <div>
+                        <span
+                            className="block mb-4"
+                            style={{
+                                fontFamily: "Instrument Sans",
+                                fontWeight: 600,
+                                fontSize: "24px",
+                                lineHeight: "1.3",
+                                color: "#AFAFAF",
+                                letterSpacing: "0.12em",
+                            }}
+                        >
+                            INDUSTRIES SERVED
+                        </span>
 
-                    <Accordion
-                        title="Pain Points"
-                        isOpen={openAccordion === 'pain'}
-                        onClick={() => setOpenAccordion('pain')}
-                    >
-                        <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
-                            {card.painPoints.map((p, i) => (
-                                <li key={i}
-                                    style={{
+                        <motion.h2
+                            key={card.title}
+                            initial={{ opacity: 0, y: 16 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.4 }}
+                            className="font-semibold text-[28px] sm:text-[40px] lg:text-[64px]"
+                            style={{ lineHeight: '64px' }}
+                        >
+                            {card.title}
+                        </motion.h2>
+
+                        <p
+                            className="text-gray-600 mb-6"
+                            style={{
+                                fontFamily: "Instrument Sans",
+                                fontSize: "clamp(18px, 1.6vw, 20px)",
+                                lineHeight: "1.6",
+                                maxWidth: "600px",
+                            }}
+                        >
+                            Our unwavering quality ensures you receive purity chemicals,
+                            meeting your standards.
+                        </p>
+                    </div>
+
+                    {/* BOTTOM */}
+                    <div className="space-y-4">
+                        <Accordion
+                            title="Pain Points"
+                            isOpen={openAccordion === 'pain'}
+                            onClick={() => setOpenAccordion('pain')}
+                        >
+                            <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
+                                {card.painPoints.map((p, i) => (
+                                    <li key={i} style={{
                                         fontFamily: "Instrument Sans",
                                         fontWeight: 400,
                                         fontSize: "clamp(18px, 1.6vw, 20px)",
                                         lineHeight: "1.1",
-                                    }}
-                                >{p}</li>
-                            ))}
-                        </ul>
-                    </Accordion>
+                                    }}>
+                                        {p}
+                                    </li>
+                                ))}
+                            </ul>
+                        </Accordion>
 
-                    <Accordion
-                        title="Our Solutions"
-                        isOpen={openAccordion === 'solutions'}
-                        onClick={() => setOpenAccordion('solutions')}
-                    >
-                        <ul className="space-y-2 text-sm">
-                            {card.solutions.map((s, i) => (
-                                <li key={i}
-                                    style={{
+                        <Accordion
+                            title="Our Solutions"
+                            isOpen={openAccordion === 'solutions'}
+                            onClick={() => setOpenAccordion('solutions')}
+                        >
+                            <ul className="space-y-2 text-sm">
+                                {card.solutions.map((s, i) => (
+                                    <li key={i} style={{
                                         fontFamily: "Instrument Sans",
                                         fontWeight: 400,
                                         fontSize: "clamp(18px, 1.6vw, 20px)",
                                         lineHeight: "1.3",
-                                    }}
-                                >
-                                    <span className="font-semibold">{s.label}: </span>
-                                    <span className="text-gray-600">{s.description}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </Accordion>
+                                    }}>
+                                        <span className="font-semibold">{s.label}: </span>
+                                        <span className="text-gray-600">{s.description}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </Accordion>
 
-                    <Accordion
-                        title="Outcome"
-                        isOpen={openAccordion === 'outcome'}
-                        onClick={() => setOpenAccordion('outcome')}
-                    >
-                        <p className="text-gray-600" style={{
-                            fontFamily: "Instrument Sans",
-                            fontSize: "clamp(18px, 1.6vw, 20px)",
-                            lineHeight: "1.6",
-                            maxWidth: "600px",
-                        }}>{card.outcome}</p>
-                    </Accordion>
+                        <Accordion
+                            title="Outcome"
+                            isOpen={openAccordion === 'outcome'}
+                            onClick={() => setOpenAccordion('outcome')}
+                        >
+                            <p className="text-gray-600" style={{
+                                fontFamily: "Instrument Sans",
+                                fontSize: "clamp(18px, 1.6vw, 20px)",
+                                lineHeight: "1.6",
+                                maxWidth: "600px",
+                            }}>
+                                {card.outcome}
+                            </p>
+                        </Accordion>
+                    </div>
+
                 </div>
             </div>
 

@@ -210,7 +210,7 @@ export default function AboutSection() {
         desc={heroContent.description}
       />
 
-      <section className="flex items-center justify-center w-full max-w-[1400px] py-10 md:py-15 mx-auto">
+      {/* <section className="flex items-center justify-center w-full max-w-[1400px] py-10 md:py-15 mx-auto">
         <h2
           className="
       font-semibold leading-none
@@ -220,7 +220,7 @@ export default function AboutSection() {
         >
           Industries served
         </h2>
-      </section>
+      </section> */}
 
       <IndustryCarousel cards={cards} />
 

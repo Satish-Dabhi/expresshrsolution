@@ -49,7 +49,7 @@ const warehouseData = [
   },
   {
     title: "Governance, Compliance & On-ground control",
-    image: "/images/services/04_new.png",
+    image: "/images/services/04.png",
     services: [
       "PPE audits, ID checks, statutory compliance",
       "Attendance, tracking & documentation",

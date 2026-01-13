@@ -25,7 +25,7 @@ export function FeatureCard({ item, className }: CardProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className={`relative rounded-2xl overflow-hidden shadow-lg ${hasImage
+            className={`relative rounded-2xl overflow-hidden ${hasImage
                 ? ''
                 : 'bg-[rgba(255,119,0,0.3)]'
                 } ${className}`}

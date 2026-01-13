@@ -107,7 +107,7 @@ const Navbar = () => {
                     {/* Link text - navigates */}
                     <Link
                       href={link.href}
-                      className={`transition-all duration-300 transform text-[14px] ${pathname.startsWith(link.href)
+                      className={`transition-all duration-300 transform text-[18px] ${pathname.startsWith(link.href)
                           ? "text-primary scale-110 -translate-y-0.5"
                           : "hover:text-primary"
                         }`}
@@ -160,7 +160,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className={`transition-all duration-300 transform text-[14px] ${pathname === link.href
+                  className={`transition-all duration-300 transform text-[18px] ${pathname === link.href
                       ? "text-primary scale-110 -translate-y-0.5"
                       : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
                     }`}
