@@ -93,7 +93,7 @@ const extendedCapabilitiesItems = [
     title: "End-to-End Operational Governance",
     description:
       "Audits, safety, compliance, site reporting, productivity measurements.",
-    image: "/videos/services/end-to-end.mp4",
+    image: "/videos/services/services_04.mp4",
     isVideo: true
   },
 ];

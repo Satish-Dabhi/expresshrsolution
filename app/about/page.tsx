@@ -40,7 +40,7 @@ const rohitData = {
       At Express HR Solutions, he anchors operational strategy, workforce governance, and execution discipline, ensuring stability and compliance at scale.
     </>
   ),
-  image: "/images/leaders/rohit.jpeg",
+  image: "/images/leaders/rohit-gaikwad-4.jpeg",
   reverse: true,
 };
 
