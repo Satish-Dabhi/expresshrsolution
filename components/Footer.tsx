@@ -57,7 +57,7 @@ export default function Footer() {
               <li>
                 <div className="flex items-center gap-5 pt-2">
                   <motion.a
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/company/express-hr-solutions/"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}
@@ -68,7 +68,7 @@ export default function Footer() {
                   </motion.a>
 
                   <motion.a
-                    href="https://www.instagram.com"
+                    href="https://www.instagram.com/expresshrsolutions?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -2 }}

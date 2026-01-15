@@ -1,13 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import {
-  motion,
   AnimatePresence,
-  useMotionValue,
+  motion,
   PanInfo,
+  useMotionValue,
 } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 
 export type StickySectionItem = {
   title: string;

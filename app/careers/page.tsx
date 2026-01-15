@@ -1,7 +1,6 @@
 import { CareerForm } from "@/components/contact/CareerForm";
 import ContactInfo from "@/components/contact/ContactInfo";
 import CurvedDivider from "@/components/CurvedDivider";
-import GridTypewriter from "@/components/GridTypewriter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -25,8 +24,6 @@ export default function ContactSection() {
       </div>
 
       <CurvedDivider />
-
-      {/* <GridTypewriter textLines={heroContent.textLines} desc={""} /> */}
 
       <section className="py-8 md:py-16">
         <div className="mx-auto w-full lg:max-w-[1400px] px-4">

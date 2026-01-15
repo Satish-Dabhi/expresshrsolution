@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 interface NavLink {
   name: string;
@@ -82,7 +82,7 @@ const Navbar = () => {
     border border-white/10
     rounded-[9px]
   "
-  style={{backdropFilter: 'blur(30px)'}}
+      style={{ backdropFilter: 'blur(30px)' }}
     >
       <div className="px-3 flex items-center justify-between">
         {/* Logo */}
@@ -108,8 +108,8 @@ const Navbar = () => {
                     <Link
                       href={link.href}
                       className={`transition-all duration-300 transform text-[18px] ${pathname.startsWith(link.href)
-                          ? "text-primary scale-110 -translate-y-0.5"
-                          : "hover:text-primary"
+                        ? "text-primary scale-110 -translate-y-0.5"
+                        : "hover:text-primary"
                         }`}
                     >
                       {link.name}
@@ -145,8 +145,8 @@ const Navbar = () => {
                           <Link
                             href={sublink.href}
                             className={`block px-2 py-1 rounded hover:bg-gray-100 transition-colors ${pathname === sublink.href
-                                ? "text-primary font-semibold"
-                                : ""
+                              ? "text-primary font-semibold"
+                              : ""
                               }`}
                             onClick={() => setDesktopSubmenuOpen(null)} // close submenu on click
                           >
@@ -161,8 +161,8 @@ const Navbar = () => {
                 <Link
                   href={link.href}
                   className={`transition-all duration-300 transform text-[18px] ${pathname === link.href
-                      ? "text-primary scale-110 -translate-y-0.5"
-                      : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
+                    ? "text-primary scale-110 -translate-y-0.5"
+                    : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
                     }`}
                 >
                   {link.name}
@@ -220,8 +220,8 @@ const Navbar = () => {
                               href={sublink.href}
                               onClick={() => setMobileMenuOpen(false)}
                               className={`block text-sm transition-colors ${pathname === sublink.href
-                                  ? "text-primary"
-                                  : "text-white hover:text-primary"
+                                ? "text-primary"
+                                : "text-white hover:text-primary"
                                 }`}
                               role="menuitem"
                             >
@@ -237,8 +237,8 @@ const Navbar = () => {
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`transition-colors ${pathname === link.href
-                        ? "text-primary"
-                        : "text-white hover:text-primary"
+                      ? "text-primary"
+                      : "text-white hover:text-primary"
                       }`}
                   >
                     {link.name}

@@ -1,15 +1,15 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import {
-  motion,
   AnimatePresence,
-  useMotionValue,
+  motion,
   PanInfo,
-  useScroll,
+  useMotionValue,
   useMotionValueEvent,
+  useScroll,
 } from "framer-motion";
 import Image from "next/image";
+import { useRef, useState } from "react";
 
 interface Leader {
   id: number;

@@ -3,8 +3,8 @@ import { Metadata } from "next";
 import CurvedDivider from "@/components/CurvedDivider";
 import GridTypewriter from "@/components/GridTypewriter";
 import StatementSection from "@/components/home/StatementSection";
-import ScrollCards from "@/components/industries/ScrollCards";
 import IndustryCarousel from "@/components/industries/IndustryCarousel";
+import ProcessSection, { StepItem } from "@/components/industries/ProcessSection";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Industries",
@@ -32,7 +32,7 @@ interface CardData {
 const cards: CardData[] = [
   {
     title: "FMCG & Food",
-    image: "/videos/industries/FMCH_and_Food.mp4",
+    image: "/images/industries/1.png",
     painPoints: [
       "Expired or near-expiry stock reaching market",
       "Missed delivery timelines impacting distribution confidence",
@@ -66,7 +66,7 @@ const cards: CardData[] = [
   },
   {
     title: "Retail & Lifestyle",
-    image: "/videos/industries/Retail_and_lifestyle.mp4",
+    image: "/images/industries/2.png",
     painPoints: [
       "High manpower attrition across stores and malls",
       "Inconsistent service quality impacting brand experience",
@@ -94,7 +94,7 @@ const cards: CardData[] = [
   },
   {
     title: "E-Commerce & Q-Commerce",
-    image: "/videos/industries/E_commerce_and_q_commerce.mp4",
+    image: "/images/industries/3.png",
     painPoints: [
       "Stock unavailable due to poor assortment planning",
       "Over-commitment on delivery timelines without rider availability",
@@ -122,7 +122,7 @@ const cards: CardData[] = [
   },
   {
     title: "Pharma & Healthcare",
-    image: "/videos/industries/Pharma_and_healthcare.mp4",
+    image: "/images/industries/4.png",
     painPoints: [
       "Risk of contamination or handling errors",
       "Strict compliance and document requirements",
@@ -150,7 +150,7 @@ const cards: CardData[] = [
   },
   {
     title: "Manufacturing & Packaging",
-    image: "/videos/industries/Manufacturing_and_packaging.mp4",
+    image: "/images/industries/5.png",
     painPoints: [
       "Unavailability of skilled manpower during peak cycles",
       "Production delays due to raw material mismanagement",
@@ -172,7 +172,7 @@ const cards: CardData[] = [
   },
   {
     title: "Port, Rail & Industrial Infrastructure",
-    image: "/videos/industries/Port_rail_and_Industrial.mp4",
+    image: "/images/industries/6.png",
     painPoints: [
       "Delays in rake unloading impacting downstream supply chains",
       "Safety risk in high-volume industrial environments",
@@ -200,6 +200,29 @@ const cards: CardData[] = [
   },
 ];
 
+const steps: StepItem[] = [
+  {
+    number: '01',
+    title: 'Define the Operational Scope',
+    description: 'We assess workforce requirements, site conditions, and compliance obligations to define the execution framework clearly.',
+  },
+  {
+    number: '02',
+    title: 'Design the Execution Model',
+    description: 'We structure a compliant, scalable workforce model aligned to operational and regulatory requirements.',
+  },
+  {
+    number: '03',
+    title: 'Execute On-Ground Operations',
+    description: 'We take end-to-end ownership of workforce deployment, supervision, and daily execution.',
+  },
+  {
+    number: '04',
+    title: 'Monitor, Govern & Optimise',
+    description: 'We ensure visibility, compliance, and performance through structured oversight and reporting.',
+  },
+];
+
 export default function AboutSection() {
   return (
     <>
@@ -210,27 +233,20 @@ export default function AboutSection() {
         desc={heroContent.description}
       />
 
-      {/* <section className="flex items-center justify-center w-full max-w-[1400px] py-10 md:py-15 mx-auto">
-        <h2
-          className="
-      font-semibold leading-none
-      text-[64px] max-[1199px]:text-[48px]
-      text-center
-    "
-        >
-          Industries served
-        </h2>
-      </section> */}
-
       <IndustryCarousel cards={cards} />
-
-      {/* <ScrollCards /> */}
 
       <CurvedDivider />
 
       <StatementSection
         title={`Why This \nMatters`}
         description="Express HR does not sell manpower. We solve execution failures that impact revenue, compliance, and brand reputation—with disciplined operations and on-ground control."
+      />
+
+      <ProcessSection
+        steps={steps}
+        heading={
+          "A disciplined, end-to-end workforce operations model built for scale, compliance, and continuity."
+        }
       />
     </>
   );

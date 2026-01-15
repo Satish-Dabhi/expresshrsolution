@@ -1,7 +1,7 @@
 "use client";
 
+import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
 
 export default function TrustedHeading() {
     const ref = useRef<HTMLDivElement>(null);

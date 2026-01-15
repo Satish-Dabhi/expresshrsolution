@@ -124,17 +124,17 @@ export default function Services() {
 
       <FeatureCardsMasonry
         items={[
-          { id: '1', image: '/images/industries-old.png', title: '16,000+ Workers Empowered' },
+          { id: '1', image: '/images/services/16000-workers-employed.png', title: '16,000+ Workers Empowered' },
           { id: '2', description: '98% Workforce Retention in Key Accounts' },
           {
             id: '3',
-            image: '/images/home-hero.jpg',
+            image: '/images/services/100-satuatory-compliance.png',
             title: '100% Statutory Compliance',
           },
           { id: '4', description: '50+ Skill Development Initiatives' },
           {
             id: '5',
-            image: '/images/box.jpg',
+            image: '/images/services/ESG-and-safety-training-programs.png',
             title: 'ESG & Safety Training Programs',
           },
         ]}

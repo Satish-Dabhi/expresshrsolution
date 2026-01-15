@@ -108,9 +108,6 @@ export default function AboutSection() {
         image={rohitData?.image}
         reverse
       />
-      {/* <LeadershipSection leaders={leaders} />
-
-      <LeadershipSection leaders={rohitData} /> */}
 
       <div className="mt-10 md:mt-30">
         <GridTypewriter

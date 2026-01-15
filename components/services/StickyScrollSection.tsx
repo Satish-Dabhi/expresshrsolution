@@ -1,8 +1,8 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { MobileCarousel } from "./MobileCarousel";
 
 type Item = {

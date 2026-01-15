@@ -171,9 +171,8 @@
   height: 1000px;
   width: 100%;
   background: rgba(0, 0, 0, 0.45);
-  clip-path: path(
-    "M10,20 L60,20 A10,10 0 0,0 70,10 L70,10 A10,10 0 0,1 80,0 L140,0 A10,10 0 0,1 150,10 L150,190 A10,10 0 0,1 140,200 L10,200 A10,10 0 0,1 0,190 L0,30 A10,10 0 0,1 10,20 Z"
-  );
+  clip-path: path("M10,20 L60,20 A10,10 0 0,0 70,10 L70,10 A10,10 0 0,1 80,0 L140,0 A10,10 0 0,1 150,10 L150,190 A10,10 0 0,1 140,200 L10,200 A10,10 0 0,1 0,190 L0,30 A10,10 0 0,1 10,20 Z"
+    );
   overflow: hidden;
 }
 
@@ -268,6 +267,7 @@
 }
 
 @keyframes horizontalBounce {
+
   0%,
   100% {
     transform: translateX(0);
@@ -288,39 +288,31 @@
 }
 
 .custom-top-gradient {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
 }
 
 .custom-bottom-gradient {
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to top,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
 }
 
 /* LEFT */
 .custom-left-gradient {
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0));
 }
 
 /* RIGHT */
 .custom-right-gradient {
-  background: linear-gradient(
-    to left,
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0.5),
-    rgba(255, 255, 255, 0)
-  );
+  background: linear-gradient(to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0));
 }
 
 /* Allow custom clip-path for animation */
@@ -478,6 +470,7 @@
   transition: background-size 0.4s ease, opacity 0.4s ease;
   z-index: 0;
 }
+
 .grid-background:hover::before {
   background-size: 90px 90px;
   opacity: 0.25;
@@ -488,6 +481,7 @@
   .grid-background::before {
     background-size: 80px 80px;
   }
+
   .grid-background:hover::before {
     background-size: 60px 60px;
   }
@@ -517,6 +511,7 @@
   color: black;
   font-weight: bold;
 }
+
 @keyframes blink {
   50% {
     opacity: 0;
@@ -528,6 +523,7 @@
     visibility: hidden;
   }
 }
+
 .animate-blink {
   animation: blink 1s steps(2, start) infinite;
 }
@@ -537,11 +533,13 @@
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 .animate-fade-up {
   animation: fadeUp 0.6s ease-out both;
 }
@@ -551,11 +549,13 @@
     opacity: 0;
     transform: scale(0.9);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
+
 .animate-scale-fade {
   animation: scaleFade 0.5s ease-out both;
 }
@@ -564,13 +564,16 @@
   0% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-6px);
   }
+
   100% {
     transform: translateY(0px);
   }
 }
+
 .animate-float {
   animation: float 10s ease-in-out infinite;
 }
@@ -579,13 +582,16 @@
   0% {
     transform: translate(0, 0);
   }
+
   50% {
     transform: translate(-18px, -12px);
   }
+
   100% {
     transform: translate(0, 0);
   }
 }
+
 .animate-bg-shift {
   animation: bgShift 28s ease-in-out infinite;
 }

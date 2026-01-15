@@ -1,11 +1,11 @@
 import ClientLayout from "@/components/ClientLayout";
+import CurvedDivider from "@/components/CurvedDivider";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import ReadyToMove from "@/components/ReadyToMove";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
-import CurvedDivider from "@/components/CurvedDivider";
-import ReadyToMove from "@/components/ReadyToMove";
 
 const instrument = Instrument_Sans({
   subsets: ["latin"],

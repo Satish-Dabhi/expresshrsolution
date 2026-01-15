@@ -4,12 +4,12 @@ import WarehouseStickySection from "@/components/home/WarehouseStickySection";
 import AnimatedImageSection from "@/components/AnimatedImageSection";
 import CurvedDivider from "@/components/CurvedDivider";
 import IndustriesSticky from "@/components/home/IndustriesSticky";
+import InfiniteLogoMarquee from "@/components/home/InfiniteLogoMarquee";
 import StatsSection from "@/components/home/StatsSection";
 import TrustedHeading from "@/components/home/TrustedHeading";
 import TrustedLogosGrid from "@/components/home/TrustedLogosGrid";
 import { Metadata } from "next";
 import Image from "next/image";
-import InfiniteLogoMarquee from "@/components/home/InfiniteLogoMarquee";
 
 export const metadata: Metadata = {
   title: "Express HR Solution | Home",
@@ -136,7 +136,7 @@ export default function Home() {
 
       <TrustedLogosGrid />
 
-      <InfiniteLogoMarquee logos={logos} height="h-24"/>
+      <InfiniteLogoMarquee logos={logos} height="h-24" />
 
 
       {/* FULL WIDTH IMAGE */}

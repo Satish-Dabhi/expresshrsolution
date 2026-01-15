@@ -1,6 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import Image from 'next/image';
 import { useState } from 'react';
 
 interface CardData {
@@ -31,19 +32,20 @@ export default function IndustryCarousel({ cards }: Props) {
                 {/* LEFT – IMAGE / VIDEO */}
                 <motion.div
                     key={card.image}
-                    initial={{ opacity: 0, x: -40 }}
+                    initial={{ opacity: 0, x: 40 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5 }}
                     className="rounded-2xl overflow-hidden bg-black"
                 >
-                    <video
-                        src={card.image}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-[260px] md:h-[600px] object-cover"
-                    />
+                    <div className="relative w-full h-[260px] md:h-[600px]">
+                        <Image
+                            src={card.image}
+                            alt="Card image"
+                            fill
+                            className="object-cover"
+                            priority
+                        />
+                    </div>
                 </motion.div>
 
                 {/* RIGHT – CONTENT */}

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
 interface CardProps {
   className?: string;
@@ -103,15 +103,15 @@ export default function GridTypewriter({
   /* ----------------------------------------
    AUTO TRIGGER IF NO SCROLL
 ---------------------------------------- */
-useEffect(() => {
-  if (hasScrolled) return;
+  useEffect(() => {
+    if (hasScrolled) return;
 
-  const timer = setTimeout(() => {
-    setHasScrolled(true);
-  }, 1000); 
+    const timer = setTimeout(() => {
+      setHasScrolled(true);
+    }, 1000);
 
-  return () => clearTimeout(timer);
-}, [hasScrolled]);
+    return () => clearTimeout(timer);
+  }, [hasScrolled]);
 
 
   const descParas = desc ? desc.split("\n\n") : [];

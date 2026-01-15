@@ -1,7 +1,6 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import ContactInfo from "@/components/contact/ContactInfo";
 import CurvedDivider from "@/components/CurvedDivider";
-import GridTypewriter from "@/components/GridTypewriter";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

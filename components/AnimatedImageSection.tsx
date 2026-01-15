@@ -16,8 +16,6 @@ interface AnimatedImageSectionProps {
   linkTextBelowTitle?: string;   // Display text
 }
 
-
-
 export default function AnimatedImageSection({
   image,
   title,
@@ -70,7 +68,6 @@ export default function AnimatedImageSection({
     );
   };
 
-
   /* ----------------------------------------
      IMAGE / MASK ANIMATION (UNCHANGED)
   ---------------------------------------- */
@@ -114,42 +111,6 @@ export default function AnimatedImageSection({
       window.removeEventListener("keydown", onUserScroll);
     };
   }, []);
-
-
-  /* ----------------------------------------
-     TYPEWRITER EFFECT (ON SCROLL)
-  ---------------------------------------- */
-  // useEffect(() => {
-  //   if (!shouldAnimate || !hasScrolled) return;
-
-  //   let titleIndex = 0;
-  //   let subtitleIndex = 0;
-  //   let lastTime = 0;
-
-  //   const step = (timestamp: number) => {
-  //     if (!lastTime) lastTime = timestamp;
-  //     const delta = timestamp - lastTime;
-
-  //     // control speed by titleSpeed (ms per character)
-  //     if (delta >= titleSpeed) {
-  //       if (titleIndex < title.length) {
-  //         setTypedTitle(title.slice(0, titleIndex + 1));
-  //         titleIndex++;
-  //       } else if (subtitle && subtitleIndex < subtitle.length) {
-  //         setTypedSubtitle(subtitle.slice(0, subtitleIndex + 1));
-  //         subtitleIndex++;
-  //       }
-  //       lastTime = timestamp;
-  //     }
-
-  //     if (titleIndex < title.length || (subtitle && subtitleIndex < subtitle.length)) {
-  //       requestAnimationFrame(step);
-  //     }
-  //   };
-
-  //   requestAnimationFrame(step);
-  // }, [shouldAnimate, hasScrolled, title, subtitle, titleSpeed]);
-
 
   /* ----------------------------------------
      FRAMER MOTION VARIANTS (UNCHANGED)

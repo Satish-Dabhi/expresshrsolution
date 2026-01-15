@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import { motion, PanInfo, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import StatementSection from "./StatementSection";
-import Link from "next/link";
 
 interface IndustryItem {
   title: string;

@@ -2,7 +2,6 @@
 
 import { animate, useInView, useMotionValue } from "framer-motion";
 import { useEffect, useRef } from "react";
-import StatsPieChart from "../services/StatsPieChart";
 
 function CounterTS({
   from = 0,
@@ -131,35 +130,6 @@ export default function StatsSection() {
             </p>
           </div>
         </div>
-
-        {/* <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-
-          <StatsPieChart />
-
-          <div className="space-y-6">
-            <LegendItem
-              color="#F97316"
-              label="Workforce Deployed"
-              value="15,000+"
-            />
-            <LegendItem
-              color="#FB923C"
-              label="Active Sites"
-              value="200+"
-            />
-            <LegendItem
-              color="#FDBA74"
-              label="Cities Served"
-              value="10+"
-            />
-            <LegendItem
-              color="#FED7AA"
-              label="Corporate Clients"
-              value="50+"
-            />
-          </div>
-
-        </div> */}
 
       </div>
     </section>
