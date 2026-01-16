@@ -242,6 +242,8 @@ export default function AboutSection() {
         description="Express HR does not sell manpower. We solve execution failures that impact revenue, compliance, and brand reputation—with disciplined operations and on-ground control."
       />
 
+      <CurvedDivider />
+
       <ProcessSection
         steps={steps}
         heading={

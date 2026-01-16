@@ -44,7 +44,7 @@ export default function ProcessSection({
                     </div>
 
                     {/* Right line */}
-                    <div className="hidden h-px w-64 bg-gray-300 md:block" />
+                    <div className="hidden h-px w-[70%] bg-gray-300 md:block" />
                 </div>
 
                 {/* Steps */}
