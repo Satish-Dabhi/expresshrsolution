@@ -128,7 +128,7 @@ export default function Services() {
           { id: '2', description: '98% Workforce Retention in Key Accounts' },
           {
             id: '3',
-            image: '/images/services/satuatory-compliance-latest.png',
+            image: '/images/services/satuatory-final.png',
             title: '100% Statutory Compliance',
           },
           { id: '4', description: '50+ Skill Development Initiatives' },
