@@ -38,7 +38,7 @@ export default function ProcessSection({
                         }}>
                             {subHeading}
                         </p>
-                        <h2 className="font-[Instrument Sans] font-semibold text-[32px] md:text-[48px] leading-[1.1] text-black">
+                        <h2 className="font-[Instrument Sans] font-semibold text-[28px] sm:text-[40px] lg:text-[64px] leading-[36px] sm:leading-[48px] lg:leading-[64px]"                        >
                             {heading}
                         </h2>
                     </div>
@@ -65,19 +65,18 @@ export default function ProcessSection({
                                 }}>
                                     {step.number}.
                                 </span>
-                                <h3 className="font-semibold text-black" style={{
-                                    fontFamily: "Instrument Sans",
-                                    fontSize: "clamp(18px, 1.6vw, 20px)",
-                                    lineHeight: "1.6",
-                                }}>
+                                <h3 className="text-[25px] font-semibold">
                                     {step.title}
                                 </h3>
                             </div>
 
                             <p
-                                className="text-gray-600 mt-8 text-[13px] md:text-[16px]"
+                                className="mt-8 text-sm text-gray-600"
                                 style={{
                                     fontFamily: "Instrument Sans",
+                                    fontWeight: 400,
+                                    fontSize: "clamp(18px, 1.6vw, 20px)",
+                                    lineHeight: "1.4",
                                 }}
                             >
                                 {step.description}
@@ -94,13 +93,28 @@ export default function ProcessSection({
                     viewport={{ once: true }}
                     className="mt-16 flex flex-col items-center justify-between gap-6 rounded-2xl bg-gray-100 px-6 py-6 md:flex-row"
                 >
-                    <p className="text-sm text-gray-600">{footerText}</p>
+                    <p className="text-gray-600"
+                        style={{
+                            fontFamily: "Instrument Sans",
+                            fontSize: "clamp(18px, 1.6vw, 20px)",
+                            lineHeight: "1.6",
+                            maxWidth: "600px",
+                        }}>{footerText}</p>
 
                     <Link
                         href="/contact"
-                        className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-orange-500"
+                        className="
+                                inline-flex items-center gap-3
+                                rounded-full
+                                px-6 py-3
+                                text-white text-lg font-medium
+                                shadow-lg
+                                transition-transform hover:scale-105
+                            "
+                        style={{ backgroundColor: 'var(--bright-orange)' }}
                     >
                         Contact Us
+                        <span className="text-2xl leading-none">→</span>
                     </Link>
                 </motion.div>
             </div>

@@ -72,8 +72,7 @@ export default function IndustryCarousel({ cards }: Props) {
                             initial={{ opacity: 0, y: 16 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.4 }}
-                            className="font-semibold text-[28px] sm:text-[40px] lg:text-[64px]"
-                            style={{ lineHeight: '64px' }}
+                            className="font-semibold text-[28px] sm:text-[40px] lg:text-[64px] leading-[36px] sm:leading-[48px] lg:leading-[64px]"
                         >
                             {card.title}
                         </motion.h2>

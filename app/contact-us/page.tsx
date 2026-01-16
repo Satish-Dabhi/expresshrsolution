@@ -39,8 +39,7 @@ export default function ContactSection() {
             {/* Right section */}
             <div className="lg:col-span-2 space-y-24 pl-0 lg:pl-8">
               <h1
-                className="text-[40px] lg:text-[64px] font-semibold mb-5 md:mb-12"
-                style={{ lineHeight: '64px' }}
+                className="text-[40px] lg:text-[64px] font-semibold mb-5 md:mb-12  leading-[36px] sm:leading-[48px] lg:leading-[64px]"
               >
                 Contact Us
               </h1>

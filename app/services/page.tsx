@@ -85,7 +85,7 @@ const extendedCapabilitiesItems = [
     title: "Project & Government Liaison",
     description:
       "Labour law compliance, government approvals, vendor governance.",
-    image: "/videos/services/project-governance.mp4",
+    image: "/videos/services/operational-governance.mp4",
     isVideo: true
   },
   {
@@ -93,7 +93,7 @@ const extendedCapabilitiesItems = [
     title: "End-to-End Operational Governance",
     description:
       "Audits, safety, compliance, site reporting, productivity measurements.",
-    image: "/videos/services/services_04.mp4",
+    image: "/videos/services/project-and-government-liaison.mp4",
     isVideo: true
   },
 ];
@@ -128,7 +128,7 @@ export default function Services() {
           { id: '2', description: '98% Workforce Retention in Key Accounts' },
           {
             id: '3',
-            image: '/images/services/100-satuatory-compliance.png',
+            image: '/images/services/satuatory-compliance.png',
             title: '100% Statutory Compliance',
           },
           { id: '4', description: '50+ Skill Development Initiatives' },

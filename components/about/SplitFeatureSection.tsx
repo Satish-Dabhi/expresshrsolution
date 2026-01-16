@@ -63,20 +63,17 @@ export default function SplitFeatureSection({
 
         {/* IMAGE WRAPPER */}
         <div className="relative w-full md:w-1/2 overflow-hidden">
-          <div className="relative w-full h-full p-0 md:p-5">
-            {/* IMAGE */}
-            <div className="w-full">
-              <Image
-                src={image}
-                alt="image"
-                width={800}
-                height={600}
-                className="w-full h-auto object-contain"
-                style={{ maxHeight: '775px', borderRadius: '12px' }}
-              />
-            </div>
+          <div className="relative w-full h-[515px] rounded-[12px] overflow-hidden">
+            <Image
+              src={image}
+              alt="image"
+              fill
+              className="object-cover object-top"
+              priority
+            />
           </div>
         </div>
+
       </div>
     </section>
   );
