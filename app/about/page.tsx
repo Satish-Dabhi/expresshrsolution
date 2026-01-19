@@ -20,7 +20,7 @@ Backed by 15+ years of experience, we blend people, process, and technology to r
 const rahulData = {
   id: 1,
   name: "Rahul Das",
-  role: "Director, Operations",
+  role: "Founder's Office",
   description: () => (
     <>
       Rahul Das transforms vision into disciplined, large-scale execution on the ground. An Electrical Engineering graduate from Rose-Hulman Institute of Technology, USA.<br />

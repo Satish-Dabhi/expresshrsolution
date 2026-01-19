@@ -38,7 +38,6 @@ export default function Footer() {
           <div>
             <h4 className="font-[600] text-[20px] md:text-[24px] mb-3 md:mb-5 text-black font-[Instrument_Sans]">
               <Link href="/contact-us">Contact</Link>
-
             </h4>
 
             <ul className="space-y-4 text-gray-500 text-[18px] md:text-[20px] font-[Instrument_Sans]">
@@ -76,17 +75,6 @@ export default function Footer() {
                     className="text-gray-500 hover:text-gray-800 transition-colors"
                   >
                     <Instagram className="w-6 h-6 md:w-7 md:h-7" />
-                  </motion.a>
-
-                  <motion.a
-                    href="https://twitter.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="text-gray-500 hover:text-gray-800 transition-colors"
-                  >
-                    <Twitter className="w-6 h-6 md:w-7 md:h-7" />
                   </motion.a>
                 </div>
               </li>

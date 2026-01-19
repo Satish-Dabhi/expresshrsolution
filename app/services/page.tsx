@@ -85,16 +85,16 @@ const extendedCapabilitiesItems = [
     title: "Project & Government Liaison",
     description:
       "Labour law compliance, government approvals, vendor governance.",
-    image: "/videos/services/operational-governance.mp4",
-    isVideo: true
+    image: "/videos/services/project-and-government-liaison.mp4",
+    isVideo: true,
   },
   {
     number: "04",
     title: "End-to-End Operational Governance",
     description:
       "Audits, safety, compliance, site reporting, productivity measurements.",
-    image: "/videos/services/project-and-government-liaison.mp4",
-    isVideo: true
+    image: "/videos/services/operational-governance.mp4",
+    isVideo: true,
   },
 ];
 
@@ -124,22 +124,25 @@ export default function Services() {
 
       <FeatureCardsMasonry
         items={[
-          { id: '1', image: '/images/services/16000-workers-employed.png', title: '16,000+ Workers Empowered' },
-          { id: '2', description: '98% Workforce Retention in Key Accounts' },
           {
-            id: '3',
-            image: '/images/services/satuatory-final.png',
-            title: '100% Statutory Compliance',
+            id: "1",
+            image: "/images/services/16000-workers-employed.png",
+            title: "16,000+ Workers Empowered",
           },
-          { id: '4', description: '50+ Skill Development Initiatives' },
+          { id: "2", description: "98% Workforce Retention in Key Accounts" },
           {
-            id: '5',
-            image: '/images/services/ESG-and-safety-training-programs.png',
-            title: 'ESG & Safety Training Programs',
+            id: "3",
+            image: "/images/services/satuatory-final.png",
+            title: "100% Statutory Compliance",
+          },
+          { id: "4", description: "50+ Skill Development Initiatives" },
+          {
+            id: "5",
+            image: "/images/services/ESG-and-safety-training-programs.png",
+            title: "ESG & Safety Training Programs",
           },
         ]}
       />
-
     </>
   );
 }

@@ -82,11 +82,14 @@ const Navbar = () => {
     border border-white/10
     rounded-[9px]
   "
-      style={{ backdropFilter: 'blur(30px)' }}
+      style={{ backdropFilter: "blur(30px)" }}
     >
       <div className="px-3 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2 text-white font-semibold">
+        <Link
+          href="/"
+          className="flex items-center space-x-2 text-white font-semibold"
+        >
           <Image
             src="/images/logos/express-hr-logo.png"
             alt="Brand Logo"
@@ -95,7 +98,7 @@ const Navbar = () => {
             priority
             className="drop-shadow-2xl"
           />
-        </div>
+        </Link>
 
         {/* Desktop Links */}
         <ul className="hidden md:flex space-x-10 font-medium text-white mr-1">
@@ -107,10 +110,11 @@ const Navbar = () => {
                     {/* Link text - navigates */}
                     <Link
                       href={link.href}
-                      className={`transition-all duration-300 transform text-[18px] ${pathname.startsWith(link.href)
-                        ? "text-primary scale-110 -translate-y-0.5"
-                        : "hover:text-primary"
-                        }`}
+                      className={`transition-all duration-300 transform text-[18px] ${
+                        pathname.startsWith(link.href)
+                          ? "text-primary scale-110 -translate-y-0.5"
+                          : "hover:text-primary"
+                      }`}
                     >
                       {link.name}
                     </Link>
@@ -128,8 +132,9 @@ const Navbar = () => {
                       tabIndex={0}
                     >
                       <ChevronDown
-                        className={`w-4 h-4 mt-1 transition-transform ${desktopSubmenuOpen === link.name ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 mt-1 transition-transform ${
+                          desktopSubmenuOpen === link.name ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
                   </div>
@@ -144,10 +149,11 @@ const Navbar = () => {
                         <li key={sublink.href} className="mb-1 last:mb-0">
                           <Link
                             href={sublink.href}
-                            className={`block px-2 py-1 rounded hover:bg-gray-100 transition-colors ${pathname === sublink.href
-                              ? "text-primary font-semibold"
-                              : ""
-                              }`}
+                            className={`block px-2 py-1 rounded hover:bg-gray-100 transition-colors ${
+                              pathname === sublink.href
+                                ? "text-primary font-semibold"
+                                : ""
+                            }`}
                             onClick={() => setDesktopSubmenuOpen(null)} // close submenu on click
                           >
                             {sublink.name}
@@ -160,10 +166,11 @@ const Navbar = () => {
               ) : (
                 <Link
                   href={link.href}
-                  className={`transition-all duration-300 transform text-[18px] ${pathname === link.href
-                    ? "text-primary scale-110 -translate-y-0.5"
-                    : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
-                    }`}
+                  className={`transition-all duration-300 transform text-[18px] ${
+                    pathname === link.href
+                      ? "text-primary scale-110 -translate-y-0.5"
+                      : "hover:text-primary hover:scale-105 hover:-translate-y-0.5"
+                  }`}
                 >
                   {link.name}
                 </Link>
@@ -204,8 +211,9 @@ const Navbar = () => {
                     >
                       {link.name}
                       <ChevronDown
-                        className={`w-4 h-4 transition-transform ${mobileSubmenusOpen[link.name] ? "rotate-180" : ""
-                          }`}
+                        className={`w-4 h-4 transition-transform ${
+                          mobileSubmenusOpen[link.name] ? "rotate-180" : ""
+                        }`}
                       />
                     </button>
                     {mobileSubmenusOpen[link.name] && (
@@ -219,10 +227,11 @@ const Navbar = () => {
                             <Link
                               href={sublink.href}
                               onClick={() => setMobileMenuOpen(false)}
-                              className={`block text-sm transition-colors ${pathname === sublink.href
-                                ? "text-primary"
-                                : "text-white hover:text-primary"
-                                }`}
+                              className={`block text-sm transition-colors ${
+                                pathname === sublink.href
+                                  ? "text-primary"
+                                  : "text-white hover:text-primary"
+                              }`}
                               role="menuitem"
                             >
                               {sublink.name}
@@ -236,10 +245,11 @@ const Navbar = () => {
                   <Link
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`transition-colors ${pathname === link.href
-                      ? "text-primary"
-                      : "text-white hover:text-primary"
-                      }`}
+                    className={`transition-colors ${
+                      pathname === link.href
+                        ? "text-primary"
+                        : "text-white hover:text-primary"
+                    }`}
                   >
                     {link.name}
                   </Link>

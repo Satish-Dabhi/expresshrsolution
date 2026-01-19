@@ -94,7 +94,7 @@ const cards: CardData[] = [
   },
   {
     title: "E-Commerce & Q-Commerce",
-    image: "/images/industries/3.png",
+    image: "/images/industries/Qcommerce.png",
     painPoints: [
       "Stock unavailable due to poor assortment planning",
       "Over-commitment on delivery timelines without rider availability",
