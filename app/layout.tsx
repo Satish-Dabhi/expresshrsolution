@@ -6,6 +6,7 @@ import ReadyToMove from "@/components/ReadyToMove";
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 const instrument = Instrument_Sans({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </ClientLayout>
+        <Toaster position="top-center" richColors />
       </body>
     </html>
   );

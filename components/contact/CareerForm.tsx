@@ -5,6 +5,11 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import ContactField from "./ContactField";
+import { toast } from "sonner";
+
+const SERVICE_ID = "service_zau93j5";
+const TEMPLATE_ID = "template_zbejmdo";
+const PUBLIC_KEY = "6kGDlJChpjYuS0eJf";
 
 export function CareerForm() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -14,32 +19,24 @@ export function CareerForm() {
     e.preventDefault();
     if (!formRef.current) return;
 
-    const formData = new FormData(formRef.current);
-    console.log(Object.fromEntries(formData.entries()));
-
     setLoading(true);
     try {
       emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          formRef.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-        )
+        .sendForm(SERVICE_ID!, TEMPLATE_ID!, formRef.current, PUBLIC_KEY!)
         .then(
           () => {
-            alert("Application submitted successfully!");
+            toast.success("Application submitted successfully!");
             formRef.current?.reset();
           },
           (error) => {
             console.error(error);
-            alert("Failed to submit application. Please try again.");
+            toast.error("Failed to submit application. Please try again.");
           }
         )
         .finally(() => setLoading(false));
     } catch (error) {
       console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -64,7 +61,7 @@ export function CareerForm() {
         <ContactField label="Email" name="email" type="email" />
         <ContactField label="Phone Number" name="phone" />
         <ContactField label="Role Interested In" name="position" />
-        <ContactField label="Attach CV" name="cv" type="file" />
+        <ContactField label="City" name="city" />
       </div>
 
       <ContactField label="Message" name="message" textarea />

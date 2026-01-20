@@ -5,6 +5,11 @@ import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import ContactField from "./ContactField";
+import { toast } from "sonner";
+
+const SERVICE_ID = "service_p4h5jd9";
+const TEMPLATE_ID = "template_bve7h8y";
+const PUBLIC_KEY = "AMR3EWk3dNGvoLLqF";
 
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -17,31 +22,22 @@ export function ContactForm() {
     setLoading(true);
 
     try {
-      // Optional: log form values
-      const formData = new FormData(formRef.current);
-      console.log(Object.fromEntries(formData.entries()));
-
       await emailjs
-        .sendForm(
-          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-          formRef.current,
-          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-        )
+        .sendForm(SERVICE_ID!, TEMPLATE_ID!, formRef.current, PUBLIC_KEY!)
         .then(
           () => {
-            alert("Application submitted successfully!");
+            toast.success("Application submitted successfully!");
             formRef.current?.reset();
           },
           (error) => {
             console.error(error);
-            alert("Failed to submit application. Please try again.");
+            toast.error("Failed to submit application. Please try again.");
           }
         )
         .finally(() => setLoading(false));
     } catch (error) {
       console.error("EmailJS Error:", error);
-      alert("Failed to send message. Please try again.");
+      toast.error("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
